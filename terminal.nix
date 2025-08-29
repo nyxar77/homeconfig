@@ -1,8 +1,16 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
+  programs.kitty = {
+    enable = true;
+    shellIntegration.enableZshIntegration = true;
+  };
   programs.zsh = {
     enable = true;
     enableCompletion = true;
-    autosuggestions.enable = true;
+    autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
     shellAliases = {
@@ -15,14 +23,22 @@
       tree = "eza --tree --icons=always --color=always -l --no-filesize";
     };
 
-    shellInit = ''
+    initContent = lib.mkOrder 550 ''
       fastfetch
       aj() {
           cd "$(autojump $1)"
       }
     '';
 
-    histSize = 10000;
-    histFile = "$HOME/.zsh_history";
+    history.size = 10000;
+    history.ignoreAllDups = true;
+    history.path = "$HOME/.zsh_history";
+    history.ignorePatterns = ["rm *" "pkill *" "cp *"];
+    plugins = [
+      {
+        name = "zsh-autocomplete";
+        src = pkgs.zsh-autocomplete;
+      }
+    ];
   };
 }

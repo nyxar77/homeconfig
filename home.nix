@@ -1,30 +1,17 @@
 {
   config,
   pkgs,
-  spicetify-nix,
   ...
 }: {
   imports = [
-    # ./spicetify-nix.nix
-    spicetify-nix.homeManagerModules.default
+    ./spicetify.nix
+    ./terminal.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "nyxar";
   home.homeDirectory = "/home/nyxar";
-
-  programs.spicetify = let
-    spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-  in {
-    enable = true;
-    theme = spicePkgs.themes.catppuccin;
-    enabledExtensions = with spicePkgs.extensions; [
-      adblockify
-      hidePodcasts
-    ];
-  };
-
   nixpkgs.config = {
     #allowBroken = true;
     allowUnfree = true;
@@ -96,6 +83,7 @@
     MANPAGER = "nvim +Man!";
     EDITOR = "nvim";
     VISUAL = "nvim";
+    USER = "nyxar";
   };
 
   # Let Home Manager install and manage itself.
