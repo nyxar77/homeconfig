@@ -4,8 +4,9 @@
   ...
 }: {
   imports = [
-    ./spicetify.nix
-    ./terminal.nix
+    ./programs
+    ./devtools.nix
+    ./services
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -27,10 +28,38 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
-    # # Adds the 'hello' command to your environment. It prints a friendly
-    # # "Hello, world!" when run.
-    # pkgs.hello
+
+  programs.waybar.enable = true;
+  programs.mangohud.enable = true;
+  programs.vesktop = {
+    enable = true;
+  };
+  programs.obs-studio.enable = true;
+  programs.mpv.enable = true;
+  programs.neovim.enable = true;
+  programs.vim.enable = true;
+  home.packages = with pkgs; [
+    lan-mouse
+    brave
+    chromium
+    hunspell
+    hunspellDicts.fr-any
+    hunspellDicts.en-us
+    goverlay
+    arrpc
+    blender-hip
+    (prismlauncher.override {
+      jdks = [
+        jdk8
+        jdk17
+        jdk21_headless
+      ];
+    })
+    qbittorrent
+    libreoffice
+    obsidian
+    discover-overlay
+    metadata-cleaner
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -45,8 +74,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
-
-  programs.waybar.enable = true;
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

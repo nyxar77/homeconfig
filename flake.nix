@@ -12,6 +12,12 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    stylix = {
+      url = "github:nix-community/stylix/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    astal.url = "github:aylur/astal";
+    ags.url = "github:aylur/ags";
   };
 
   outputs = {
@@ -29,7 +35,7 @@
         ./home.nix
       ];
 
-      extraSpecialArgs = {inherit (inputs) spicetify-nix;};
+      extraSpecialArgs = {inherit inputs;};
 
       # Optionally use extraSpecialArgs
       # to pass through arguments to home.nix

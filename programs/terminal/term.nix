@@ -7,6 +7,8 @@
     enable = true;
     shellIntegration.enableZshIntegration = true;
   };
+  programs.autojump.enable = true;
+  programs.tmux.enable = true;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
