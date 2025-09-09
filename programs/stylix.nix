@@ -1,31 +1,50 @@
-{inputs, ...}: {
-  inputs.stylix = {
+{
+  pkgs,
+  config,
+  stylix,
+  ...
+}: {
+  imports = [stylix.homeModules.stylix];
+  stylix = {
     enable = true;
     autoEnable = true;
-    image = /home/nyxar/Pictures/wallpaper-pfp/theme/wallhaven.png;
+    image = null;
+    polarity = "dark";
+    # fonts.sizes = 10;
+    # icons.enable = true;
+
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
 
     base16Scheme = {
-      base00 = "282433"; # background
-      base01 = "363241";
-      base02 = "3f3951"; # selection (from HardHacker)
-      base03 = "938aad"; # comment (from HardHacker)
-      base04 = "6f6b7b";
-      base05 = "eee9fc"; # foreground
-      base06 = "cec9dc";
-      base07 = "e2ddf0";
-      base08 = "e965a5"; # red (from HardHacker)
-      base09 = "eaa28e"; # orange (derived mix)
-      base0A = "ebde76"; # yellow (from HardHacker)
-      base0B = "b1f2a7"; # green (from HardHacker)
-      base0C = "b3f4f3"; # cyan (from HardHacker)
-      base0D = "b1baf4"; # blue (from HardHacker)
-      base0E = "e192ef"; # purple (from HardHacker)
-      base0F = "8b7175"; # accent (derived)    };
+      base00 = "#211e2a";
+      base01 = "#2c2737";
+      base02 = "#3f3951";
+      base03 = "#6e6780";
+      base04 = "#8a829e";
+      base05 = "#e4dee9";
+      base06 = "#f2e8f0";
+      base07 = "#ffffff";
+      base08 = "#e965a5";
+      base09 = "#f4b870";
+      base0A = "#ebde76";
+      base0B = "#b1f2a7";
+      base0C = "#b3f4f3";
+      base0D = "#95a6f4";
+      base0E = "#ff79c6";
+      base0F = "#bd93f9";
     };
 
     targets = {
-      firefox.profileNames = ["nyxar"];
+      firefox = {
+        enable = true;
+        profileNames = ["baryon"];
+      };
+
+      vesktop.enable = true;
+      spicetify.enable = false;
+      kitty.enable = true;
+      neovim.enable = false;
+      mpv.enable = true;
     };
   };
-
 }

@@ -1,18 +1,17 @@
 {
-  inputs,
   pkgs,
   spicetify-nix,
   ...
 }: {
   imports = [
-    inputs.spicetify-nix.homeManagerModules.default
+    spicetify-nix.homeManagerModules.default
   ];
 
   programs.spicetify = let
     spicePkgs = spicetify-nix.legacyPackages.${pkgs.stdenv.system};
   in {
     enable = true;
-    theme = spicePkgs.themes.retroBlur;
+    theme = spicePkgs.themes.hazy;
     enabledExtensions = with spicePkgs.extensions; [
       adblockify
       hidePodcasts

@@ -10,5 +10,6 @@
     ./spicetify.nix
     ./stylix.nix
     ./mpv.nix
+    ./neovim.nix
   ];
 }

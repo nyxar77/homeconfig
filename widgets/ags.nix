@@ -10,7 +10,7 @@
 
   programs.ags = {
     enable = true;
-    extraPackages = with pkgs; [
-    ];
+    # extraPackages = with pkgs; [
+    # ];
   };
 }

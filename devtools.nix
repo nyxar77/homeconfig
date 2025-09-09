@@ -10,7 +10,6 @@
     python311
     php83Packages.composer
     luarocks
-    lua5_4_compat
     lua5_1
     tree-sitter
     nixfmt-rfc-style

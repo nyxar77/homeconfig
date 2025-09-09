@@ -32,7 +32,7 @@
       input-default-bindings = "yes";
     };
 
-    inputs = {
+    bindings = {
       "]" = "add speed 0.05";
       "[" = "add speed -0.05";
       BS = "set speed 1.15";
