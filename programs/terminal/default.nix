@@ -5,6 +5,7 @@
     ./starship.nix
     ./tealdeer.nix
     ./kitty.nix
+    ./fastfetch.nix
   ];
 
   programs.eza = {

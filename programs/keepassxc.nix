@@ -1,16 +1,17 @@
 {...}: {
   programs.keepassxc = {
     enable = true;
-    General = {
-      BackupBeforeSave = true;
-      BackupFilePathPattern = "/home/nyxar/Documents/KeePass/Backup/{DB_FILENAME}.old.kdbx";
-      ConfigVersion = 2;
-      DropToBackgroundOnCopy = true;
-      HideWindowOnCopy = true;
-      MinimizeOnCopy = false;
-    };
     settings = {
       Browser.Enabled = true;
+      General = {
+        BackupBeforeSave = true;
+        BackupFilePathPattern = "{DB_FILENAME}.old.kdbx";
+        CompactMode = true;
+        ConfigVersion = 2;
+        DropToBackgroundOnCopy = true;
+        HideWindowOnCopy = true;
+        MinimizeOnCopy = false;
+      };
 
       GUI = {
         ApplicationTheme = "dark";

@@ -5,8 +5,8 @@
     package = (
       pkgs.mpv-unwrapped.wrapper {
         scripts = with pkgs.mpvScripts; [
-          uosc
-          sponsorblock
+          modernz
+          sponsorblock-minimal
         ];
 
         mpv = pkgs.mpv-unwrapped.override {
@@ -16,10 +16,11 @@
       }
     );
 
+    # scripts = with pkgs.mpvScripts; [modernz sponsorblock-minimal];
+
     config = {
       profile = "high-quality";
-      ytdl-format = "bestvideo+bestaudio";
-      cache-default = 4000000;
+      ytdl-format = "bv[codec=av01]/bv[codec=vp9]/bv[ext=mp4]+ba/best";
       hwdec = "auto";
       fullscreen = "yes";
       window-scale = 0.5;
@@ -30,6 +31,7 @@
       scale = "ewa_lanczos";
       keep-open = "always";
       input-default-bindings = "yes";
+      script-opts = "ytdl_hook-ytdl_path=yt-dlp";
     };
 
     bindings = {

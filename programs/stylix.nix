@@ -13,7 +13,8 @@
     # fonts.sizes = 10;
     # icons.enable = true;
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/tokyo-night-dark.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/Catppuccin-Macho.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
 
     base16Scheme = {
       base00 = "#211e2a";
@@ -36,13 +37,13 @@
 
     targets = {
       firefox = {
-        enable = true;
-        profileNames = ["baryon"];
+        enable = false;
       };
 
       vesktop.enable = true;
       spicetify.enable = false;
       kitty.enable = true;
+      tmux.enable = true;
       neovim.enable = false;
       mpv.enable = true;
     };

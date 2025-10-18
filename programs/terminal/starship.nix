@@ -3,9 +3,10 @@
     enable = true;
     settings = {
       add_newline = true;
-      command_timeout = 1300;
-      scan_timeout = 50;
-      format = "$all$nix_shell$nodejs$lua$golang$rust$php$git_branch$git_commit$git_state$git_status\n$username$hostname$directory";
+      command_timeout = 500;
+      scan_timeout = 30;
+      format = "$character$nix_shell$c$cpp$bun$nodejs$lua$golang$rust$php\n$username$hostname$directory";
+      # format = "$character$nix_shell$nodejs$lua$golang$rust$php$git_branch$git_commit$git_state$git_status\n$username$hostname$directory";
       character = {
         format = "$symbol ";
         vicmd_symbol = "[](bold dimmed #ff79c6)";
@@ -15,6 +16,7 @@
         success_symbol = "[](bold green) ";
         error_symbol = "[✗](bold red) ";
       };
+      /*
       git_branch = {
         symbol = " ";
         style = "#fc937b";
@@ -33,6 +35,41 @@
         #style = "bold dimmed #fc5e46)";
         up_to_date = "✓(bold dimmed #82f2a4)";
         format = "([$all_status$ahead_behind](bold #edb46a) )";
+      };
+      */
+      /*
+         c = {
+        format = "[$symbol($version(-$name) )]($style)";
+        version_format = "v$raw";
+        style = "fg:149 bold bg:0x86BBD8";
+        symbol = " ";
+        disabled = false;
+        detect_extensions = [
+          "c"
+          "h"
+        ];
+        detect_files = [];
+        detect_folders = [];
+        commands = [
+          [
+            "cc"
+            "--version"
+          ]
+          [
+            "gcc"
+            "--version"
+          ]
+          [
+            "clang"
+            "--version"
+          ]
+        ];
+      };
+      */
+      container = {
+        format = "[$symbol [$name]]($style)";
+        style = "red bold dimmed";
+        symbol = " ";
       };
       lua = {
         format = "[ $version](bold blue) ";
@@ -78,11 +115,11 @@
       };
       /*
       nix_shell = {
-        symbol = "󰒷";
-        impure_msg = "󰒷 (bold orange)";
-        pure_msg = "󰒷 (bold blue)";
-        unknown_msg = "󰒷 (bold yellow)";
-        format = "[$state(\($name\))]";
+      symbol = "󰒷";
+      impure_msg = "󰒷 (bold orange)";
+      pure_msg = "󰒷 (bold blue)";
+      unknown_msg = "󰒷 (bold yellow)";
+      format = "[$state(\($name\))]";
       };
       */
     };

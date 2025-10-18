@@ -4,14 +4,16 @@
   inputs,
   ...
 }: {
+    
   imports = [
     ./programs
     ./devtools.nix
     ./services
     ./widgets
-  ];
+  ]; 
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "nyxar";
@@ -77,9 +79,6 @@
     output_folder=/home/nyxar
     media_player_name=spotify
   '';
-  programs.vesktop = {
-    enable = true;
-  };
   programs.obs-studio.enable = true;
   programs.vim.enable = true;
   home.packages = with pkgs; [
@@ -89,14 +88,13 @@
     hunspell
     hunspellDicts.fr-any
     hunspellDicts.en-us
-    goverlay
     arrpc
     blender-hip
     (prismlauncher.override {
       jdks = [
         jdk8
         jdk17
-        jdk21_headless
+        jdk21
       ];
     })
     qbittorrent
@@ -104,6 +102,8 @@
     obsidian
     discover-overlay
     metadata-cleaner
+    ff2mpv
+    yt-dlp
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the

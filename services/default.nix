@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./podman.nix
-    ./ssh.nix
+    # ./ssh.nix
     ./general.nix
   ];
 

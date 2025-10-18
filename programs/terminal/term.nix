@@ -8,7 +8,6 @@
     shellIntegration.enableZshIntegration = true;
   };
   programs.autojump.enable = true;
-  programs.tmux.enable = true;
   programs.zsh = {
     enable = true;
     enableCompletion = true;
@@ -30,6 +29,7 @@
       aj() {
           cd "$(autojump $1)"
       }
+      eval "$(direnv hook zsh)"
     '';
 
     history.size = 10000;
