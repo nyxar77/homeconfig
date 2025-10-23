@@ -1,54 +1,162 @@
-# vim:ft=kitty
-
-## name: HardHacker 
-## license: MIT
-## author: Miro Paintola 
-## upstream: https://github.com/miropls/hardhacker-kitty
-
-
-background #282433
-foreground #eee9fc
-selection_background #3f3a50
-selection_foreground #eee9fc
-url_color #e965a5
-
-# Tabs
-active_tab_background #e965a5
-active_tab_foreground #eee0fc
-inactive_tab_background #3f3a50 
-inactive_tab_foreground #e965a5
-#tab_bar_background #15161E
-
-#: black
-color0 #282433
-#color8 #3f3951
-color8 #938aad
-
-#: red
-color1 #e965a5
-color9 #e965a5
-
-#: green
-color2  #b1f2a7
-color10 #b1f2a7
-
-#: yellow
-color3  #ebde76
-color11 #ebde76
-
-#: blue
-color4  #b1baf4
-color12 #b1baf4
-
-#: magenta
-color5  #e192ef
-color13 #e192ef
-
-#: cyan
-color6  #b3f4f3
-color14 #b3f4f3
-
-#: white
-color7  #eee9fc
-color15 #eee9fc
-
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+        "type": "file",
+        "width": 30,
+        "height": 13,
+        "color": {
+          "1": "red",
+          "2": "green",
+          "3": "yellow",
+          "4": "blue",
+          "5": "magenta",
+          "6": "cyan",
+          "7": "white",
+          "8": "black"
+        },
+        "padding": {
+            "top": 2,
+            "left": 1,
+            "right": 2
+        }
+    },
+    "display": {
+        "separator": " ",
+        "size": {
+            "binaryPrefix": "jedec",
+            "keyColor": "green",
+            "valueColor": "green"
+        }
+    },
+    "modules": [
+        {
+            "type": "title",
+            "format": "{#1}╭───────────── {#}{user-name-colored}"
+        },
+        {
+            "type": "custom",
+            "format": "{#1}│ {#}System Information"
+        },
+        {
+            "type": "os",
+            "key": "{#separator}│  {#keys}󰍹 OS"
+        },
+        {
+            "type": "kernel",
+            "key": "{#separator}│  {#keys}󰒋 Kernel"
+        },
+        {
+            "type": "uptime",
+            "key": "{#separator}│  {#keys}󰅐 Uptime"
+        },
+        {
+            "type": "packages",
+            "key": "{#separator}│  {#keys}󰏖 Packages",
+            "format": "{all}"
+        },
+        {
+            "type": "custom",
+            "format": "{#1}│"
+        },
+        {
+            "type": "custom",
+            "format": "{#1}│ {#}Desktop Environment"
+        },
+        {
+            "type": "de",
+            "key": "{#separator}│  {#keys}󰧨 DE"
+        },
+        {
+            "type": "wm",
+            "key": "{#separator}│  {#keys}󱂬 WM"
+        },
+        {
+            "type": "wmtheme",
+            "key": "{#separator}│  {#keys}󰉼 Theme"
+        },
+        {
+            "type": "display",
+            "key": "{#separator}│  {#keys}󰹑 Resolution"
+        },
+        {
+            "type": "shell",
+            "key": "{#separator}│  {#keys}󰞷 Shell"
+        },
+        {
+            "type": "terminalfont",
+            "key": "{#separator}│  {#keys}󰛖 Font"
+        },
+        {
+            "type": "custom",
+            "format": "{#1}│"
+        },
+        {
+            "type": "custom",
+            "format": "{#1}│ {#}Hardware Information"
+        },
+        {
+            "type": "cpu",
+            "key": "{#separator}│  {#keys}󰻠 CPU"
+        },
+        {
+            "type": "gpu",
+            "key": "{#separator}│  {#keys}󰢮 GPU"
+        },
+        {
+            "type": "memory",
+            "key": "{#separator}│  {#keys}󰍛 Memory",
+            "percent": {
+                "green": 40,
+                "yellow": 70
+            }
+        },
+        {
+            "type": "battery",
+            "key": "{#separator}│  {#keys}󰁹 Battery",
+            "percent": {
+                "green": 60,
+                "yellow": 25
+            }
+        },
+        {
+            "type": "disk",
+            "key": "{#separator}│  {#keys}󰋊 Disk (/)",
+            "folders": "/",
+            "percent": {
+                "green": 40,
+                "yellow": 70
+            }
+        },
+        {
+            "type": "disk",
+            "key": "{#separator}│  {#keys}󰋊 Disk (/home)",
+            "folders": "/home",
+            "percent": {
+                "green": 40,
+                "yellow": 70
+            }
+        },
+        {
+            "type": "disk",
+            "key": "{#separator}│  {#keys}󰋊 Disk (/nix)",
+            "folders": "/nix",
+            "percent": {
+                "green": 40,
+                "yellow": 70
+            }
+        },
+        {
+            "type": "custom",
+            "format": "{#1}│"
+        },
+        {
+            "type": "colors",
+            "key": "{#separator}│",
+            "symbol": "circle"
+        },
+        {
+            "type": "custom",
+            "format": "{#1}╰───────────────────────────────╯"
+        }
+    ]
+}
