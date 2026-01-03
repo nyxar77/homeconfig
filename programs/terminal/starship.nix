@@ -3,19 +3,19 @@
     enable = true;
     settings = {
       add_newline = true;
-      command_timeout = 500;
+      command_timeout = 90;
       scan_timeout = 30;
       format = "$character$nix_shell$c$cpp$bun$nodejs$lua$golang$rust$php\n$username$hostname$directory";
       # format = "$character$nix_shell$nodejs$lua$golang$rust$php$git_branch$git_commit$git_state$git_status\n$username$hostname$directory";
       character = {
-        format = "$symbol ";
-        vicmd_symbol = "[](bold dimmed #ff79c6)";
-        vimcmd_replace_symbol = "[](bold dimmed purple)";
-        vimcmd_replace_one_symbol = "[](bold dimmed cyan)";
-        vimcmd_visual_symbol = "[](bold dimmed yellow)";
+        vicmd_symbol = "[](bold dimmed #ff79c6) ";
+        vimcmd_replace_symbol = "[](bold dimmed purple) ";
+        vimcmd_replace_one_symbol = "[](bold dimmed cyan) ";
+        vimcmd_visual_symbol = "[](bold dimmed yellow) ";
         success_symbol = "[](bold green) ";
         error_symbol = "[✗](bold red) ";
       };
+
       /*
       git_branch = {
         symbol = " ";

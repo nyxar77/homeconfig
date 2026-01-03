@@ -3,6 +3,7 @@
   pkgs,
   ...
 }: {
+  home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;
   programs.firefox = {
     enable = true;
     languagePacks = ["en-US" "fr-FR"];

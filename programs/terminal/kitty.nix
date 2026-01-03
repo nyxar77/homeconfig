@@ -7,21 +7,23 @@
 
   programs.kitty = lib.mkForce {
     enable = true;
+    shellIntegration.enableZshIntegration = true;
     enableGitIntegration = true;
     settings = {
+      enable_audio_bell = false;
       confirm_os_window_close = 1;
       dynamic_background_opacity = true;
       scrollback_lines = 10000;
-      enable_audio_bell = true;
       update_check_interval = 0;
-      background_opacity = "0.9";
+      background_opacity = "0.75";
       opacity_style = "flat";
       maximized = "yes";
       padding = 10;
       width = "20²0";
       background_blur = 0;
       remember_window_size = "yes";
-      /* background = "#282433";
+      /*
+         background = "#282433";
       foreground = "#eee9fc";
       selection_background = "#3f3a50";
       selection_foreground = "#eee9fc";
@@ -78,7 +80,8 @@
       color18 = "#2c2737";
       color19 = "#3f3951";
       color20 = "#8a829e";
-      color21 = "#f2e8f0"; */
+      color21 = "#f2e8f0";
+      */
     };
 
     environment = {

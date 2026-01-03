@@ -2,15 +2,15 @@
   config,
   pkgs,
   inputs,
+  unstablePkgs,
   ...
 }: {
-    
   imports = [
     ./programs
     ./devtools.nix
     ./services
     ./widgets
-  ]; 
+  ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
@@ -67,13 +67,13 @@
     frame_timing=1
     frametime_color=00ff00
     media_player_color=ffffff
-    background_alpha=0.4
+    background_alpha=0
     font_size=24
     background_color=020202
     position=top-left
     text_color=ffffff
     round_corners=7
-    toggle_hud=Shift_R+F12
+    toggle_hud=Shift_R+F1
     toggle_logging=Shift_L+F2
     upload_log=F5
     output_folder=/home/nyxar
@@ -82,6 +82,8 @@
   programs.obs-studio.enable = true;
   programs.vim.enable = true;
   home.packages = with pkgs; [
+    prismlauncher
+
     lan-mouse
     brave
     chromium
@@ -90,20 +92,13 @@
     hunspellDicts.en-us
     arrpc
     blender-hip
-    (prismlauncher.override {
-      jdks = [
-        jdk8
-        jdk17
-        jdk21
-      ];
-    })
     qbittorrent
     libreoffice
     obsidian
     discover-overlay
     metadata-cleaner
     ff2mpv
-    yt-dlp
+    rnote
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -118,6 +113,15 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+  # ++ [
+  #   (unstablePkgs.prismlauncher.override {
+  #     jdks = [
+  #       jdk8
+  #       jdk17
+  #       jdk21
+  #     ];
+  #   })
+  # ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

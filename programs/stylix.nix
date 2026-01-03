@@ -13,10 +13,11 @@
     # fonts.sizes = 10;
     # icons.enable = true;
 
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/Catppuccin-Macho.yaml";
-    # base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-macchiato.yaml";
+    # base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
 
-    base16Scheme = {
+    /*
+       base16Scheme = {
       base00 = "#211e2a";
       base01 = "#2c2737";
       base02 = "#3f3951";
@@ -34,18 +35,24 @@
       base0E = "#ff79c6";
       base0F = "#bd93f9";
     };
+    */
 
     targets = {
       firefox = {
         enable = false;
       };
 
+      starship.enable = true;
+      fzf.enable = false;
       vesktop.enable = true;
       spicetify.enable = false;
       kitty.enable = true;
       tmux.enable = true;
       neovim.enable = false;
       mpv.enable = true;
+      kde.enable = true;
+      bat.enable = false;
+      hyprland.enable = true;
     };
   };
 }

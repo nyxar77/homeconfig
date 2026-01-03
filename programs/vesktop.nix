@@ -1,6 +1,7 @@
-{...}: {
+{unstablePkgs, ...}: {
   programs.vesktop = {
     enable = true;
+    package = unstablePkgs.vesktop;
     settings = {
       appBadge = true;
       arRPC = true;
@@ -50,6 +51,9 @@
         NotTypingAnimation.enabled = true;
         SilentTyping.enabled = true;
         SpotifyControls.enabled = true;
+        OpenInApp.enabled = true;
+        ReviewDB.enabled = true;
+        NoDevtoolsWarning.enabled = true;
       };
     };
   };

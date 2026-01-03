@@ -3,9 +3,11 @@
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.05";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     spicetify-nix = {
@@ -13,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     astal = {
@@ -38,7 +40,17 @@
     system = "x86_64-linux";
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [inputs.nur.overlays.default];
+      overlays = [
+        inputs.nur.overlays.default
+        /*
+           (prev: final: {
+          cisco-packet-tracer = inputs.unstable.legacyPackages.${system}.ciscoPacketTracer8;
+        })
+        */
+      ];
+    };
+    unstablePkgs = import inputs.unstable {
+      inherit system;
     };
   in {
     homeConfigurations."nyxar" = home-manager.lib.homeManagerConfiguration {
@@ -51,6 +63,7 @@
       extraSpecialArgs = {
         inherit (inputs) stylix spicetify-nix;
         inherit inputs;
+        inherit unstablePkgs;
       };
 
       # Optionally use extraSpecialArgs

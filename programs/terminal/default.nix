@@ -6,6 +6,8 @@
     ./tealdeer.nix
     ./kitty.nix
     ./fastfetch.nix
+    ./cava.nix
+    ./bat.nix
   ];
 
   programs.eza = {
@@ -15,12 +17,12 @@
     colors = "always";
   };
   home.packages = with pkgs; [
-    bat
     eza
     htop
     jq
     lazygit
     nurl
     nh
+    qpdf
   ];
 }
