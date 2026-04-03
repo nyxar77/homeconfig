@@ -8,6 +8,8 @@
     ./fastfetch.nix
     ./cava.nix
     ./bat.nix
+    ./ripgrep.nix
+    # ./htop.nix
   ];
 
   programs.eza = {
@@ -25,4 +27,7 @@
     nh
     qpdf
   ];
+
+  programs.command-not-found.enable = false;
+  programs.nix-index.enable = true;
 }

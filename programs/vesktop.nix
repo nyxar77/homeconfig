@@ -12,7 +12,7 @@
       minimizeToTray = true;
       tray = true;
       hardwareAcceleration = true;
-      discordBranch = "stable";
+      discordBranch = "PTB";
     };
     vencord.settings = {
       autoUpdate = false;
@@ -40,13 +40,26 @@
         FriendsSince.enabled = true;
         GameActivityToggle.enabled = true;
         GifPaste.enabled = true;
-        ImageZoom.enabled = true;
+        ImageZoom = {
+          enabled = true;
+          size = 245;
+          zoom = 2.70;
+        };
+        # AlwaysAnimate.enabled = true;
         KeepCurrentChannel.enabled = true;
         LastFMRichPresence.enabled = true;
         MessageLatency.enabled = true;
         ReadAllNotificationsButton.enabled = true;
         YoutubeAdblock.enabled = true;
         VolumeBooster.enabled = true;
+        BetterFolders = {
+          enabled = true;
+          sidebar = false;
+          sidebarAnim = false;
+          closeOthers = true;
+        };
+        VoiceMessages.enabled = true;
+        CopyUserURLs.enabled = true;
         Unindent.enabled = true;
         NotTypingAnimation.enabled = true;
         SilentTyping.enabled = true;

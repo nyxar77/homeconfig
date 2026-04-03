@@ -11,9 +11,11 @@
     resizeAmount = 15;
     customPaneNavigationAndResize = true;
     keyMode = "vi";
-    plugins = with pkgs; [
+    plugins = with pkgs.tmuxPlugins; [
       # tmuxPlugins.better-mouse-mode
-      tmuxPlugins.catppuccin
+      catppuccin
+      resurrect
+      continuum
     ];
 
     extraConfig = ''
@@ -45,6 +47,11 @@
 
       bind -T copy-mode-vi v send-keys -X begin-selection
       bind -T copy-mode-vi Y send-keys -X copy-selection-and-cancel
+
+      set -g @resurrect-capture-pane-contents 'on'
+      set -g @resurrect-strategy-vim 'session'
+      set -g @continuum-restore 'on'
+      set -g @continuum-save-interval '5'
 
     '';
   };

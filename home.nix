@@ -91,7 +91,6 @@
     hunspellDicts.fr-any
     hunspellDicts.en-us
     arrpc
-    blender-hip
     qbittorrent
     libreoffice
     obsidian

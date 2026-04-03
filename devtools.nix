@@ -5,5 +5,8 @@
     nixfmt-rfc-style
     mongosh
     nix-tree
+    codebook
+    insomnia
+    jetbrains.idea-oss
   ];
 }

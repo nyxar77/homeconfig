@@ -206,4 +206,12 @@
   "geo.enabled" = false;
   "network.http.sendRefererHeader" = 2;
   "security.ssl.require_safe_negotiation" = true;
+
+  /*
+  UI
+  */
+  "sidebar.visibility" = "expand-on-hover";
+  "sidebar.verticalTabs" = true;
+  "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
+  "sidebar.expandOnHover" = true;
 }

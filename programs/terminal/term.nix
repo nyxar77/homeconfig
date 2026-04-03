@@ -41,10 +41,15 @@
       hibernate = "sudo systemctl start hibernate.target";
       nixosconfig = "cd /etc/nixos; sudo -E nvim . ; cd -";
       nvimconfig = "cd ~/.config/nvim;nvim . ; cd -";
-      ls = "eza --icons=always --color=always -l --no-filesize";
-      ll = "eza --icons=always --color=always -la";
-      tree = "eza --tree --icons=always --color=always -l --no-filesize";
+      ls = "eza --no-filesize";
+      # ls = "eza --icons=always --color=always -lg --no-filesize";
+      # ll = "eza --icons=always --color=always -la";
+      # tree = "eza --tree --icons=always --color=always -l --no-filesize";
     };
+
+    initExtra = ''
+      source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
+    '';
 
     initContent = lib.mkOrder 550 ''
       fastfetch
