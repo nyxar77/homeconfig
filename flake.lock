@@ -130,6 +130,28 @@
         "type": "github"
       }
     },
+    "fenix": {
+      "inputs": {
+        "nixpkgs": [
+          "nyxar-nvim",
+          "nixpkgs"
+        ],
+        "rust-analyzer-src": "rust-analyzer-src"
+      },
+      "locked": {
+        "lastModified": 1773299640,
+        "narHash": "sha256-kTsZ5xGZqaeJ8jWsfZNACo/VsW3riVuIQEPWVGiqWKM=",
+        "owner": "nix-community",
+        "repo": "fenix",
+        "rev": "8ac78ff968869cd05d9cb42fbf63bdbc6851ec19",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "fenix",
+        "type": "github"
+      }
+    },
     "firefox-gnome-theme": {
       "flake": false,
       "locked": {
@@ -296,6 +318,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1779622335,
+        "narHash": "sha256-ViA62qtL5za7V3d5I8OA9q9JcFhsVAiL5jVHwEclWqk=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "705e9929918b43bd7b715dc0a878ac870449bb03",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-26.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -342,6 +380,25 @@
         "type": "github"
       }
     },
+    "nyxar-nvim": {
+      "inputs": {
+        "fenix": "fenix",
+        "nixpkgs": "nixpkgs_2"
+      },
+      "locked": {
+        "lastModified": 1780077787,
+        "narHash": "sha256-ZmBHZwvyjl8oMG5S7aYWzqvvnpd79kMX4PKgW2byyrU=",
+        "owner": "fe2-Nyxar",
+        "repo": "neovimconfig",
+        "rev": "db4312cf3c2f8bd5a472f368ad5d2e7662f80a0b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "fe2-Nyxar",
+        "repo": "neovimconfig",
+        "type": "github"
+      }
+    },
     "prismlauncher": {
       "inputs": {
         "libnbtplusplus": "libnbtplusplus",
@@ -371,10 +428,28 @@
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
         "nur": "nur",
+        "nyxar-nvim": "nyxar-nvim",
         "prismlauncher": "prismlauncher",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "unstable": "unstable"
+      }
+    },
+    "rust-analyzer-src": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1773194001,
+        "narHash": "sha256-50PPXBtH2xfKuNfQfUNOyuIFgZPEz5QVertQWS2MQJE=",
+        "owner": "rust-lang",
+        "repo": "rust-analyzer",
+        "rev": "8ed3cca4d30610fd0d3c1179c85418de2dc0a7c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "rust-lang",
+        "ref": "nightly",
+        "repo": "rust-analyzer",
+        "type": "github"
       }
     },
     "spicetify-nix": {

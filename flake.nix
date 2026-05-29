@@ -15,6 +15,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nyxar-nvim = {
+      # url = "path:/home/nyxar/.config/nvim";
+      url = "github:fe2-Nyxar/neovimconfig";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -68,6 +73,7 @@
 
       modules = [
         inputs.nix-index-database.homeModules.default
+        inputs.nyxar-nvim.homeManagerModules.default
         ./home.nix
       ];
 
