@@ -82,7 +82,7 @@
   programs.obs-studio.enable = true;
   programs.vim.enable = true;
   home.packages = with pkgs; [
-    prismlauncher
+    # prismlauncher
 
     lan-mouse
     brave

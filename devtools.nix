@@ -2,7 +2,7 @@
   home.packages = with pkgs; [
     git
     cargo
-    nixfmt-rfc-style
+    nixfmt
     mongosh
     nix-tree
     codebook

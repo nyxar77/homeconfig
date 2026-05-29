@@ -1,13 +1,17 @@
 {
   lib,
   pkgs,
+  config,
   ...
 }: {
-  home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;
+  /*
+     home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;
   home.file.".mozilla/firefox/dev77/search.json.mozlz4".force = lib.mkForce true;
+  */
   programs.firefox = {
     enable = true;
     languagePacks = ["en-US" "fr-FR"];
+    configPath = "${config.xdg.configHome}/.mozilla/firefox";
 
     nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration pkgs.ff2mpv];
 

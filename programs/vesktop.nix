@@ -1,7 +1,7 @@
 {unstablePkgs, ...}: {
   programs.vesktop = {
     enable = true;
-    package = unstablePkgs.vesktop;
+    # package = unstablePkgs.vesktop;
     settings = {
       appBadge = true;
       arRPC = true;
@@ -13,9 +13,15 @@
       tray = true;
       hardwareAcceleration = true;
       discordBranch = "PTB";
+      # spellCheckLanguages = ["fr-FR" "en-US"];
+    };
+
+    vencord.themes = {
+      catppuccin = "@import url('https://catppuccin.github.io/discord/dist/catppuccin-mocha-red.theme.css')";
     };
     vencord.settings = {
-      autoUpdate = false;
+      enabledThemes = ["catppuccin.css"];
+      autoUpdate = true;
       autoUpdateNotification = false;
       notifyAboutUpdates = true;
       useQuickCss = true;
@@ -67,6 +73,21 @@
         OpenInApp.enabled = true;
         ReviewDB.enabled = true;
         NoDevtoolsWarning.enabled = true;
+        CopyFileContents.enabled = true;
+        NoUnblockToJump.enabled = true;
+        ReverseImageSearch.enabled = true;
+        ShowConnections.enabled = true;
+        SortFriendRequests.enabled = true;
+        Translate.enabled = true;
+        ValidReply.enabled = true;
+        ValidUser.enabled = true;
+        UserVoiceShow.enabled = true;
+        /*
+           RelplaceGoogleSearch = {
+          enabled = true;
+
+        };
+        */
       };
     };
   };

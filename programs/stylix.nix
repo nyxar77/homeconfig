@@ -44,7 +44,7 @@
 
       starship.enable = true;
       fzf.enable = false;
-      vesktop.enable = true;
+      vesktop.enable = false;
       spicetify.enable = false;
       kitty.enable = true;
       tmux.enable = true;

@@ -6,7 +6,19 @@
   programs.mpv = {
     enable = true;
 
-    package = (
+    package = pkgs.mpv.override {
+      scripts = with pkgs.mpvScripts; [
+        modernz
+        sponsorblock-minimal
+      ];
+
+      mpv-unwrapped = pkgs.mpv-unwrapped.override {
+        waylandSupport = true;
+        ffmpeg = pkgs.ffmpeg-full;
+      };
+    };
+    /*
+       package = (
       pkgs.mpv-unwrapped.wrapper {
         scripts = with pkgs.mpvScripts; [
           modernz
@@ -19,8 +31,7 @@
         };
       }
     );
-
-    # scripts = with pkgs.mpvScripts; [modernz sponsorblock-minimal];
+    */
 
     config = {
       profile = "fast";
