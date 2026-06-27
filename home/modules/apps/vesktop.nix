@@ -12,7 +12,7 @@
       minimizeToTray = true;
       tray = true;
       hardwareAcceleration = true;
-      discordBranch = "PTB";
+      discordBranch = "stable";
       # spellCheckLanguages = ["fr-FR" "en-US"];
     };
 

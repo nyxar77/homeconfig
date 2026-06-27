@@ -38,21 +38,18 @@
     */
 
     targets = {
-      firefox = {
-        enable = false;
-      };
-
-      starship.enable = true;
-      fzf.enable = false;
-      vesktop.enable = false;
-      spicetify.enable = false;
-      kitty.enable = true;
       tmux.enable = true;
-      neovim.enable = false;
+      starship.enable = true;
+      kitty.enable = true;
       mpv.enable = true;
       kde.enable = true;
+      fzf.enable = false;
+      hyprland.enable = false;
+      firefox.enable = false;
+      vesktop.enable = false;
+      spicetify.enable = false;
+      neovim.enable = false;
       bat.enable = false;
-      hyprland.enable = true;
     };
   };
 }

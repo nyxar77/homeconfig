@@ -8,5 +8,6 @@
     codebook
     insomnia
     jetbrains.idea-oss
+    devenv
   ];
 }

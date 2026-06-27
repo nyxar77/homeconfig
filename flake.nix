@@ -14,28 +14,32 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    caelestia-shell = {
+      url = "github:caelestia-dots/shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nyxar-nvim = {
       # url = "path:/home/nyxar/.config/nvim";
       url = "github:fe2-Nyxar/neovimconfig";
     };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     stylix = {
-      url = "github:nix-community/stylix/release-25.11";
+      url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     astal = {
       url = "github:aylur/astal";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags = {
+    /*
+       ags = {
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    */
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -74,7 +78,8 @@
       modules = [
         inputs.nix-index-database.homeModules.default
         inputs.nyxar-nvim.homeManagerModules.default
-        ./home.nix
+        inputs.caelestia-shell.homeManagerModules.default
+        ./home/users/nyxar
       ];
 
       extraSpecialArgs = {

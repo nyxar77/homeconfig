@@ -214,4 +214,6 @@
   "sidebar.verticalTabs" = true;
   "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
   "sidebar.expandOnHover" = true;
+
+  "intl.accept_languages" = "fr-FR, fr, en-US, en";
 }

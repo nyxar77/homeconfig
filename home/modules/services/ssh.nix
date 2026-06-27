@@ -1,10 +1,4 @@
-{lib, ...}: {
-  imports = [
-    ./podman.nix
-    # ./ssh.nix
-    ./general.nix
-    ./nix-settings.nix
-  ];
+{...}: {
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;

@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-  home.packages = [pkgs.nerd-fonts.jetbrains-mono];
-
   programs.kitty = lib.mkForce {
     enable = true;
     shellIntegration.enableZshIntegration = true;
@@ -15,11 +13,20 @@
       dynamic_background_opacity = true;
       scrollback_lines = 10000;
       update_check_interval = 0;
+      term = "xterm-kitty";
       background_opacity = "0.75";
       opacity_style = "flat";
       maximized = "yes";
       padding = 10;
-      width = "20²0";
+      clipboard_control = "write-clipboard write-primary read-clipboard read-primary";
+      copy_on_select = "clipboard";
+      strip_trailing_spaces = "smart";
+      cursor_shape = "beam";
+      cursor_blink_interval = 0;
+      selection_background = "#ebde76";
+      selection_foreground = "#211e2a";
+      cursor = "#e965a5";
+      cursor_text_color = "#211e2a";
       background_blur = 0;
       remember_window_size = "yes";
       /*
@@ -83,11 +90,6 @@
       color21 = "#f2e8f0";
       */
     };
-
-    environment = {
-      default-terminal = "xterm-256color";
-    };
-
     font = {
       name = "JetBrainsMono Nerd Font";
       # package = pkgs.nerd-fonts.jetbrains-mono;

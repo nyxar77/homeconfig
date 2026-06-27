@@ -1,16 +1,5 @@
 {pkgs, ...}: {
-  imports = [
-    ./term.nix
-    ./tmux.nix
-    ./starship.nix
-    ./tealdeer.nix
-    ./kitty.nix
-    ./fastfetch.nix
-    ./cava.nix
-    ./bat.nix
-    ./ripgrep.nix
-    # ./htop.nix
-  ];
+  programs.vim.enable = true;
 
   programs.eza = {
     enable = true;
@@ -18,6 +7,7 @@
     icons = "always";
     colors = "always";
   };
+
   home.packages = with pkgs; [
     eza
     htop
