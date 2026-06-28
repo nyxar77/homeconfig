@@ -8,6 +8,7 @@
     ../../profiles/desktop.nix
     ../../profiles/media.nix
     ../../profiles/gaming.nix
+    ../../modules/shell/zsh-nyxar.nix
     ./packages.nix
     ./session.nix
   ];

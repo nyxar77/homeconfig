@@ -1,8 +1,4 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   programs.autojump.enable = true;
   programs.fzf = {
     enable = true;
@@ -37,23 +33,18 @@
     completionInit = "autoload -U compinit && compinit";
 
     shellAliases = {
-      k = "kubectl";
-      hibernate = "sudo systemctl start hibernate.target";
-      nixosconfig = "cd /etc/nixos; sudo -E nvim . ; cd -";
-      nvimconfig = "cd ~/.config/nvim;nvim . ; cd -";
       ls = "eza --no-filesize";
       # ls = "eza --icons=always --color=always -lg --no-filesize";
       # ll = "eza --icons=always --color=always -la";
       # tree = "eza --tree --icons=always --color=always -l --no-filesize";
     };
 
-    initContent = lib.mkOrder 550 ''
+    initContent = ''
       source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
       fastfetch
       aj() {
           cd "$(autojump $1)"
       }
-      eval "$(direnv hook zsh)"
     '';
 
     history.size = 10000;
