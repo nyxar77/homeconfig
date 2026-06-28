@@ -5,6 +5,6 @@
     package = pkgs.kdePackages.kdeconnect-kde;
   };
   services.gromit-mpx = {
-    enable = true;
+    enable = false;
   };
 }
