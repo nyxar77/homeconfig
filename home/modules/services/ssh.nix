@@ -14,5 +14,12 @@
       controlPath = "~/.ssh/master-%r@%n:%p";
       controlPersist = "no";
     };
+    settings."github.com" = {
+      Hostname = "github.com";
+      User = "git";
+      IdentityFile = "~/.ssh/github";
+      IdentitiesOnly = true;
+      AddKeysToAgent = true;
+    };
   };
 }
