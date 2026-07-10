@@ -7,33 +7,32 @@
     enable = true;
 
     systemd = {
-      enable = false;
+      enable = true;
       target = "graphical-session.target";
       environment = [];
     };
 
     cli = {
-      enable = true; # ajoute la commande `caelestia`
+      enable = true;
       settings = {
         theme = {
           enable = true;
-          enableThunar = true;
-          enableMpv = false;
           enableHypr = true;
+          enableMpv = true;
+          enableCava = true;
+          enableFuzzel = true;
+          enableBtop = true;
           enableTerm = false;
           enableDiscord = false;
           enableSpicetify = false;
           enablePandora = false;
-          enableFuzzel = true;
-          enableBtop = false;
           enableNvtop = false;
           enableHtop = false;
-          enableGtk = false;
-          enableQt = false;
+          enableGtk = true;
+          enableQt = true;
           enableWarp = false;
           enableChromium = false;
           enableZed = false;
-          enableCava = false;
         };
       };
     };
@@ -83,9 +82,6 @@
 
   home.packages = with pkgs; [
     localsend
-    #
-    # gpu-screen-recorder
-    junction
   ];
 
   home.sessionVariables = {

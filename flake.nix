@@ -80,6 +80,8 @@
             overlays = [
               inputs.nur.overlays.default
               inputs.prismlauncher.overlays.default
+              inputs.nyxar-nvim.overlays.default
+
               /*
                  (prev: final: {
                 cisco-packet-tracer = inputs.unstable.legacyPackages.${system}.ciscoPacketTracer8;

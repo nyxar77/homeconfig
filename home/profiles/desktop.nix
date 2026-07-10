@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../modules/theme/gtk.nix
     ../modules/theme/fonts.nix
     ../modules/theme/stylix.nix
     ../modules/terminal/kitty.nix
@@ -8,6 +9,7 @@
     ../modules/desktop/waybar.nix
     ../modules/desktop/wofi.nix
     ../modules/desktop/services.nix
+    ../modules/desktop/mime-apps.nix
     ../modules/apps/browser/firefox/firefox.nix
     ../modules/apps/keepassxc.nix
     ../modules/apps/vesktop.nix

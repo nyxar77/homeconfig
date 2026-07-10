@@ -4,14 +4,13 @@
   config,
   ...
 }: {
-  /*
-     home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;
-  home.file.".mozilla/firefox/dev77/search.json.mozlz4".force = lib.mkForce true;
-  */
+  home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;
+  # home.file.".mozilla/firefox/dev77/search.json.mozlz4".force = lib.mkForce true;
+
   programs.firefox = {
     enable = true;
-    languagePacks = ["en-US" "fr-FR"];
-    configPath = "${config.xdg.configHome}/.mozilla/firefox";
+    languagePacks = ["fr-FR" "en-US"];
+    configPath = ".mozilla/firefox";
 
     nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration pkgs.ff2mpv];
 
@@ -44,6 +43,7 @@
           react-devtools
           localcdn
           auto-tab-discard
+          catppuccin-web-file-icons
         ];
         force = true;
         settings = let

@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
-    git
     cargo
     nixfmt
     mongosh
@@ -10,4 +9,18 @@
     jetbrains.idea-oss
     devenv
   ];
+  programs.git.enable = true;
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "nyxar77";
+        email = "dev@nyxar.space";
+      };
+      ui = {
+        color = "auto";
+        editor = "nvim";
+      };
+    };
+  };
 }

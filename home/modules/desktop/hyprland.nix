@@ -21,13 +21,32 @@
     hyprpicker
     libnotify
     slurp
-    swappy
     wlogout
 
     wofi
     wofi-pass
     wofi-emoji
   ];
+  programs.swappy = {
+    enable = true;
+    settings = {
+      Default = {
+        auto_save = false;
+        early_exit = false;
+        fill_shape = false;
+        custom_color = "rgba(243,139,168,1)";
+        line_size = 5;
+        paint_mode = "brush";
+        save_dir = "$HOME/Pictures/Screenshots/";
+        save_filename_format = "screenshot-%Y%m%d-%H%M%S.png";
+        show_panel = false;
+        text_font = "sans-serif";
+        text_size = 20;
+        transparency = 20;
+        transparent = true;
+      };
+    };
+  };
   wayland.windowManager.hyprland = {
     enable = true;
     configType = "lua";
@@ -35,4 +54,5 @@
     # plugins = [];
     # settings
   };
+  xdg.portal.enable = lib.mkForce false;
 }

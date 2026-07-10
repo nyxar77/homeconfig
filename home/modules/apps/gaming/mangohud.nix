@@ -1,46 +1,41 @@
 {...}: {
   programs.mangohud.enable = true;
-  home.file.".config/mangohud/MangoHud.conf".text = ''
-    toggle_fps_limit=F1
-    vsync=3
-    gl_vsync=0
+
+  xdg.configFile."MangoHud/MangoHud.conf".text = ''
     legacy_layout=false
+
+    fps
+    frame_timing=1
     gpu_stats
     gpu_temp
     gpu_load_change
     gpu_load_value=50,90
-    gpu_load_color=FFFFFF,FF7800,CC0000
-    gpu_text=GPU
     cpu_stats
     cpu_temp
     cpu_load_change
-    core_load_change
     cpu_load_value=50,90
-    cpu_load_color=FFFFFF,FF7800,CC0000
-    cpu_color=2e97cb
-    cpu_text=CPU
-    io_color=a491d3
     vram
-    vram_color=ad64c1
     ram
-    ram_color=c26693
-    fps
-    engine_color=eb5b5b
-    gpu_color=2e9762
-    wine_color=eb5b5b
-    frame_timing=1
-    frametime_color=00ff00
-    media_player_color=ffffff
-    background_alpha=0
-    font_size=24
-    background_color=020202
+
     position=top-left
-    text_color=ffffff
-    round_corners=7
-    toggle_hud=Shift_R+F1
-    toggle_logging=Shift_L+F2
-    upload_log=F5
-    output_folder=/home/nyxar
-    media_player_name=spotify
+    font_size=14
+    font_size_text=14
+    round_corners=6
+    background_alpha=0.50
+    alpha=1.0
+    background_color=1e1e2e
+    text_color=cdd6f4
+    text_outline_color=1e1e2e
+
+    gpu_color=a6e3a1
+    cpu_color=89b4fa
+    vram_color=94e2d5
+    ram_color=cba6f7
+    frametime_color=a6e3a1
+    gpu_load_color=a6e3a1,f9e2af,f38ba8
+    cpu_load_color=a6e3a1,f9e2af,f38ba8
+    fps_color=a6e3a1,f9e2af,f38ba8
+
+    toggle_hud=F12
   '';
 }

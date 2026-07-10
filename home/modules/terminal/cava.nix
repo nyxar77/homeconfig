@@ -1,7 +1,8 @@
 {...}: {
   programs.cava = {
     enable = true;
-    settings = {
+    /*
+       settings = {
       general.framerate = 60;
       input.method = "pipewire";
       smoothing.noise_reduction = 88;
@@ -18,5 +19,6 @@
         gradient_color_8 = "#FBD05F";
       };
     };
+    */
   };
 }
