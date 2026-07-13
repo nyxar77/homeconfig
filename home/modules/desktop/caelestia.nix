@@ -136,6 +136,8 @@
     XCURSOR_SIZE = "24";
   };
 
+  home.file."Pictures/Wallpapers".source = ../../../assets/Wallpapers;
+
   home.activation.removeGlobalCaelestiaThemeCopies = lib.hm.dag.entryAfter ["writeBoundary"] ''
     theme_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/theme"
     config_home="''${XDG_CONFIG_HOME:-$HOME/.config}"
