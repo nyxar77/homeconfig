@@ -21,6 +21,10 @@
     '';
   };
 in {
+  home.packages = [
+    catppuccin-prismlauncher
+  ];
+
   programs.prismlauncher = {
     enable = true;
     package = pkgs.prismlauncher.override {
@@ -33,9 +37,7 @@ in {
         jdk8
       ];
     };
-    extraPackages = [
-      catppuccin-prismlauncher
-    ];
+    extraPackages = [];
     settings = {
       ApplicationTheme = "Catppuccin-Mocha";
       IconTheme = "iOS";
@@ -47,6 +49,7 @@ in {
       MinMemAlloc = 896;
       Language = "en_US";
     };
-    icons = [];
+
+    icons = [./icons/mcsr-icon.png ./icons/herobrine_legacy ./icons/minecraft-story-mode.png];
   };
 }
