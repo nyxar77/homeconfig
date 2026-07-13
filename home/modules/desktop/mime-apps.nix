@@ -15,10 +15,12 @@
       firefox
     ];
 
+    defaultApplications = {
+      "inode/directory" = ["org.gnome.Nautilus.desktop"];
+    };
+
     /*
        defaultApplications = {
-      "inode/directory" = ["org.gnome.Nautilus.desktop"];
-
       "image/avif" = ["imv.desktop"];
       "image/bmp" = ["imv.desktop"];
       "image/gif" = ["imv.desktop"];
@@ -64,7 +66,7 @@
       "application/vnd.ms-powerpoint" = ["libreoffice-impress.desktop"];
       "application/vnd.openxmlformats-officedocument.presentationml.presentation" = ["libreoffice-impress.desktop"];
       "application/vnd.oasis.opendocument.presentation" = ["libreoffice-impress.desktop"];
-    };
+       };
     */
   };
 }
