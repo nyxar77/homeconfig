@@ -135,6 +135,22 @@
         "type": "github"
       }
     },
+    "catppuccin-prismlauncher": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1757370993,
+        "narHash": "sha256-RN1VM29OH75GHSHgpu3HW8YSonIEnX7MZzCObJ6BwtQ=",
+        "owner": "catppuccin",
+        "repo": "prismlauncher",
+        "rev": "1ef0e745286ce32750abc3bc5d3ca8073a623b60",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "prismlauncher",
+        "type": "github"
+      }
+    },
     "fenix": {
       "inputs": {
         "nixpkgs": [
@@ -486,6 +502,7 @@
       "inputs": {
         "astal": "astal",
         "caelestia-shell": "caelestia-shell",
+        "catppuccin-prismlauncher": "catppuccin-prismlauncher",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",

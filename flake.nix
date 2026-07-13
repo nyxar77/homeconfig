@@ -53,6 +53,10 @@
       url = "github:PrismLauncher/PrismLauncher";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin-prismlauncher = {
+      url = "github:catppuccin/prismlauncher";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {
