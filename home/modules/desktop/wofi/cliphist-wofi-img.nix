@@ -15,6 +15,7 @@
         ];
         text = ''
           thumb_dir="''${XDG_CACHE_HOME:-$HOME/.cache}/cliphist/thumbs"
+          style_file="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/theme/clipboard.css"
           entry_limit="''${CLIPHIST_WOFI_LIMIT:-30}"
           clear_label="x  Clear history"
           mkdir -p "$thumb_dir"
@@ -160,7 +161,7 @@
             --normal-window \
             --dmenu \
             --cache-file=/dev/null \
-            --style="$HOME/.config/wofi/clipboard.css" \
+            --style="$style_file" \
             --prompt="Clipboard" \
             -Dline_wrap=word_char \
             -Dcontent_halign=fill \
@@ -182,7 +183,7 @@
               --normal-window \
               --dmenu \
               --cache-file=/dev/null \
-              --style="$HOME/.config/wofi/clipboard.css" \
+              --style="$style_file" \
               --prompt="Clear clipboard history?" \
               --lines=2 \
               --width=420 \
@@ -207,16 +208,16 @@
   ];
 
   # theme
-  xdg.configFile.".caelestia/templates/clipboard.css".text = ''
-    @define-color bg #282433;
-    @define-color bg-deep #211e2a;
-    @define-color surface #2c2737;
-    @define-color surface-soft #352f43;
-    @define-color surface-bright #3f3a50;
-    @define-color text #eee9fc;
-    @define-color muted #8a829e;
-    @define-color accent #e965a5;
-    @define-color blue #b1baf4;
+  xdg.configFile."caelestia/templates/clipboard.css".text = ''
+    @define-color bg #{{ surface.hex }};
+    @define-color bg-deep #{{ surfaceContainerLow.hex }};
+    @define-color surface #{{ surfaceContainer.hex }};
+    @define-color surface-soft #{{ surfaceContainerHigh.hex }};
+    @define-color surface-bright #{{ outlineVariant.hex }};
+    @define-color text #{{ onSurface.hex }};
+    @define-color muted #{{ onSurfaceVariant.hex }};
+    @define-color accent #{{ primary.hex }};
+    @define-color blue #{{ tertiary.hex }};
 
     * {
       font-family: "JetBrainsMono Nerd Font", "JetBrains Mono", monospace;
@@ -246,12 +247,12 @@
       color: @text;
       background-color: @bg-deep;
       caret-color: @accent;
-      box-shadow: inset 0 0 0 1px rgba(233, 101, 165, 0.06), 0 6px 18px rgba(33, 30, 42, 0.26);
+      box-shadow: inset 0 0 0 1px alpha(@accent, 0.06), 0 6px 18px rgba(0, 0, 0, 0.26);
     }
 
     #input:focus {
       border-color: @accent;
-      box-shadow: inset 0 0 0 1px rgba(233, 101, 165, 0.22), 0 6px 18px rgba(33, 30, 42, 0.26);
+      box-shadow: inset 0 0 0 1px alpha(@accent, 0.22), 0 6px 18px rgba(0, 0, 0, 0.26);
     }
 
     #scroll {
@@ -274,7 +275,7 @@
       border-left: 3px solid transparent;
       border-radius: 8px;
       color: @text;
-      background-color: rgba(44, 39, 55, 0.42);
+      background-color: alpha(@surface, 0.42);
     }
 
     #entry:hover {
@@ -284,11 +285,11 @@
     }
 
     #entry:selected {
-      border-color: rgba(233, 101, 165, 0.66);
+      border-color: alpha(@accent, 0.66);
       border-left-color: @accent;
       color: @text;
-      background-color: rgba(233, 101, 165, 0.18);
-      box-shadow: inset 0 0 0 1px rgba(233, 101, 165, 0.12);
+      background-color: alpha(@accent, 0.18);
+      box-shadow: inset 0 0 0 1px alpha(@accent, 0.12);
     }
 
     #entry:selected #text {
@@ -306,7 +307,7 @@
       border: 1px solid @surface-bright;
       border-radius: 8px;
       background-color: @bg-deep;
-      box-shadow: 0 4px 14px rgba(33, 30, 42, 0.24);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.24);
     }
 
     scrollbar {

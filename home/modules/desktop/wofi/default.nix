@@ -1,5 +1,8 @@
 {...}: {
-  imports = [./cliphist-wofi-img.nix];
+  imports = [
+    ./cliphist-wofi-img.nix
+    ./caelestia-theme-wofi.nix
+  ];
   programs.wofi = {
     enable = true;
     settings = {
