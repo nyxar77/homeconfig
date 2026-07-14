@@ -27,7 +27,7 @@
   };
 in {
   # programs.hyprlock.enable = true;
-  services.hypridle.enable = true;
+  # services.hypridle.enable = true;
 
   home.pointerCursor = {
     name = "catppuccin-mocha-red-cursors";
