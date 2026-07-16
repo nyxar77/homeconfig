@@ -23,10 +23,6 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nyxar-nvim = {
-      # url = "path:/home/nyxar/Programming/projects/neovimconfig";
-      url = "github:nyxar77/neovimconfig";
-    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -62,6 +58,11 @@
       url = "github:nyxar77/projectorctl";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
+    };
+    nyxar-nvim = {
+      # url = "path:/home/nyxar/Programming/projects/neovimconfig";
+      url = "github:nyxar77/neovimconfig";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 

@@ -374,22 +374,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1784011430,
-        "narHash": "sha256-lDebytrYdd47IBLwvNOD+6AGeoqZ78CIKlp70hzW280=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "8eeec934ae0dbeca3d7868c059568a65c08b2fc3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixos-26.05",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts_2",
@@ -439,15 +423,17 @@
     "nyxar-nvim": {
       "inputs": {
         "fenix": "fenix",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1784072032,
-        "narHash": "sha256-7WAFMFKap9fLaG6CzzYDX6A2yU8DJqiXU1ObZd6rofQ=",
+        "lastModified": 1784236843,
+        "narHash": "sha256-gFHuYOvWGr1pZ3tEPSnmlSK1btkBu/uF6mPuKp8qCTs=",
         "owner": "nyxar77",
         "repo": "neovimconfig",
-        "rev": "daf9522f03121c2f1c7a41c6d7978c9b61687cc6",
+        "rev": "80ed4140fa66736b46d716e24c8ab2b04b12e5aa",
         "type": "github"
       },
       "original": {
