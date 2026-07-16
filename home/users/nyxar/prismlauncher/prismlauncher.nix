@@ -39,7 +39,7 @@ in {
     };
     extraPackages = [];
     settings = {
-      ApplicationTheme = "Catppuccin-Mocha";
+      ApplicationTheme = "Catppuccin Mocha";
       IconTheme = "iOS";
       ShowConsole = false;
       ShowConsoleOnError = true;
