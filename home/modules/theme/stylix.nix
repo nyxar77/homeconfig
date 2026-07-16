@@ -35,6 +35,7 @@
       neovim.enable = false;
       bat.enable = false;
       kitty.enable = false;
+      btop.enable = false;
     };
   };
 }

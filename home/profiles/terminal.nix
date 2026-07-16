@@ -7,6 +7,8 @@
     ../modules/terminal/ripgrep.nix
     ../modules/terminal/fastfetch.nix
     ../modules/terminal/tealdeer.nix
+    ../modules/terminal/htop.nix
+    ../modules/terminal/btop.nix
     ../modules/services/ssh.nix
   ];
 }
