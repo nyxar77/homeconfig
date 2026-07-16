@@ -34,7 +34,7 @@
       spicetify.enable = false;
       neovim.enable = false;
       bat.enable = false;
-      kitty.enable = true;
+      kitty.enable = false;
     };
   };
 }
