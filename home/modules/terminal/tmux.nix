@@ -12,17 +12,40 @@
     customPaneNavigationAndResize = true;
     keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [
-      # tmuxPlugins.better-mouse-mode
-      catppuccin
-      resurrect
-      continuum
+      {
+        plugin = catppuccin;
+        extraConfig = ''
+          set -g @catppuccin_flavor "mocha"
+          set -g @catppuccin_window_status_style "rounded"
+        '';
+      }
+      {
+        plugin = resurrect;
+        extraConfig = ''
+          set -g @resurrect-capture-pane-contents "on"
+          set -g @resurrect-strategy-vim "session"
+        '';
+      }
+      {
+        plugin = continuum;
+        extraConfig = ''
+          set -g @continuum-restore "on"
+          set -g @continuum-save-interval "15"
+
+          set -g status-right-length 90
+          set -g status-left-length 90
+          set -g status-left ""
+          set -g status-right "#{E:@catppuccin_status_application}"
+          set -ag status-right "#{E:@catppuccin_status_session}"
+        '';
+      }
     ];
 
     extraConfig = ''
       # Reload tmux config
       bind R source-file ~/.config/tmux/tmux.conf \; display-message "Config reloaded!"
 
-      set -as terminal-features ',xterm-kitty:RGB,clipboard'
+      set -as terminal-features ',xterm-kitty:RGB:clipboard'
       set -as terminal-overrides ',xterm-kitty:RGB'
       set -g focus-events on
       set -g renumber-windows on
@@ -31,20 +54,6 @@
       bind r command-prompt "rename-window %%"
       set -s set-clipboard on
       set -g set-titles on
-
-      set -g @catppuccin_flavor "mocha"
-      set -g @catppuccin_window_status_style "rounded"
-      set -g status-right-length 90
-      set -g status-left-length 90
-      set -g status-left ""
-      set -g status-right "#{E:@catppuccin_status_application}"
-      set -ag status-right "#{E:@catppuccin_status_session}"
-      # set -ag status-right "#{E:@catppuccin_status_uptime}"
-      # set -agF status-right "#{E:@catppuccin_status_cpu}"
-      # set -agF status-right "#{E:@catppuccin_status_battery}"
-      # set -g @catppuccin_window_middle_separator " "
-      # set -g @catppuccin_window_current_text "#{window_name}"
-      # set -g @catppuccin_window_default_text "#{window_name}"
 
       set -g mode-style 'fg=#211e2a,bg=#ebde76,bold'
       set -g copy-mode-match-style 'fg=#211e2a,bg=#b1baf4,bold'
@@ -58,11 +67,6 @@
       bind -T copy-mode-vi Y send-keys -X copy-pipe-and-cancel '${pkgs.wl-clipboard}/bin/wl-copy'
       bind-key -T copy-mode-vi MouseDragEnd1Pane send-keys -X copy-pipe-and-cancel '${pkgs.wl-clipboard}/bin/wl-copy'
       bind p paste-buffer
-
-      set -g @resurrect-capture-pane-contents 'on'
-      set -g @resurrect-strategy-vim 'session'
-      set -g @continuum-restore 'on'
-      set -g @continuum-save-interval '15'
 
     '';
   };
