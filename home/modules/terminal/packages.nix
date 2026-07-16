@@ -9,15 +9,13 @@
   };
 
   home.packages = with pkgs; [
-    eza
-    htop
     jq
     lazygit
     nurl
-    nh
-    qpdf
   ];
 
-  programs.command-not-found.enable = false;
-  programs.nix-index.enable = true;
+  programs = {
+    command-not-found.enable = false;
+    nix-index.enable = true;
+  };
 }
