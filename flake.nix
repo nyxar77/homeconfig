@@ -25,7 +25,7 @@
     };
     nyxar-nvim = {
       # url = "path:/home/nyxar/Programming/projects/neovimconfig";
-      url = "github:fe2-Nyxar/neovimconfig";
+      url = "github:nyxar77/neovimconfig";
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
