@@ -14,6 +14,48 @@
       environment = [];
     };
 
+    settings = {
+      services = {
+        smartScheme = true;
+      };
+
+      bar = {
+        status = {
+          showBattery = true;
+          showLockStatus = false;
+        };
+        persistent = false;
+        showOnHover = true;
+      };
+      border = {
+        thickness = 5;
+        rounding = 15;
+      };
+
+      general.apps = {
+        terminal = ["kitty"];
+        audio = ["pavucontrol"];
+        explorer = ["nautilus"];
+      };
+
+      paths = {
+        wallpaperDir = "~/Pictures/Wallpapers";
+      };
+
+      session = {
+        commands.logout = ["hyprctl" "dispatch" "exit"];
+      };
+    };
+
+    package = inputs.caelestia-shell.packages.${pkgs.system}.with-cli.override {
+      extraRuntimeDeps = with pkgs; [
+        kdePackages.kirigami
+        kdePackages.kirigami-addons
+        kdePackages.breeze
+        kdePackages.qqc2-desktop-style
+      ];
+    };
+
     cli = {
       enable = true;
       settings = {
@@ -23,17 +65,17 @@
           enableMpv = true;
           enableCava = true;
           enableFuzzel = true;
+          enableGtk = true;
+          enableQt = true;
           enableBtop = true;
-          enableTerm = false;
-          enableDiscord = false;
+          enableDiscord = true;
+          enableChromium = true;
           enableSpicetify = false;
+          enableTerm = false;
           enablePandora = false;
           enableNvtop = false;
           enableHtop = false;
-          enableGtk = true;
-          enableQt = true;
           enableWarp = false;
-          enableChromium = false;
           enableZed = false;
           postHook = ''
             theme_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/theme"
@@ -75,46 +117,10 @@
                 rm -f "$config_home/qt6ct/qss/caelestia.qss"
               fi
             fi
+
+            ${pkgs.hyprland}/bin/hyprctl reload >/dev/null 2>&1 || true
           '';
         };
-      };
-    };
-
-    package = inputs.caelestia-shell.packages.${pkgs.system}.with-cli.override {
-      extraRuntimeDeps = with pkgs; [
-        kdePackages.kirigami
-        kdePackages.kirigami-addons
-        kdePackages.breeze
-        kdePackages.qqc2-desktop-style
-      ];
-    };
-
-    settings = {
-      services = {
-        smartScheme = true;
-      };
-
-      bar = {
-        status = {
-          showBattery = true;
-          showLockStatus = false;
-        };
-        persistent = false;
-        showOnHover = true;
-      };
-
-      general.apps = {
-        terminal = ["kitty"];
-        audio = ["pavucontrol"];
-        explorer = ["nautilus"];
-      };
-
-      paths = {
-        wallpaperDir = "~/Pictures/Wallpapers";
-      };
-
-      session = {
-        commands.logout = ["hyprctl" "dispatch" "exit"];
       };
     };
   };
@@ -143,7 +149,7 @@
     config_home="''${XDG_CONFIG_HOME:-$HOME/.config}"
     data_home="''${XDG_DATA_HOME:-$HOME/.local/share}"
 
-    if [ -f "$theme_dir/gtk-portal.css" ]; then
+    if [ -f "$the²me_dir/gtk-portal.css" ]; then
       mkdir -p "$data_home/themes/Caelestia-Portal/gtk-3.0" "$data_home/themes/Caelestia-Portal/gtk-4.0"
       cp "$theme_dir/gtk-portal.css" "$data_home/themes/Caelestia-Portal/gtk-3.0/gtk.css"
       cp "$theme_dir/gtk-portal.css" "$data_home/themes/Caelestia-Portal/gtk-4.0/gtk.css"
