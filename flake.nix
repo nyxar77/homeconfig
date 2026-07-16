@@ -57,6 +57,12 @@
       url = "github:catppuccin/prismlauncher";
       flake = false;
     };
+    projectorctl = {
+      # url = "path:/home/nyxar/Programming/projects/projectorctl";
+      url = "github:nyxar77/projectorctl";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
   };
 
   outputs = inputs @ {
@@ -112,6 +118,7 @@
               [
                 inputs.nix-index-database.homeModules.default
                 inputs.nyxar-nvim.homeManagerModules.default
+                inputs.projectorctl.homeManagerModules.default
                 ./home/users/${username}
               ]
               ++ extraModules;

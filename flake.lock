@@ -477,6 +477,29 @@
         "type": "github"
       }
     },
+    "projectorctl": {
+      "inputs": {
+        "flake-parts": [
+          "flake-parts"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1784113801,
+        "narHash": "sha256-L3oXg6U/SgYOBoTaREOTgT1QxYl07yiVkOsefZfWXTk=",
+        "owner": "nyxar77",
+        "repo": "projectorctl",
+        "rev": "25159e3b004354cdbc4ec6318d38862915668293",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nyxar77",
+        "repo": "projectorctl",
+        "type": "github"
+      }
+    },
     "quickshell": {
       "inputs": {
         "nixpkgs": [
@@ -510,6 +533,7 @@
         "nur": "nur",
         "nyxar-nvim": "nyxar-nvim",
         "prismlauncher": "prismlauncher",
+        "projectorctl": "projectorctl",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "unstable": "unstable_2"

@@ -206,7 +206,7 @@ hl.bind("Print", hl.dsp.exec_cmd("caelestia screenshot"), { locked = true })
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("caelestia emoji -p"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("caelestia-theme-wofi"))
 hl.bind(mainMod .. " + J", hl.dsp.exec_cmd("cliphist-wofi-img"))
--- nyxar: projector modes UI backed by hyprctl Lua eval.
+-- Projector UI backed by the transactional projector controller.
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("projector-panel"))
 
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
@@ -275,14 +275,6 @@ hl.window_rule({
 	match = { class = "^(hyprland-run)$" },
 	move = "20 monitor_h-120",
 	float = true,
-})
-
-hl.window_rule({
-	name = "projector-panel",
-	match = { title = "^Projector$" },
-	float = true,
-	center = true,
-	size = "460 390",
 })
 
 hl.window_rule({

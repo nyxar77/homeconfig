@@ -26,4 +26,5 @@
   };
 
   programs.home-manager.enable = true;
+  programs.projectorctl.enable = true;
 }
