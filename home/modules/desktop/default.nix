@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./hyprland
-    ./caelestia.nix
+    ./caelestia
     ./waybar.nix
     ./wofi
     ./services.nix

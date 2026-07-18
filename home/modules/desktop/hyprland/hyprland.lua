@@ -14,7 +14,6 @@ local fileManager = "nautilus"
 local browser = "firefox"
 
 hl.on("hyprland.start", function()
-	hl.exec_cmd("caelestia shell -d")
 	hl.exec_cmd("bash ~/.config/hypr/start.sh")
 end)
 
@@ -197,7 +196,7 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.global("caelestia:launcher"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.global("caelestia:showall"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("caelestia wallpaper -r"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.global("caelestia:clearNotifs"))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("caelestia shell -k; sleep 0.2; caelestia shell -d;hyprctl reload;"))
+hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl --user restart caelestia.service; hyprctl reload"))
 
 -- Caelestia utilities
 hl.bind(mainMod .. " + M", hl.dsp.global("caelestia:screenshot"))
