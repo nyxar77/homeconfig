@@ -194,7 +194,7 @@ hl.bind(mainMod .. " + X", hl.dsp.global("caelestia:session"))
 hl.bind(mainMod .. " + L", hl.dsp.global("caelestia:lock"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.global("caelestia:launcher"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.global("caelestia:showall"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("caelestia wallpaper -r"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("caelestia wallpaper -r -N"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.global("caelestia:clearNotifs"))
 hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl --user restart caelestia.service; hyprctl reload"))
 
@@ -302,7 +302,9 @@ hl.window_rule({
 
 hl.window_rule({
 	name = "xdg-portal-hyprland-share-picker-fuzzy-title",
-	match = { title = ".*(Select what to share|Choose what to share|Screen Share|Share Screen|share picker|Share Picker).*" },
+	match = {
+		title = ".*(Select what to share|Choose what to share|Screen Share|Share Screen|share picker|Share Picker).*",
+	},
 	float = true,
 	center = true,
 	size = "560 420",
