@@ -23,7 +23,6 @@
     hunspellDicts.en-us
     arrpc
     qbittorrent
-    libreoffice
     obsidian
     discover-overlay
     metadata-cleaner

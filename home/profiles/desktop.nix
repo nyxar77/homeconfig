@@ -7,6 +7,7 @@
     ../modules/desktop
     ../modules/apps/browser/firefox/firefox.nix
     ../modules/apps/keepassxc.nix
+    ../modules/apps/libreoffice.nix
     ../modules/apps/vesktop.nix
   ];
 }
