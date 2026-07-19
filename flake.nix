@@ -36,6 +36,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     /*
+       wallpapers = {
+      url = "github:42willow/wallpapers";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    */
+    /*
        ags = {
       url = "github:aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
