@@ -1,45 +1,71 @@
 {
-  inputs,
+  config,
   pkgs,
   ...
 }: let
-  catppuccin-prismlauncher = pkgs.stdenvNoCC.mkDerivation {
-    pname = "catppuccin-prismlauncher";
-    version = "unstable";
-
-    src = inputs.catppuccin-prismlauncher;
-
-    dontBuild = true;
-
-    installPhase = ''
-      runHook preInstall
-
-      mkdir -p $out/share/PrismLauncher
-      cp -r themes $out/share/PrismLauncher/themes
-
-      runHook postInstall
-    '';
-  };
+  generatedThemeDir = "${config.xdg.stateHome}/caelestia/theme";
 in {
-  home.packages = [
-    catppuccin-prismlauncher
-  ];
+  xdg = {
+    configFile."caelestia/templates/prismlauncher.json".text = ''
+      {
+        "name": "Caelestia Breeze",
+        "widgets": "Breeze",
+        "colors": {
+          "Window": "#{{ surface.hex }}",
+          "WindowText": "#{{ onSurface.hex }}",
+          "Base": "#{{ surfaceContainerLowest.hex }}",
+          "AlternateBase": "#{{ surfaceContainerLow.hex }}",
+          "ToolTipBase": "#{{ inverseSurface.hex }}",
+          "ToolTipText": "#{{ inverseOnSurface.hex }}",
+          "Text": "#{{ onSurface.hex }}",
+          "Button": "#{{ surfaceContainerHighest.hex }}",
+          "ButtonText": "#{{ onSurface.hex }}",
+          "BrightText": "#{{ error.hex }}",
+          "Link": "#{{ primary.hex }}",
+          "Highlight": "#{{ primary.hex }}",
+          "HighlightedText": "#{{ onPrimary.hex }}",
+          "fadeAmount": 0.42,
+          "fadeColor": "#{{ surface.hex }}"
+        },
+        "logColors": {
+          "Message": "#{{ onSurface.hex }}",
+          "Launcher": "#{{ primary.hex }}",
+          "Debug": "#{{ onSurfaceVariant.hex }}",
+          "Warning": "#{{ tertiary.hex }}",
+          "Error": "#{{ error.hex }}",
+          "Fatal": "#{{ onErrorContainer.hex }}",
+          "MessageHighlight": "#{{ surfaceContainerLow.hex }}",
+          "LauncherHighlight": "#{{ primaryContainer.hex }}",
+          "DebugHighlight": "#{{ surfaceContainer.hex }}",
+          "WarningHighlight": "#{{ tertiaryContainer.hex }}",
+          "ErrorHighlight": "#{{ errorContainer.hex }}",
+          "FatalHighlight": "#{{ errorContainer.hex }}"
+        }
+      }
+    '';
+
+    dataFile."PrismLauncher/themes/caelestia-breeze/theme.json".source =
+      config.lib.file.mkOutOfStoreSymlink "${generatedThemeDir}/prismlauncher.json";
+  };
 
   programs.prismlauncher = {
     enable = true;
-    package = pkgs.prismlauncher.override {
-      additionalLibs = [pkgs.libxtst];
-      jdks = with pkgs; [
-        graalvmPackages.graalvm-ce
-        jdk25
-        jdk21
-        jdk17
-        jdk8
-      ];
-    };
+    package =
+      (pkgs.prismlauncher.override {
+        additionalLibs = [pkgs.libxtst];
+        jdks = with pkgs; [
+          graalvmPackages.graalvm-ce
+          jdk25
+          jdk21
+          jdk17
+          jdk8
+        ];
+      }).overrideAttrs (old: {
+        buildInputs = (old.buildInputs or []) ++ [pkgs.kdePackages.breeze];
+      });
     extraPackages = [];
     settings = {
-      ApplicationTheme = "Catppuccin Mocha";
+      ApplicationTheme = "caelestia-breeze";
       IconTheme = "iOS";
       ShowConsole = false;
       ShowConsoleOnError = true;
