@@ -1138,6 +1138,267 @@
     }
   '';
 
+  xdg.configFile."caelestia/templates/pavucontrol-qt.qss".text = ''
+    QDialog#MainWindow {
+      background-color: #{{ surface.hex }};
+      color: #{{ onSurface.hex }};
+    }
+
+    QTabWidget#notebook::pane {
+      background-color: #{{ surface.hex }};
+      border: 0;
+      border-top: 1px solid #{{ outlineVariant.hex }};
+      top: -1px;
+    }
+
+    QTabBar {
+      background-color: #{{ surfaceContainerLow.hex }};
+    }
+
+    QTabBar::tab {
+      min-width: 112px;
+      min-height: 34px;
+      padding: 7px 14px;
+      margin: 0;
+      color: #{{ onSurfaceVariant.hex }};
+      background-color: #{{ surfaceContainerLow.hex }};
+      border: 0;
+      border-bottom: 2px solid transparent;
+    }
+
+    QTabBar::tab:hover {
+      color: #{{ onSurface.hex }};
+      background-color: #{{ surfaceContainer.hex }};
+      border-bottom-color: #{{ tertiary.hex }};
+    }
+
+    QTabBar::tab:selected {
+      color: #{{ onSurface.hex }};
+      background-color: #{{ surfaceContainerHigh.hex }};
+      border-bottom-color: #{{ primary.hex }};
+    }
+
+    QScrollArea,
+    QScrollArea > QWidget,
+    QScrollArea > QWidget > QWidget {
+      background-color: #{{ surface.hex }};
+      border: 0;
+    }
+
+    QWidget#streamsVBox,
+    QWidget#recsVBox,
+    QWidget#sinksVBox,
+    QWidget#sourcesVBox,
+    QWidget#cardsVBox {
+      background-color: #{{ surface.hex }};
+    }
+
+    QWidget#StreamWidget,
+    QWidget#DeviceWidget,
+    QWidget#CardWidget {
+      margin: 6px;
+      padding: 12px;
+      color: #{{ onSurface.hex }};
+      background-color: #{{ surfaceContainerLow.hex }};
+      border: 1px solid #{{ outlineVariant.hex }};
+      border-radius: 10px;
+    }
+
+    QWidget#StreamWidget:hover,
+    QWidget#DeviceWidget:hover,
+    QWidget#CardWidget:hover {
+      background-color: #{{ surfaceContainer.hex }};
+      border-color: #{{ tertiary.hex }};
+    }
+
+    QLabel {
+      color: #{{ onSurface.hex }};
+      background-color: transparent;
+    }
+
+    QLabel#nameLabel,
+    QLabel#channelLabel,
+    QLabel#volumeLabel,
+    QLabel#directionLabel,
+    QLabel#noStreamsLabel,
+    QLabel#noRecsLabel,
+    QLabel#noSinksLabel,
+    QLabel#noSourcesLabel,
+    QLabel#noCardsLabel {
+      color: #{{ onSurfaceVariant.hex }};
+    }
+
+    QLabel#boldNameLabel {
+      color: #{{ onSurface.hex }};
+      font-weight: 600;
+    }
+
+    QFrame#line {
+      min-height: 1px;
+      max-height: 1px;
+      margin: 8px 0 0 0;
+      color: #{{ outlineVariant.hex }};
+      background-color: #{{ outlineVariant.hex }};
+      border: 0;
+    }
+
+    QToolButton {
+      min-width: 32px;
+      min-height: 32px;
+      padding: 4px;
+      color: #{{ onSurface.hex }};
+      background-color: #{{ surfaceContainerHigh.hex }};
+      border: 1px solid #{{ outlineVariant.hex }};
+      border-radius: 8px;
+    }
+
+    QToolButton:hover {
+      background-color: #{{ surfaceContainerHighest.hex }};
+      border-color: #{{ tertiary.hex }};
+    }
+
+    QToolButton:pressed,
+    QToolButton:checked {
+      color: #{{ onPrimary.hex }};
+      background-color: #{{ primary.hex }};
+      border-color: #{{ primary.hex }};
+    }
+
+    QToolButton#muteToggleButton:checked {
+      color: #{{ onError.hex }};
+      background-color: #{{ error.hex }};
+      border-color: #{{ error.hex }};
+    }
+
+    QToolButton#defaultToggleButton:checked {
+      color: #{{ onPrimary.hex }};
+      background-color: #{{ primary.hex }};
+      border-color: #{{ primary.hex }};
+    }
+
+    QComboBox,
+    QSpinBox {
+      min-height: 32px;
+      padding: 5px 30px 5px 10px;
+      color: #{{ onSurface.hex }};
+      selection-color: #{{ onPrimary.hex }};
+      selection-background-color: #{{ primary.hex }};
+      background-color: #{{ surfaceContainerHigh.hex }};
+      border: 1px solid #{{ outlineVariant.hex }};
+      border-radius: 8px;
+    }
+
+    QComboBox:hover,
+    QSpinBox:hover {
+      background-color: #{{ surfaceContainerHighest.hex }};
+      border-color: #{{ tertiary.hex }};
+    }
+
+    QComboBox:focus,
+    QSpinBox:focus {
+      border-color: #{{ primary.hex }};
+    }
+
+    QComboBox QAbstractItemView {
+      padding: 5px;
+      color: #{{ onSurface.hex }};
+      selection-color: #{{ onPrimary.hex }};
+      selection-background-color: #{{ primary.hex }};
+      background-color: #{{ surfaceContainer.hex }};
+      border: 1px solid #{{ outlineVariant.hex }};
+      border-radius: 8px;
+      outline: 0;
+    }
+
+    QCheckBox {
+      spacing: 8px;
+      color: #{{ onSurfaceVariant.hex }};
+      background-color: transparent;
+    }
+
+    QCheckBox:hover {
+      color: #{{ onSurface.hex }};
+    }
+
+    QSlider::groove:horizontal {
+      height: 6px;
+      background-color: #{{ surfaceContainerHighest.hex }};
+      border: 0;
+      border-radius: 3px;
+    }
+
+    QSlider::sub-page:horizontal {
+      background-color: #{{ primary.hex }};
+      border-radius: 3px;
+    }
+
+    QSlider::add-page:horizontal {
+      background-color: #{{ surfaceContainerHighest.hex }};
+      border-radius: 3px;
+    }
+
+    QSlider::handle:horizontal {
+      width: 16px;
+      margin: -5px 0;
+      background-color: #{{ primary.hex }};
+      border: 2px solid #{{ onPrimary.hex }};
+      border-radius: 8px;
+    }
+
+    QSlider::handle:horizontal:hover {
+      background-color: #{{ tertiary.hex }};
+      border-color: #{{ onTertiary.hex }};
+    }
+
+    QProgressBar {
+      min-height: 6px;
+      max-height: 6px;
+      background-color: #{{ surfaceContainerHighest.hex }};
+      border: 0;
+      border-radius: 3px;
+      text-align: center;
+    }
+
+    QProgressBar::chunk {
+      background-color: #{{ tertiary.hex }};
+      border-radius: 3px;
+    }
+
+    QScrollBar:vertical {
+      width: 10px;
+      margin: 2px;
+      background-color: transparent;
+      border: 0;
+    }
+
+    QScrollBar::handle:vertical {
+      min-height: 28px;
+      background-color: #{{ outlineVariant.hex }};
+      border-radius: 5px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+      background-color: #{{ tertiary.hex }};
+    }
+
+    QScrollBar::add-line:vertical,
+    QScrollBar::sub-line:vertical,
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+      height: 0;
+      background-color: transparent;
+      border: 0;
+    }
+
+    QToolTip {
+      padding: 6px;
+      color: #{{ inverseOnSurface.hex }};
+      background-color: #{{ inverseSurface.hex }};
+      border: 1px solid #{{ outlineVariant.hex }};
+      border-radius: 6px;
+    }
+  '';
+
   xdg.configFile."caelestia/templates/qt6ct-caelestia.conf".text = ''
     [ColorScheme]
     active_colors=#ff{{ onSurface.hex }}, #ff{{ surfaceContainer.hex }}, #ff{{ surfaceContainerHigh.hex }}, #ff{{ surfaceContainerHighest.hex }}, #ff{{ surfaceDim.hex }}, #ff{{ surfaceContainerHigh.hex }}, #ff{{ onSurface.hex }}, #ff{{ onPrimary.hex }}, #ff{{ onSurface.hex }}, #ff{{ surface.hex }}, #ff{{ surfaceContainerLow.hex }}, #ff{{ shadow.hex }}, #ff{{ primary.hex }}, #ff{{ onPrimary.hex }}, #ff{{ secondary.hex }}, #ff{{ tertiary.hex }}, #ff{{ surfaceContainer.hex }}, #ff{{ onSurface.hex }}, #ff{{ inverseSurface.hex }}, #ff{{ inverseOnSurface.hex }}, #99{{ onSurfaceVariant.hex }}
