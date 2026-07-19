@@ -115,7 +115,6 @@
               [
                 inputs.nix-index-database.homeModules.default
                 inputs.nyxar-nvim.homeManagerModules.default
-                inputs.projectorctl.homeManagerModules.default
                 ./home/users/${username}
               ]
               ++ extraModules;
@@ -132,6 +131,7 @@
             username = "nyxar";
             extraModules = [
               inputs.caelestia-shell.homeManagerModules.default
+              inputs.projectorctl.homeManagerModules.default
             ];
             extraSpecialArgs = {
               inherit (inputs) stylix spicetify-nix;
