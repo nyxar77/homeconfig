@@ -274,11 +274,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784225497,
-        "narHash": "sha256-hAb45YlkhLBGZ+5bLzVKyFpTJ6mcxGtOzEIko2dq/vc=",
+        "lastModified": 1784501538,
+        "narHash": "sha256-TvWwbrO7T40AVYrh4DhPPlAQnXHEqTPLj4x2E9YgR08=",
         "owner": "nyxar77",
         "repo": "projectorctl",
-        "rev": "9a2adf3524c17abe91bf6097f41eb8796eaa3f1f",
+        "rev": "a5f58c1df65f96a011019ff7fbfc8d4045bc197e",
         "type": "github"
       },
       "original": {
