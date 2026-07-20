@@ -159,9 +159,7 @@
         }
 
         restart_portals() {
-          systemctl --user daemon-reload || true
-          systemctl --user restart \
-            xdg-desktop-portal.service \
+          systemctl --user try-restart \
             xdg-desktop-portal-gtk.service \
             xdg-desktop-portal-hyprland.service || true
         }

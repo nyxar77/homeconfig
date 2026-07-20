@@ -1,4 +1,13 @@
-{pkgs, ...}: {
+{pkgs, ...}: let
+  braveNoBackground = pkgs.symlinkJoin {
+    name = "brave-no-background";
+    paths = [pkgs.brave];
+    nativeBuildInputs = [pkgs.makeWrapper];
+    postBuild = ''
+      wrapProgram "$out/bin/brave" --add-flags "--disable-background-mode"
+    '';
+  };
+in {
   imports = [./prismlauncher/prismlauncher.nix];
   home.packages = with pkgs; [
     /*
@@ -16,7 +25,7 @@
     })
     */
 
-    brave
+    braveNoBackground
     kdePackages.ark
     hunspell
     hunspellDicts.fr-any
