@@ -5,7 +5,7 @@
     font = {
       name = "Noto Sans";
       package = pkgs.noto-fonts;
-      size = 14;
+      size = 13;
     };
 
     iconTheme = {
