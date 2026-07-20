@@ -27,14 +27,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    stylix = {
-      url = "github:nix-community/stylix/release-26.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    astal = {
-      url = "github:aylur/astal";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     /*
        wallpapers = {
       url = "github:42willow/wallpapers";
@@ -140,7 +132,7 @@
               inputs.projectorctl.homeManagerModules.default
             ];
             extraSpecialArgs = {
-              inherit (inputs) stylix spicetify-nix;
+              inherit (inputs) spicetify-nix;
             };
           };
 
