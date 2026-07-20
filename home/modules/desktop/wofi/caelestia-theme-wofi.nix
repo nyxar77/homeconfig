@@ -93,6 +93,12 @@
         current_mode="''${current_scheme[2]:-dark}"
         current_variant="''${current_scheme[3]:-tonalspot}"
 
+        case "$current_mode" in
+          light) mode_icon="" ;;
+          *) mode_icon="" ;;
+        esac
+        palette_icon=""
+
         caelestia_bin="$(readlink -f "$(command -v caelestia)")"
         caelestia_root="''${caelestia_bin%/bin/caelestia}"
         scheme_data_dir=""
@@ -180,9 +186,9 @@
         temp_files+=("$menu_file" "$menu_display_file")
 
         printf "action:mode\n" >> "$menu_file"
-        printf "action:mode\t◐  Mode       %s\n" "$(pretty_words "$current_mode")" >> "$menu_display_file"
+        printf "action:mode\t%s  Mode       %s\n" "$mode_icon" "$(pretty_words "$current_mode")" >> "$menu_display_file"
         printf "action:palette\n" >> "$menu_file"
-        printf "action:palette\t✦  Palette    %s\n" "$(variant_label "$current_variant")" >> "$menu_display_file"
+        printf "action:palette\t%s  Palette    %s\n" "$palette_icon" "$(variant_label "$current_variant")" >> "$menu_display_file"
 
         current_key=""
         current_display=""
@@ -223,10 +229,11 @@
           --prompt="Theme · $(pretty_words "$current_mode") · $(variant_label "$current_variant")" \
           -Dline_wrap=word_char \
           -Dcontent_halign=fill \
-          -Dynamic_lines=true \
+          -Dvalign=center \
+          -Ddynamic_lines=false \
           --lines=10 \
-          --width=540 \
-          --height=560
+          --width=440 \
+          --height=620
         choice="$wofi_output"
 
         [ -z "$choice" ] && exit 1
@@ -238,11 +245,15 @@
 
           for mode in dark light; do
             key="mode:$mode"
+            case "$mode" in
+              light) option_icon="" ;;
+              *) option_icon="" ;;
+            esac
             printf "%s\n" "$key" >> "$mode_file"
             if [ "$mode" = "$current_mode" ]; then
-              printf "%s\t●  %s\n" "$key" "$(pretty_words "$mode")" >> "$mode_display_file"
+              printf "%s\t●  %s  %s\n" "$key" "$option_icon" "$(pretty_words "$mode")" >> "$mode_display_file"
             else
-              printf "%s\t%s\n" "$key" "$(pretty_words "$mode")" >> "$mode_display_file"
+              printf "%s\t   %s  %s\n" "$key" "$option_icon" "$(pretty_words "$mode")" >> "$mode_display_file"
             fi
           done
 
@@ -255,10 +266,11 @@
             --pre-display-cmd="$(display_command "$mode_display_file")" \
             --prompt="Mode" \
             -Dcontent_halign=fill \
-            -Dynamic_lines=true \
+            -Dvalign=center \
+            -Ddynamic_lines=false \
             --lines=2 \
-            --width=360 \
-            --height=220
+            --width=440 \
+            --height=240
           mode_choice="$wofi_output"
 
           [ -z "$mode_choice" ] && exit 1
@@ -289,10 +301,11 @@
               --prompt="$(pretty_words "$selected_mode") themes" \
               -Dline_wrap=word_char \
               -Dcontent_halign=fill \
-              -Dynamic_lines=true \
+              -Dvalign=center \
+              -Ddynamic_lines=false \
               --lines=10 \
-              --width=500 \
-              --height=540
+              --width=440 \
+              --height=620
             compatible_choice="$wofi_output"
 
             [ -z "$compatible_choice" ] && exit 1
@@ -313,18 +326,24 @@
           variant_file="$(mktemp)"
           variant_display_file="$(mktemp)"
           temp_files+=("$variant_file" "$variant_display_file")
+          variant_count=0
 
           while IFS= read -r variant; do
             [ -n "$variant" ] || continue
+            variant_count="$((variant_count + 1))"
             key="variant:$variant"
             label="$(variant_label "$variant")"
             printf "%s\n" "$key" >> "$variant_file"
             if [ "$variant" = "$current_variant" ]; then
               printf "%s\t●  %s\n" "$key" "$label" >> "$variant_display_file"
             else
-              printf "%s\t%s\n" "$key" "$label" >> "$variant_display_file"
+              printf "%s\t   %s\n" "$key" "$label" >> "$variant_display_file"
             fi
           done < <(caelestia scheme list -v)
+
+          variant_lines="$variant_count"
+          [ "$variant_lines" -gt 10 ] && variant_lines=10
+          variant_height="$((160 + variant_lines * 44))"
 
           run_wofi "$variant_file" \
             --normal-window \
@@ -335,10 +354,11 @@
             --pre-display-cmd="$(display_command "$variant_display_file")" \
             --prompt="Palette" \
             -Dcontent_halign=fill \
-            -Dynamic_lines=true \
-            --lines=10 \
-            --width=420 \
-            --height=540
+            -Dvalign=center \
+            -Ddynamic_lines=false \
+            --lines="$variant_lines" \
+            --width=440 \
+            --height="$variant_height"
           variant_choice="$wofi_output"
 
           [ -z "$variant_choice" ] && exit 1

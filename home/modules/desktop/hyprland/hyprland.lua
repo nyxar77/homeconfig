@@ -205,8 +205,10 @@ hl.bind("Print", hl.dsp.exec_cmd("caelestia screenshot"), { locked = true })
 hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("caelestia emoji -p"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("caelestia-theme-wofi"))
 hl.bind(mainMod .. " + J", hl.dsp.exec_cmd("cliphist-wofi-img"))
+hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("kitty --class cava-panel --title cava-panel cava"))
 -- Projector UI backed by the transactional projector controller.
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("projector-panel"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("pavucontrol-qt"))
 
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
@@ -272,6 +274,22 @@ hl.window_rule({
 	match = { class = "^(hyprland-run)$" },
 	move = "20 monitor_h-120",
 	float = true,
+})
+
+hl.window_rule({
+	name = "cava-panel",
+	match = { class = "^(cava-panel)$" },
+	float = true,
+	size = "620 260",
+	move = "monitor_w-650 50",
+})
+
+hl.window_rule({
+	name = "pavucontrol-qt",
+	match = { title = "^(Volume Control)$" },
+	float = true,
+	center = true,
+	size = "900 600",
 })
 
 hl.window_rule({
