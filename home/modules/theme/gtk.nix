@@ -2,6 +2,12 @@
   gtk = {
     enable = true;
 
+    font = {
+      name = "Noto Sans";
+      package = pkgs.noto-fonts;
+      size = 14;
+    };
+
     iconTheme = {
       name = "Papirus-Dark";
 

@@ -1,10 +1,45 @@
 {
   config,
   inputs,
+  lib,
   pkgs,
   ...
 }:
 let
+  syncCaelestiaColorScheme = pkgs.writeShellApplication {
+    name = "sync-caelestia-color-scheme";
+    runtimeInputs = [
+      pkgs.dconf
+      pkgs.jq
+    ];
+    text = ''
+      state_file="${config.xdg.stateHome}/caelestia/scheme.json"
+      [ -r "$state_file" ] || exit 0
+
+      case "$(jq -r '.mode // empty' "$state_file")" in
+        dark)
+          preference="'prefer-dark'"
+          gtk_theme="'adw-gtk3-dark'"
+          ;;
+        light)
+          preference="'prefer-light'"
+          gtk_theme="'adw-gtk3'"
+          ;;
+        *)
+          exit 0
+          ;;
+      esac
+
+      if [ "$(dconf read /org/gnome/desktop/interface/color-scheme 2>/dev/null || true)" != "$preference" ]; then
+        dconf write /org/gnome/desktop/interface/color-scheme "$preference"
+      fi
+
+      if [ "$(dconf read /org/gnome/desktop/interface/gtk-theme 2>/dev/null || true)" != "$gtk_theme" ]; then
+        dconf write /org/gnome/desktop/interface/gtk-theme "$gtk_theme"
+      fi
+    '';
+  };
+
   caelestiaPavucontrol = pkgs.writeShellApplication {
     name = "pavucontrol-qt";
     runtimeInputs = [ pkgs.lxqt.pavucontrol-qt ];
@@ -21,6 +56,9 @@ let
 in
 {
   home.packages = [ caelestiaPavucontrol ];
+
+  home.activation.syncCaelestiaColorScheme = lib.hm.dag.entryAfter [ "dconfSettings" ]
+    "${syncCaelestiaColorScheme}/bin/sync-caelestia-color-scheme";
 
   xdg.desktopEntries.pavucontrol-qt = {
     name = "PulseAudio Volume Control";
@@ -94,11 +132,14 @@ in
         enableMpv = true;
         enableCava = true;
         enableFuzzel = true;
-        enableGtk = true;
+        # The bundled GTK target writes an incomplete global stylesheet.
+        # User templates below provide the dynamic colours instead.
+        enableGtk = false;
         enableQt = true;
         enableBtop = true;
         enableDiscord = true;
-        enableChromium = true;
+        # Brave policies live under /etc, outside Home Manager ownership.
+        enableChromium = false;
         enableSpicetify = false;
         enableTerm = false;
         enablePandora = false;
@@ -109,6 +150,7 @@ in
         postHook = ''
           theme_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/theme"
           gtk_portal_css="$theme_dir/gtk-portal.css"
+          gtk_global_css="$theme_dir/gtk-global.css"
           qt6ct_scheme="$theme_dir/qt6ct-caelestia.conf"
           qt6ct_qss="$theme_dir/qt6ct-portal.qss"
           config_home="''${XDG_CONFIG_HOME:-$HOME/.config}"
@@ -120,10 +162,13 @@ in
             rm -f "$data_home/themes/Caelestia-Portal/gtk-4.0/gtk.css"
             rmdir "$data_home/themes/Caelestia-Portal/gtk-4.0" 2>/dev/null || true
 
-            for global_gtk in "$config_home/gtk-3.0/gtk.css" "$config_home/gtk-4.0/gtk.css"; do
-              if [ -f "$global_gtk" ] && cmp -s "$gtk_portal_css" "$global_gtk"; then
-                rm -f "$global_gtk"
-              fi
+          fi
+
+          if [ -f "$gtk_global_css" ]; then
+            for gtk_version in gtk-3.0 gtk-4.0; do
+              mkdir -p "$config_home/$gtk_version"
+              cp "$gtk_global_css" "$config_home/$gtk_version/gtk.css"
+              rm -f "$config_home/$gtk_version/thunar.css"
             done
           fi
 
@@ -145,6 +190,7 @@ in
             fi
           fi
 
+          ${syncCaelestiaColorScheme}/bin/sync-caelestia-color-scheme
           ${pkgs.hyprland}/bin/hyprctl reload >/dev/null 2>&1 || true
         '';
       };

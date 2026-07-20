@@ -11,14 +11,6 @@
     if [ -f "$theme_dir/gtk-portal.css" ]; then
       mkdir -p "$data_home/themes/Caelestia-Portal/gtk-3.0"
       cp "$theme_dir/gtk-portal.css" "$data_home/themes/Caelestia-Portal/gtk-3.0/gtk.css"
-
-      for global_gtk in "$config_home/gtk-3.0/gtk.css" "$config_home/gtk-4.0/gtk.css"; do
-        if [ -f "$global_gtk" ] && cmp -s "$theme_dir/gtk-portal.css" "$global_gtk"; then
-          rm -f "$global_gtk"
-        elif [ -f "$theme_dir/gtk.css" ] && [ -f "$global_gtk" ] && cmp -s "$theme_dir/gtk.css" "$global_gtk"; then
-          rm -f "$global_gtk"
-        fi
-      done
     elif [ -f "$theme_dir/gtk.css" ]; then
       portal_gtk="$data_home/themes/Caelestia-Portal/gtk-3.0/gtk.css"
       if [ -f "$portal_gtk" ] && cmp -s "$theme_dir/gtk.css" "$portal_gtk"; then
@@ -29,17 +21,13 @@
     rm -f "$data_home/themes/Caelestia-Portal/gtk-4.0/gtk.css"
     rmdir "$data_home/themes/Caelestia-Portal/gtk-4.0" 2>/dev/null || true
 
-    for global_gtk in "$config_home/gtk-3.0/gtk.css" "$config_home/gtk-4.0/gtk.css"; do
-      if [ -f "$theme_dir/gtk-global-colors.css" ] && [ -f "$global_gtk" ] && cmp -s "$theme_dir/gtk-global-colors.css" "$global_gtk"; then
-        rm -f "$global_gtk"
-      fi
-    done
-
-    for global_dir in "$config_home/gtk-3.0" "$config_home/gtk-4.0"; do
-      if [ -d "$global_dir" ] && [ ! -e "$global_dir/gtk.css" ] && [ ! -e "$global_dir/settings.ini" ]; then
-        rmdir "$global_dir" 2>/dev/null || true
-      fi
-    done
+    if [ -f "$theme_dir/gtk-global.css" ]; then
+      for gtk_version in gtk-3.0 gtk-4.0; do
+        mkdir -p "$config_home/$gtk_version"
+        cp "$theme_dir/gtk-global.css" "$config_home/$gtk_version/gtk.css"
+        rm -f "$config_home/$gtk_version/thunar.css"
+      done
+    fi
 
     if [ -f "$theme_dir/qt6ct-caelestia.conf" ]; then
       mkdir -p "$config_home/portal-qt/qt6ct/colors"
@@ -621,6 +609,67 @@
     filechooser scrollbar slider:backdrop {
       background-color: alpha(@portal_muted, 0.26);
     }
+  '';
+
+  xdg.configFile."caelestia/templates/gtk-global.css".text = ''
+    /*
+      Dynamic GTK colours only. Adwaita/libadwaita remains responsible for
+      widget layout, typography, spacing, animations, and app-specific styles.
+    */
+
+    @define-color accent_color #{{ primary.hex }};
+    @define-color accent_bg_color #{{ primary.hex }};
+    @define-color accent_fg_color #{{ onPrimary.hex }};
+    @define-color destructive_color #{{ error.hex }};
+    @define-color destructive_bg_color #{{ error.hex }};
+    @define-color destructive_fg_color #{{ onError.hex }};
+    @define-color success_color #{{ success.hex }};
+    @define-color success_bg_color #{{ successContainer.hex }};
+    @define-color success_fg_color #{{ onSuccessContainer.hex }};
+    @define-color warning_color #{{ secondary.hex }};
+    @define-color warning_bg_color #{{ secondaryContainer.hex }};
+    @define-color warning_fg_color #{{ onSecondaryContainer.hex }};
+    @define-color error_color #{{ error.hex }};
+    @define-color error_bg_color #{{ errorContainer.hex }};
+    @define-color error_fg_color #{{ onErrorContainer.hex }};
+
+    @define-color window_bg_color #{{ surface.hex }};
+    @define-color window_fg_color #{{ onSurface.hex }};
+    @define-color view_bg_color #{{ surface.hex }};
+    @define-color view_fg_color #{{ onSurface.hex }};
+    @define-color headerbar_bg_color #{{ surfaceContainerLow.hex }};
+    @define-color headerbar_fg_color #{{ onSurface.hex }};
+    @define-color headerbar_border_color #{{ outlineVariant.hex }};
+    @define-color sidebar_bg_color #{{ surfaceContainerLow.hex }};
+    @define-color sidebar_fg_color #{{ onSurface.hex }};
+    @define-color sidebar_backdrop_color #{{ surface.hex }};
+    @define-color sidebar_border_color #{{ outlineVariant.hex }};
+    @define-color card_bg_color #{{ surfaceContainer.hex }};
+    @define-color card_fg_color #{{ onSurface.hex }};
+    @define-color dialog_bg_color #{{ surfaceContainer.hex }};
+    @define-color dialog_fg_color #{{ onSurface.hex }};
+    @define-color popover_bg_color #{{ surfaceContainerHigh.hex }};
+    @define-color popover_fg_color #{{ onSurface.hex }};
+    @define-color shade_color alpha(#{{ shadow.hex }}, 0.32);
+    @define-color scrollbar_outline_color alpha(#{{ outline.hex }}, 0.38);
+    @define-color borders #{{ outlineVariant.hex }};
+    @define-color unfocused_borders alpha(#{{ outlineVariant.hex }}, 0.72);
+
+    @define-color theme_fg_color #{{ onSurface.hex }};
+    @define-color theme_text_color #{{ onSurface.hex }};
+    @define-color theme_bg_color #{{ surface.hex }};
+    @define-color theme_base_color #{{ surface.hex }};
+    @define-color theme_selected_bg_color alpha(#{{ primary.hex }}, 0.32);
+    @define-color theme_selected_fg_color #{{ onSurface.hex }};
+    @define-color insensitive_fg_color alpha(#{{ onSurfaceVariant.hex }}, 0.62);
+    @define-color insensitive_bg_color #{{ surfaceContainerLow.hex }};
+    @define-color insensitive_base_color #{{ surfaceContainerLowest.hex }};
+    @define-color theme_unfocused_fg_color #{{ onSurfaceVariant.hex }};
+    @define-color theme_unfocused_text_color #{{ onSurfaceVariant.hex }};
+    @define-color theme_unfocused_bg_color #{{ surfaceDim.hex }};
+    @define-color theme_unfocused_base_color #{{ surfaceDim.hex }};
+    @define-color theme_unfocused_selected_bg_color alpha(#{{ secondary.hex }}, 0.28);
+    @define-color theme_unfocused_selected_fg_color #{{ onSurface.hex }};
   '';
 
   xdg.configFile."caelestia/templates/gtk.css".text = ''
