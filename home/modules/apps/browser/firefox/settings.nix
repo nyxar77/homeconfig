@@ -1,4 +1,7 @@
 {
+  "screenshots.browser.component.enabled" = true;
+  "extensions.screenshots.disabled" = false;
+
   "content.notify.interval" = 100000;
 
   /**
