@@ -2,7 +2,7 @@
   nix = {
     gc = {
       automatic = true;
-      # frequency = "weekly";
+      dates = "weekly";
       options = lib.mkDefault "--delete-older-than 15d";
     };
   };
