@@ -54,8 +54,12 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     nyxar-nvim = {
-      # url = "path:/home/nyxar/Programming/projects/neovimconfig";
-      url = "github:nyxar77/neovimconfig";
+      url = "path:/home/nyxar/Programming/projects/neovimconfig";
+      # url = "github:nyxar77/neovimconfig";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    obsidian-extensions = {
+      url = "github:karaolidis/nix-obsidian-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -86,6 +90,12 @@
               inputs.nur.overlays.default
               inputs.prismlauncher.overlays.default
               inputs.nyxar-nvim.overlays.default
+              inputs.obsidian-extensions.overlays.default
+              /*
+                 (prev: final: {
+                stremio-linux-shell = inputs.unstable.legacyPackages.${system}.stremio-linux-shell;
+              })
+              */
 
               /*
                  (prev: final: {
@@ -104,6 +114,7 @@
         }: let
           unstablePkgs = import inputs.unstable {
             inherit system;
+            config.allowUnfree = true;
           };
         in
           home-manager.lib.homeManagerConfiguration {
@@ -113,6 +124,7 @@
               [
                 inputs.nix-index-database.homeModules.default
                 inputs.nyxar-nvim.homeManagerModules.default
+                ./home/modules/options.nix
                 ./home/users/${username}
               ]
               ++ extraModules;

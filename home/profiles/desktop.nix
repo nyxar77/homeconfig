@@ -8,5 +8,6 @@
     ../modules/apps/keepassxc.nix
     ../modules/apps/libreoffice.nix
     ../modules/apps/vesktop.nix
+    ../modules/apps/obsidian.nix
   ];
 }

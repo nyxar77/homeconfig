@@ -230,16 +230,34 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1784236843,
-        "narHash": "sha256-gFHuYOvWGr1pZ3tEPSnmlSK1btkBu/uF6mPuKp8qCTs=",
-        "owner": "nyxar77",
-        "repo": "neovimconfig",
-        "rev": "80ed4140fa66736b46d716e24c8ab2b04b12e5aa",
+        "lastModified": 1785349642,
+        "narHash": "sha256-ABFrSw3ei9NxlCuAXt6hT3CbZsSAvSiG/vthvJiIYfg=",
+        "path": "/home/nyxar/Programming/projects/neovimconfig",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/nyxar/Programming/projects/neovimconfig",
+        "type": "path"
+      }
+    },
+    "obsidian-extensions": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "treefmt-nix": "treefmt-nix"
+      },
+      "locked": {
+        "lastModified": 1785568406,
+        "narHash": "sha256-eC/G/xBO3NT4KLm7ooVdKAOmZUosN/uzkqDHdyArxBk=",
+        "owner": "karaolidis",
+        "repo": "nix-obsidian-extensions",
+        "rev": "a051d72ffba3827233b939e231617f60b5a8f920",
         "type": "github"
       },
       "original": {
-        "owner": "nyxar77",
-        "repo": "neovimconfig",
+        "owner": "karaolidis",
+        "repo": "nix-obsidian-extensions",
         "type": "github"
       }
     },
@@ -317,6 +335,7 @@
         "nixpkgs": "nixpkgs",
         "nur": "nur",
         "nyxar-nvim": "nyxar-nvim",
+        "obsidian-extensions": "obsidian-extensions",
         "prismlauncher": "prismlauncher",
         "projectorctl": "projectorctl",
         "spicetify-nix": "spicetify-nix",
@@ -373,6 +392,27 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "treefmt-nix": {
+      "inputs": {
+        "nixpkgs": [
+          "obsidian-extensions",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785360170,
+        "narHash": "sha256-XE1lKgQ3eIO3E7zWryqcRsax+mYXod/5RHBn4YaR9YE=",
+        "owner": "numtide",
+        "repo": "treefmt-nix",
+        "rev": "d1187f8bc71fb8aab02395869ec3f5c1920f75c0",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "treefmt-nix",
         "type": "github"
       }
     },
