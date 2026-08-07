@@ -3,9 +3,9 @@
     enable = true;
 
     font = {
-      name = "Noto Sans";
-      package = pkgs.noto-fonts;
-      size = 13;
+      name = "Inter";
+      package = pkgs.inter;
+      size = 12;
     };
 
     iconTheme = {
@@ -17,4 +17,6 @@
       };
     };
   };
+
+  fonts.fontconfig.enable = true;
 }
