@@ -1,6 +1,6 @@
 {...}: {
   imports = [
     ./terminal.nix
-    ../modules/terminal/tmux-server.nix
+    ../modules/terminal/tmux.nix
   ];
 }

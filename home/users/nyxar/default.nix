@@ -19,6 +19,8 @@
     allowUnfree = true;
   };
 
+  nyx.role = "desktop";
+
   home = {
     username = "nyxar";
     homeDirectory = "/home/nyxar";

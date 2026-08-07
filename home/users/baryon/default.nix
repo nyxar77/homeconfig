@@ -7,6 +7,8 @@
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
 
+  nyx.role = "server";
+
   home = {
     username = "baryon";
     homeDirectory = "/home/baryon";
