@@ -1,4 +1,8 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  unstablePkgs,
+  ...
+}: let
   braveNoBackground = pkgs.symlinkJoin {
     name = "brave-no-background";
     paths = [pkgs.brave];
@@ -8,23 +12,7 @@
     '';
   };
 in {
-  imports = [./prismlauncher/prismlauncher.nix];
   home.packages = with pkgs; [
-    /*
-       (prismlauncher.override {
-      additionalLibs = [
-        libxtst
-      ];
-      jdks = [
-        graalvmPackages.graalvm-ce
-        jdk25
-        jdk21
-        jdk17
-        jdk8
-      ];
-    })
-    */
-
     braveNoBackground
     kdePackages.ark
     hunspell
@@ -32,10 +20,28 @@ in {
     hunspellDicts.en-us
     arrpc
     qbittorrent
-    obsidian
     discover-overlay
     metadata-cleaner
     ff2mpv
     rnote
+    unstablePkgs.stremio-linux-shell
+    /*
+       (unstablePkgs.stremio-linux-shell.overrideAttrs (
+      finalAttrs: previousAttrs: {
+        version = "1.2.0";
+
+        src = unstablePkgs.fetchFromGitHub {
+          inherit (previousAttrs.src) owner repo;
+          tag = "v${finalAttrs.version}";
+          hash = "sha256-JFG+sUuK+l8Ik00vHPiXJwan0rmMBiY85DnvudYKCsw=";
+        };
+
+        cargoDeps = unstablePkgs.rustPlatform.fetchCargoVendor {
+          inherit (finalAttrs) pname version src;
+          hash = "sha256-FnQ2FN9NtL/YyRmLlyGQApjzV/4uS8OnnY8kbTWTGe8=";
+        };
+      }
+    ))
+    */
   ];
 }
