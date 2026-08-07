@@ -9,7 +9,20 @@
     jetbrains.idea-oss
     devenv
   ];
-  programs.git.enable = true;
+  programs.git = {
+    enable = true;
+    settings = {
+      gpg.format = "ssh";
+      user = {
+        signingKey = "~/.ssh/github.pub";
+        name = "nyxar77";
+        email = "dev@nyxar.space";
+      };
+
+      commit.gpgSign = true;
+      tag.gpgSign = true;
+    };
+  };
   programs.gh = {
     enable = true;
     settings = {
