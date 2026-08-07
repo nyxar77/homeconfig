@@ -21,5 +21,12 @@
       IdentitiesOnly = true;
       AddKeysToAgent = true;
     };
+    settings."gitlab.com" = {
+      Hostname = "gitlab.com";
+      User = "git";
+      IdentityFile = "~/.ssh/github";
+      IdentitiesOnly = true;
+      AddKeysToAgent = true;
+    };
   };
 }
