@@ -17,21 +17,6 @@
         ffmpeg = pkgs.ffmpeg-full;
       };
     };
-    /*
-       package = (
-      pkgs.mpv-unwrapped.wrapper {
-        scripts = with pkgs.mpvScripts; [
-          modernz
-          sponsorblock-minimal
-        ];
-
-        mpv = pkgs.mpv-unwrapped.override {
-          waylandSupport = true;
-          ffmpeg = pkgs.ffmpeg-full;
-        };
-      }
-    );
-    */
 
     config = {
       profile = "fast";
