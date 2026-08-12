@@ -4,8 +4,7 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   syncCaelestiaColorScheme = pkgs.writeShellApplication {
     name = "sync-caelestia-color-scheme";
     runtimeInputs = [
@@ -42,7 +41,7 @@ let
 
   caelestiaPavucontrol = pkgs.writeShellApplication {
     name = "pavucontrol-qt";
-    runtimeInputs = [ pkgs.lxqt.pavucontrol-qt ];
+    runtimeInputs = [pkgs.lxqt.pavucontrol-qt];
     text = ''
       qss="${config.xdg.stateHome}/caelestia/theme/pavucontrol-qt.qss"
 
@@ -53,11 +52,11 @@ let
       exec pavucontrol-qt -style Fusion "$@"
     '';
   };
-in
-{
-  home.packages = [ caelestiaPavucontrol ];
+in {
+  home.packages = [caelestiaPavucontrol];
 
-  home.activation.syncCaelestiaColorScheme = lib.hm.dag.entryAfter [ "dconfSettings" ]
+  home.activation.syncCaelestiaColorScheme =
+    lib.hm.dag.entryAfter ["dconfSettings"]
     "${syncCaelestiaColorScheme}/bin/sync-caelestia-color-scheme";
 
   xdg.desktopEntries.pavucontrol-qt = {
@@ -81,30 +80,96 @@ in
     systemd = {
       enable = true;
       target = "graphical-session.target";
-      environment = [ "GTK_THEME=Caelestia-Portal" ];
+      environment = ["GTK_THEME=Caelestia-Portal"];
     };
 
     settings = {
       services.smartScheme = true;
 
+      osd = {
+        enabled = true;
+        enableBrightness = true;
+        # enableMicrophone = true;
+      };
+
+      dashboard = {
+        enabled = true;
+        showDashboard = true;
+        showMedia = true;
+        showPerformance = true;
+        showWeather = true;
+      };
+
       bar = {
-        status = {
-          showBattery = true;
-          showLockStatus = false;
+        scrollActions = {
+          workspaces = true;
+          volume = true;
+          brightness = true;
         };
+
+        popouts = {
+          activeWindow = true;
+          tray = true;
+          statusIcons = true;
+        };
+
+        /*
+           clock = {
+          showDate = true;
+        };
+        */
+        statusIcons = [
+          {
+            id = "network";
+            enabled = true;
+          }
+          {
+            id = "bluetooth";
+            enabled = true;
+          }
+          {
+            id = "audio";
+            enabled = false;
+          }
+          {
+            id = "microphone";
+            enabled = false;
+          }
+          {
+            id = "kbLayout";
+            enabled = true;
+          }
+          {
+            id = "battery";
+            enabled = true;
+          }
+          {
+            id = "lockStatus";
+            enabled = true;
+          }
+        ];
+
         persistent = false;
         showOnHover = true;
       };
-
       border = {
         thickness = 5;
         rounding = 15;
       };
 
-      general.apps = {
-        terminal = [ "kitty" ];
-        audio = [ "pavucontrol-qt" ];
-        explorer = [ "nautilus" ];
+      general = {
+        apps = {
+          terminal = ["kitty"];
+          audio = ["pavucontrol-qt"];
+          explorer = ["nautilus"];
+        };
+        battery.criticalLevel = 6;
+      };
+
+      lock = {
+        enabled = true;
+        useWallpaper = true;
+        hideNotifs = true;
       };
 
       paths.wallpaperDir = "~/Pictures/Wallpapers";
@@ -139,7 +204,7 @@ in
         enableBtop = true;
         enableDiscord = true;
         # Brave policies live under /etc, outside Home Manager ownership.
-        enableChromium = false;
+        enableChromium = true;
         enableSpicetify = false;
         enableTerm = false;
         enablePandora = false;
