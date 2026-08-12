@@ -1,10 +1,13 @@
 {pkgs, ...}: {
-  services.kdeconnect = {
+  /*
+     services.kdeconnect = {
     enable = false;
-    indicator = true;
+    indicator = false;
     package = pkgs.kdePackages.kdeconnect-kde;
   };
+
   services.gromit-mpx = {
     enable = false;
   };
+  */
 }
