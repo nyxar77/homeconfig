@@ -24,18 +24,26 @@
         pid_file="$runtime_dir/caelestia-theme-wofi.pid"
 
         if old_pid="$(cat "$pid_file" 2>/dev/null)" && [ -n "$old_pid" ] && [ "$old_pid" != "$$" ]; then
-          if kill -0 "$old_pid" 2>/dev/null; then
+          old_command="$(tr '\0' ' ' < "/proc/$old_pid/cmdline" 2>/dev/null || true)"
+          if kill -0 "$old_pid" 2>/dev/null && [[ "$old_command" == *caelestia-theme-wofi* ]]; then
             kill "$old_pid" 2>/dev/null || true
-            sleep 0.05
+            for _ in {1..10}; do
+              kill -0 "$old_pid" 2>/dev/null || break
+              sleep 0.02
+            done
           fi
         fi
 
         printf "%s\n" "$$" > "$pid_file"
 
         temp_files=()
+        wofi_pid=""
         wofi_output=""
 
         cleanup() {
+          if [ -n "$wofi_pid" ]; then
+            kill "$wofi_pid" 2>/dev/null || true
+          fi
           for file in "''${temp_files[@]}"; do
             rm -f "$file"
           done
@@ -56,11 +64,15 @@
           output_file="$(mktemp)"
           temp_files+=("$output_file")
 
-          if ! wofi "$@" < "$input_file" > "$output_file"; then
+          wofi "$@" < "$input_file" > "$output_file" &
+          wofi_pid="$!"
+          if ! wait "$wofi_pid"; then
+            wofi_pid=""
             wofi_output=""
             return 0
           fi
 
+          wofi_pid=""
           wofi_output="$(cat "$output_file")"
         }
 
@@ -185,10 +197,10 @@
         menu_display_file="$(mktemp)"
         temp_files+=("$menu_file" "$menu_display_file")
 
-        printf "action:mode\n" >> "$menu_file"
-        printf "action:mode\t%s  Mode       %s\n" "$mode_icon" "$(pretty_words "$current_mode")" >> "$menu_display_file"
         printf "action:palette\n" >> "$menu_file"
         printf "action:palette\t%s  Palette    %s\n" "$palette_icon" "$(variant_label "$current_variant")" >> "$menu_display_file"
+        printf "action:mode\n" >> "$menu_file"
+        printf "action:mode\t%s  Mode       %s\n" "$mode_icon" "$(pretty_words "$current_mode")" >> "$menu_display_file"
 
         current_key=""
         current_display=""
@@ -212,9 +224,9 @@
           temp_files+=("$rest_file")
           cp "$menu_file" "$rest_file"
           {
-            sed -n '1,2p' "$rest_file"
+            sed -n '1p' "$rest_file"
             printf "%s\n" "$current_key"
-            sed -n '3,$p' "$rest_file"
+            sed -n '2,$p' "$rest_file"
           } > "$menu_file"
           printf "%s\t%s\n" "$current_key" "$current_display" >> "$menu_display_file"
         fi
@@ -328,8 +340,8 @@
           temp_files+=("$variant_file" "$variant_display_file")
           variant_count=0
 
-          while IFS= read -r variant; do
-            [ -n "$variant" ] || continue
+          variants=(tonalspot vibrant fruitsalad expressive fidelity rainbow content monochrome neutral)
+          for variant in "''${variants[@]}"; do
             variant_count="$((variant_count + 1))"
             key="variant:$variant"
             label="$(variant_label "$variant")"
@@ -339,7 +351,7 @@
             else
               printf "%s\t   %s\n" "$key" "$label" >> "$variant_display_file"
             fi
-          done < <(caelestia scheme list -v)
+          done
 
           variant_lines="$variant_count"
           [ "$variant_lines" -gt 10 ] && variant_lines=10

@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ./cliphist-wofi-img.nix
     ./caelestia-theme-wofi.nix
