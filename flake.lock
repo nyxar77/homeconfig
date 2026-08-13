@@ -24,6 +24,23 @@
         "type": "github"
       }
     },
+    "caelestia-extras": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786640255,
+        "narHash": "sha256-VxC2BQYohwQsCok9eOmu2yHO4Buxm3wAW1acRkCQ1z4=",
+        "path": "/home/nyxar/Programming/projects/caelestia-extras",
+        "type": "path"
+      },
+      "original": {
+        "path": "/home/nyxar/Programming/projects/caelestia-extras",
+        "type": "path"
+      }
+    },
     "caelestia-shell": {
       "inputs": {
         "caelestia-cli": "caelestia-cli",
@@ -328,6 +345,7 @@
     },
     "root": {
       "inputs": {
+        "caelestia-extras": "caelestia-extras",
         "caelestia-shell": "caelestia-shell",
         "flake-parts": "flake-parts",
         "home-manager": "home-manager",
