@@ -70,18 +70,40 @@
     };
 
     initContent = ''
+      setopt HIST_REDUCE_BLANKS
       source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
       fastfetch
     '';
 
-    history.size = 10000;
-    history.ignoreAllDups = true;
-    history.path = "$HOME/.zsh_history";
-    history.ignorePatterns = [
-      "rm *"
-      "pkill *"
-      "cp *"
-    ];
+    history = {
+      size = 10000;
+      path = "$HOME/.zsh_history";
+      ignoreAllDups = false;
+      ignoreDups = true;
+      ignoreSpace = false;
+
+      ignorePatterns = [
+        "rm *"
+        "sudo rm *"
+        "cp *"
+        "sudo cp *"
+        "kill *"
+        "pkill *"
+        "killall *"
+        "dd *"
+        "sudo dd *"
+        "mkfs*"
+        "sudo mkfs*"
+        "wipefs *"
+        "sudo wipefs *"
+        "fdisk *"
+        "parted *"
+        "sgdisk *"
+        "git reset --hard*"
+        "git clean -f*"
+      ];
+    };
+
     plugins = [
       {
         name = "zsh-autocomplete";

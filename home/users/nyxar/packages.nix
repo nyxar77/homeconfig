@@ -1,8 +1,4 @@
-{
-  pkgs,
-  unstablePkgs,
-  ...
-}: let
+{pkgs, ...}: let
   braveNoBackground = pkgs.symlinkJoin {
     name = "brave-no-background";
     paths = [pkgs.brave];
@@ -24,7 +20,6 @@ in {
     metadata-cleaner
     ff2mpv
     rnote
-    unstablePkgs.stremio-linux-shell
     /*
        (unstablePkgs.stremio-linux-shell.overrideAttrs (
       finalAttrs: previousAttrs: {

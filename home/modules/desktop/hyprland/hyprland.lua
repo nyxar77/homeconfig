@@ -196,7 +196,10 @@ hl.bind(mainMod .. " + SPACE", hl.dsp.global("caelestia:launcher"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.global("caelestia:showall"))
 hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("caelestia wallpaper -r -N"))
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.global("caelestia:clearNotifs"))
-hl.bind(mainMod .. " + SHIFT + R", hl.dsp.exec_cmd("systemctl --user restart caelestia.service; hyprctl reload"))
+hl.bind(
+	mainMod .. " + SHIFT + R",
+	hl.dsp.exec_cmd("hyprctl reload; sleep 1; systemctl --user restart caelestia.service")
+)
 
 -- Caelestia utilities
 hl.bind(mainMod .. " + M", hl.dsp.global("caelestia:screenshot"))

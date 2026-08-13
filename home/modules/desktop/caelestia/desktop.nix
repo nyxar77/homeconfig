@@ -10,7 +10,7 @@
     ];
 
     sessionVariables = {
-      XCURSOR_THEME = "catppuccin-mocha-red-cursors";
+      XCURSOR_THEME = "Bibata-Caelestia";
       XCURSOR_SIZE = "24";
     };
 

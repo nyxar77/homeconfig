@@ -17,12 +17,14 @@ in
   # services.hypridle.enable = true;
 
   home.pointerCursor = {
-    name = "catppuccin-mocha-red-cursors";
+    name = "Bibata-Caelestia";
     package = pkgs.catppuccin-cursors.mochaRed;
     size = 24;
     gtk.enable = true;
     x11.enable = true;
-    hyprcursor.enable = true;
+    # The generated Caelestia cursor is an XCursor theme. Hyprland can use it
+    # through XCURSOR_THEME, while the packaged cursor remains a fallback.
+    hyprcursor.enable = false;
   };
 
   home.packages = with pkgs; [

@@ -91,11 +91,6 @@
               inputs.prismlauncher.overlays.default
               inputs.nyxar-nvim.overlays.default
               inputs.obsidian-extensions.overlays.default
-              /*
-                 (prev: final: {
-                stremio-linux-shell = inputs.unstable.legacyPackages.${system}.stremio-linux-shell;
-              })
-              */
 
               /*
                  (prev: final: {
