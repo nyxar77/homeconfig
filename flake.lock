@@ -31,14 +31,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1786640255,
-        "narHash": "sha256-VxC2BQYohwQsCok9eOmu2yHO4Buxm3wAW1acRkCQ1z4=",
-        "path": "/home/nyxar/Programming/projects/caelestia-extras",
-        "type": "path"
+        "lastModified": 1786647077,
+        "narHash": "sha256-zEJFWuDvOoiDpOtMFtl9+FYnnfGlrxdC5uvmCZQWYsk=",
+        "owner": "nyxar77",
+        "repo": "caelestia-extras",
+        "rev": "c92a464ba24c282c1e972f812389461f645987b6",
+        "type": "github"
       },
       "original": {
-        "path": "/home/nyxar/Programming/projects/caelestia-extras",
-        "type": "path"
+        "owner": "nyxar77",
+        "repo": "caelestia-extras",
+        "type": "github"
       }
     },
     "caelestia-shell": {
@@ -247,14 +250,17 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1785349642,
-        "narHash": "sha256-ABFrSw3ei9NxlCuAXt6hT3CbZsSAvSiG/vthvJiIYfg=",
-        "path": "/home/nyxar/Programming/projects/neovimconfig",
-        "type": "path"
+        "lastModified": 1786647285,
+        "narHash": "sha256-YjwqDoGwGZytSYOpGlZog/DKCnwwLx8ATRmQkCf7QlI=",
+        "owner": "nyxar77",
+        "repo": "neovimconfig",
+        "rev": "ab42bb479f9a71aac87e2dbe776e12cbb18b3575",
+        "type": "github"
       },
       "original": {
-        "path": "/home/nyxar/Programming/projects/neovimconfig",
-        "type": "path"
+        "owner": "nyxar77",
+        "repo": "neovimconfig",
+        "type": "github"
       }
     },
     "obsidian-extensions": {

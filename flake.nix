@@ -23,6 +23,11 @@
       url = "github:caelestia-dots/shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    caelestia-extras = {
+      # url = "path:/home/nyxar/Programming/projects/caelestia-extras";
+      url = "github:nyxar77/caelestia-extras";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -54,8 +59,8 @@
       inputs.flake-parts.follows = "flake-parts";
     };
     nyxar-nvim = {
-      url = "path:/home/nyxar/Programming/projects/neovimconfig";
-      # url = "github:nyxar77/neovimconfig";
+      # url = "path:/home/nyxar/Programming/projects/neovimconfig";
+      url = "github:nyxar77/neovimconfig";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     obsidian-extensions = {
@@ -136,6 +141,7 @@
             username = "nyxar";
             extraModules = [
               inputs.caelestia-shell.homeManagerModules.default
+              inputs.caelestia-extras.homeModules.default
               inputs.projectorctl.homeManagerModules.default
             ];
             extraSpecialArgs = {
