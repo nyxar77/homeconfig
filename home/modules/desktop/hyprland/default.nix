@@ -2,29 +2,23 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   swappyCaelestia = pkgs.writeShellApplication {
     name = "swappy";
-    runtimeInputs = [ pkgs.swappy ];
+    runtimeInputs = [pkgs.swappy];
     text = ''
       exec env GTK_THEME=Caelestia-Portal swappy "$@"
     '';
   };
-in
-{
+in {
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
 
-  home.pointerCursor = {
-    name = "Bibata-Caelestia";
-    package = pkgs.catppuccin-cursors.mochaRed;
-    size = 24;
-    gtk.enable = true;
-    x11.enable = true;
-    # The generated Caelestia cursor is an XCursor theme. Hyprland can use it
-    # through XCURSOR_THEME, while the packaged cursor remains a fallback.
-    hyprcursor.enable = false;
+  home.sessionVariables = {
+    HYPRCURSOR_THEME = "Bibata-Caelestia";
+    HYPRCURSOR_SIZE = "20";
+    XCURSOR_THEME = "Bibata-Caelestia";
+    XCURSOR_SIZE = "20";
   };
 
   home.packages = with pkgs; [

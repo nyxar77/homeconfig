@@ -9,6 +9,12 @@
     };
 
     iconTheme = {
+      name = "WhiteSur-dark";
+      package = pkgs.whitesur-icon-theme;
+    };
+
+    /*
+       iconTheme = {
       name = "Papirus-Dark";
 
       package = pkgs.catppuccin-papirus-folders.override {
@@ -16,6 +22,7 @@
         accent = "red";
       };
     };
+    */
   };
 
   fonts.fontconfig.enable = true;

@@ -23,15 +23,16 @@ local function rgba(name, alpha)
 	return "rgba(" .. scheme[name] .. (alpha or "ff") .. ")"
 end
 
--- hl.env("XCURSOR_SIZE", "24")
--- hl.env("XCURSOR_THEME", "catppuccin-mocha-red-cursors")
--- hl.env("HYPRCURSOR_SIZE", "24")
--- hl.env("HYPRCURSOR_THEME", "catppuccin-mocha-red-cursors")
+hl.env("HYPRCURSOR_THEME", "Bibata-Caelestia")
+hl.env("HYPRCURSOR_SIZE", "20")
 
 -- Disabled in hyprland.conf:
 -- source = ~/.config/hypr/scheme/current.conf
 
 hl.config({
+	cursor = {
+		enable_hyprcursor = true,
+	},
 	general = {
 		gaps_in = 3,
 		gaps_out = 10,
