@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  config,
   ...
 }: {
   home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;

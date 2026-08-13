@@ -1,4 +1,4 @@
-{...}: {
+{
   imports = [
     ../modules/terminal/cava.nix
     ../modules/apps/media/mpv.nix

@@ -1,4 +1,4 @@
-{...}: {
+{
   programs.vesktop = {
     enable = true;
     # package = unstablePkgs.vesktop;
