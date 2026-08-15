@@ -1,14 +1,10 @@
-{
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     ../../profiles/base.nix
     ../../profiles/development.nix
     ../../profiles/desktop.nix
     ../../profiles/media.nix
     ../../profiles/gaming.nix
-    ../../modules/shell/zsh-nyxar.nix
     ./packages.nix
     ./session.nix
   ];
