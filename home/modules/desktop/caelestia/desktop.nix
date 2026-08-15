@@ -7,6 +7,7 @@
   home = {
     packages = with pkgs; [
       localsend
+      lxqt.pavucontrol-qt
     ];
 
     file."Pictures/Wallpapers".source = ../../../../assets/Wallpapers;

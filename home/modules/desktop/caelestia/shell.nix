@@ -20,6 +20,9 @@
     };
     hyprtoolkit.enable = true;
     pavucontrol.enable = true;
+    qt.enable = true;
+    prismlauncher.enable = true;
+    qbittorrent.enable = true;
     portal.enable = true;
   };
 
@@ -115,7 +118,7 @@
       general = {
         apps = {
           terminal = ["kitty"];
-          audio = ["pavucontrol-qt"];
+          audio = ["caelestia-extras pavucontrol"];
           explorer = ["nautilus"];
         };
         battery.criticalLevel = 6;

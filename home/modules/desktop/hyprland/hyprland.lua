@@ -212,7 +212,7 @@ hl.bind(mainMod .. " + J", hl.dsp.exec_cmd("cliphist-wofi-img"))
 hl.bind(mainMod .. " + SHIFT + C", hl.dsp.exec_cmd("kitty --class cava-panel --title cava-panel cava"))
 -- Projector UI backed by the transactional projector controller.
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("projector-panel"))
-hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("pavucontrol-qt"))
+hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("caelestia-extras pavucontrol"))
 
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "r" }))
