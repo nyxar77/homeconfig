@@ -9,8 +9,12 @@
     };
 
     iconTheme = {
-      name = "WhiteSur-dark";
+      /*
+         name = "WhiteSur-dark";
       package = pkgs.whitesur-icon-theme;
+      */
+      name = "Yaru-blue";
+      package = pkgs.yaru-theme;
     };
 
     /*

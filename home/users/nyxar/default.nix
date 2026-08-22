@@ -7,6 +7,7 @@
     ../../profiles/gaming.nix
     ./packages.nix
     ./session.nix
+    ./custom-packages
   ];
 
   nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
