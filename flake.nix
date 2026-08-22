@@ -28,6 +28,10 @@
       url = "github:nyxar77/caelestia-extras";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix/release-26.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -143,6 +147,7 @@
               inputs.caelestia-shell.homeManagerModules.default
               inputs.caelestia-extras.homeModules.default
               inputs.projectorctl.homeManagerModules.default
+              inputs.catppuccin.homeModules.catppuccin
             ];
             extraSpecialArgs = {
               inherit (inputs) spicetify-nix;
