@@ -1,14 +1,23 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    cargo
-    nixfmt
-    mongosh
-    nix-tree
-    codebook
-    insomnia
-    jetbrains.idea-oss
-    devenv
-  ];
+  home.packages = with pkgs;
+    [
+      cargo
+      mongosh
+      nix-tree
+      codebook
+      insomnia
+      # jetbrains.idea-oss
+      devenv
+    ]
+    ++
+    # nix toolchain
+    [
+      nixfmt
+      deadnix
+      treefmt
+      statix
+      nixf
+    ];
   programs.git = {
     enable = true;
     settings = {

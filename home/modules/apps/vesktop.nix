@@ -4,7 +4,7 @@
     # package = unstablePkgs.vesktop;
     settings = {
       arRPC = true;
-      checkUpdates = true;
+      checkUpdates = false;
       discordBranch = "stable";
 
       appBadge = true;
@@ -22,9 +22,9 @@
       catppuccin = "@import url('https://catppuccin.github.io/discord/dist/catppuccin-mocha-red.theme.css')";
     };
     vencord.settings = {
-      autoUpdate = true;
+      autoUpdate = false;
       autoUpdateNotification = false;
-      notifyAboutUpdates = true;
+      notifyAboutUpdates = false;
 
       enabledThemes = [
         "caelestia.theme.css"

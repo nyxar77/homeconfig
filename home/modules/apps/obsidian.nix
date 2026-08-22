@@ -5,15 +5,26 @@
     defaultSettings = {
       app = {
         alwaysUpdateLinks = true;
+        useMarkdownLinks = false;
         newFileLocation = "folder";
         newFileFolderPath = "00 Inbox";
         attachmentFolderPath = "99 Attachments";
-        useMarkdownLinks = false;
         spellcheck = true;
         vimMode = true;
         showLineNumber = true;
         trashOption = "system";
         promptDelete = false;
+        showUnsupportedFiles = true;
+
+        # addition
+        autoConvertHtml = true;
+        showIndentGuide = true;
+        showInlineTitle = true;
+        readableLineLength = false;
+        newLinkFormat = "shortest";
+        /*
+        propertiesInDocument = "visible";
+        */
       };
 
       appearance = {
@@ -34,8 +45,6 @@
         "page-preview"
         "properties"
         "tag-pane"
-        "templates"
-        "daily-notes"
         "file-recovery"
         "workspaces"
 
@@ -45,19 +54,30 @@
         "note-composer"
         "word-count"
         "graph"
+        {
+          name = "daily-notes";
+          settings = {
+            folder = "Daily";
+            format = "YYYY-MM-DD";
+          };
+        }
+        {
+          name = "templates";
+        }
       ];
 
       communityPlugins = with pkgs.obsidianPlugins; [
-        dataview
-        table-editor-obsidian
-        obsidian-importer
-        vim-yank-highlight
         obsidian-git
-        obsidian-spaced-repetition
-        templater-obsidian
         omnisearch
-        obsidian-tasks-plugin
-        obsidian-style-settings
+        vim-yank-highlight
+        background-tray
+
+        # Add these when you actually need them:
+        # obsidian-tasks-plugin
+        # table-editor-obsidian
+        # templater-obsidian
+        # dataview
+        # obsidian-style-settings
       ];
 
       themes = with pkgs.obsidianThemes; [
@@ -67,7 +87,7 @@
 
     vaults = {
       notes = {
-        target = "Documents/Notes";
+        target = "Documents/Knowledge";
       };
     };
   };
