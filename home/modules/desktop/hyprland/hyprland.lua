@@ -1,5 +1,4 @@
 -- Hyprland Lua configuration
--- One-to-one Lua port of ~/.config/hypr/hyprland.conf.
 
 hl.monitor({
 	output = "",
@@ -211,6 +210,15 @@ hl.bind(mainMod .. " + PERIOD", hl.dsp.exec_cmd("caelestia emoji -p"))
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd("caelestia-theme-wofi"))
 hl.bind(mainMod .. " + J", hl.dsp.exec_cmd("cliphist-wofi-img"))
 hl.bind(mainMod .. " + H", hl.dsp.exec_cmd("kitty --class cava-panel --title cava-panel cava"))
+
+-- pomotroid
+hl.bind(
+	mainMod .. " + O",
+	hl.dsp.exec_cmd(
+		"flock -n /tmp/pomotroid-launch.lock -c 'if ! pgrep -x pomotroid >/dev/null; then exec pomotroid; fi'"
+	)
+)
+
 -- Projector UI backed by the transactional projector controller.
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("projector-panel"))
 hl.bind(mainMod .. " + SHIFT + P", hl.dsp.exec_cmd("caelestia-extras pavucontrol"))
@@ -226,8 +234,8 @@ for i = 1, 10 do
 	hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
-hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("magic"))
-hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
+hl.bind(mainMod .. " + S", hl.dsp.workspace.toggle_special("special"))
+hl.bind(mainMod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:special" }))
 hl.bind(mainMod .. " + mouse_down", hl.dsp.focus({ workspace = "e+1" }))
 hl.bind(mainMod .. " + mouse_up", hl.dsp.focus({ workspace = "e-1" }))
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
@@ -329,4 +337,23 @@ hl.window_rule({
 	float = true,
 	center = true,
 	size = "560 420",
+})
+
+hl.window_rule({
+	name = "pomotroid",
+	match = {
+		class = "pomotroid",
+	},
+
+	float = true,
+
+	size = {
+		"monitor_h * 0.356",
+		"monitor_h * 0.44",
+	},
+
+	move = {
+		"monitor_w - window_w - (monitor_h * 0.025)",
+		"monitor_h - window_h - (monitor_h * 0.025)",
+	},
 })
