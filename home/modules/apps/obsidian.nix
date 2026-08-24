@@ -1,7 +1,15 @@
 {pkgs, ...}: {
+  home.file."Documents/Notes/.obsidian.vimrc".text = ''
+    set clipboard=unnamedplus
+  '';
   programs.obsidian = {
     enable = true;
 
+    vaults = {
+      notes = {
+        target = "Documents/Notes";
+      };
+    };
     defaultSettings = {
       app = {
         alwaysUpdateLinks = true;
@@ -15,6 +23,8 @@
         trashOption = "system";
         promptDelete = false;
         showUnsupportedFiles = true;
+        defaultViewMode = "preview";
+        livePreview = false;
 
         # addition
         autoConvertHtml = true;
@@ -26,6 +36,14 @@
         propertiesInDocument = "visible";
         */
       };
+
+      /*
+         extraFiles = {
+        ".obsidian.vimrc".text = ''
+          set clipboard=unnamedplus
+        '';
+      };
+      */
 
       appearance = {
         theme = "system";
@@ -53,16 +71,31 @@
         "editor-status"
         "note-composer"
         "word-count"
-        "graph"
+
         {
           name = "daily-notes";
           settings = {
             folder = "Daily";
             format = "YYYY-MM-DD";
+            template = "Templates/Daily";
           };
         }
-        {
+
+        /*
+           {
           name = "templates";
+        }
+        */
+        {
+          name = "graph";
+          settings = {
+            search = ''-path:"Templates" -file:"sortspec" -file:"Tasks" -file:"Activity" -file:"Inbox"'';
+
+            showTags = true;
+            showAttachments = false;
+            hideUnresolved = false;
+            showOrphans = true;
+          };
         }
       ];
 
@@ -71,24 +104,29 @@
         omnisearch
         vim-yank-highlight
         background-tray
+        various-complements
+        file-explorer-note-count
+        calendar
+        # cmdr # commander
+        obsidian-tasks-plugin
+        obsidian-vimrc-support
+        custom-sort
+        heatmap-tracker
+        templater-obsidian
 
         # Add these when you actually need them:
         # obsidian-tasks-plugin
         # table-editor-obsidian
         # templater-obsidian
-        # dataview
+        dataview
         # obsidian-style-settings
       ];
 
       themes = with pkgs.obsidianThemes; [
-        catppuccin
+        # catppuccin
+        # obsidianite
+        maple
       ];
-    };
-
-    vaults = {
-      notes = {
-        target = "Documents/Knowledge";
-      };
     };
   };
 }
