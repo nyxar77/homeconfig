@@ -29,10 +29,10 @@
   "simultaneous-jobs" = 10;
   "favicon-delay" = 500;
 
-  whitelist = [];
-  "whitelist-url" = [];
-  "force.hostnames" = [];
-  "trash.whitelist-url" = [];
+  whitelist = [ ];
+  "whitelist-url" = [ ];
+  "force.hostnames" = [ ];
+  "trash.whitelist-url" = [ ];
 
   "memory-enabled" = false;
   "memory-value" = 60;

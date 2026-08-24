@@ -2,28 +2,35 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   home.file.".mozilla/firefox/nyxar77/search.json.mozlz4".force = lib.mkForce true;
   # home.file.".mozilla/firefox/dev77/search.json.mozlz4".force = lib.mkForce true;
 
   programs.firefox = {
     enable = true;
-    languagePacks = ["fr-FR" "en-US"];
+    languagePacks = [
+      "fr-FR"
+      "en-US"
+    ];
     configPath = ".mozilla/firefox";
 
-    nativeMessagingHosts = [pkgs.kdePackages.plasma-browser-integration pkgs.ff2mpv];
+    nativeMessagingHosts = [
+      pkgs.kdePackages.plasma-browser-integration
+      pkgs.ff2mpv
+    ];
 
     profiles.nyxar77 = {
       isDefault = true;
-      search = import ./search.nix {inherit pkgs;};
-      extensions = import ./extensions.nix {inherit pkgs lib;};
+      search = import ./search.nix { inherit pkgs; };
+      extensions = import ./extensions.nix { inherit pkgs lib; };
       settings = import ./settings.nix;
     };
 
     profiles.dev77 = {
       isDefault = false;
       id = 1;
-      search = import ./search.nix {inherit pkgs;};
+      search = import ./search.nix { inherit pkgs; };
       settings = import ./settings.nix;
       extensions = {
         packages = with pkgs.nur.repos.rycee.firefox-addons; [
@@ -45,11 +52,13 @@
           catppuccin-web-file-icons
         ];
         force = true;
-        settings = let
-          stgs = ./extensions-settings;
-        in {
-          "uBlock0@raymondhill.net".settings = import (stgs + /ublock.nix) {inherit lib;};
-        };
+        settings =
+          let
+            stgs = ./extensions-settings;
+          in
+          {
+            "uBlock0@raymondhill.net".settings = import (stgs + /ublock.nix) { inherit lib; };
+          };
       };
     };
 

@@ -5,19 +5,19 @@
   "content.notify.interval" = 100000;
 
   /**
-  GFX **
+    GFX **
   */
   "gfx.canvas.accelerated.cache-items" = 4096;
   "gfx.canvas.accelerated.cache-size" = 512;
   "gfx.content.skia-font-cache-size" = 20;
 
   /**
-  DISK CACHE **
+    DISK CACHE **
   */
   "browser.cache.disk.enable" = true;
 
   /**
-  MEDIA CACHE **
+    MEDIA CACHE **
   */
   "media.memory_cache_max_size" = 65536;
   "media.cache_readahead_limit" = 7200;
@@ -25,12 +25,12 @@
   "media.ffmpeg.vaapi.enabled" = true;
 
   /**
-  IMAGE CACHE **
+    IMAGE CACHE **
   */
   "image.mem.decode_bytes_at_a_time" = 32768;
 
   /**
-  NETWORK **
+    NETWORK **
   */
   #"network.http.max-connections"= 1800;
   #"network.http.max-persistent-connections-per-server"= 10 ;
@@ -40,7 +40,7 @@
   "network.ssl_tokens_cache_capacity" = 10240;
 
   /**
-  SPECULATIVE LOADING **
+    SPECULATIVE LOADING **
   */
   "network.dns.disablePrefetch" = true;
   "network.dns.disablePrefetchFromHTTPS" = true;
@@ -49,18 +49,18 @@
   "network.predictor.enable-prefetch" = true;
 
   /**
-  EXPERIMENTAL **
+    EXPERIMENTAL **
   */
   "layout.css.grid-template-masonry-value.enabled" = true;
   "dom.enable_web_task_scheduling" = true;
 
   /**
-   **************************************************************************
-  * SECTION: SECUREFOX                                                       *
-  ***************************************************************************
+     **************************************************************************
+    * SECTION: SECUREFOX                                                       *
+    ***************************************************************************
   */
   /**
-  TRACKING PROTECTION **
+    TRACKING PROTECTION **
   */
   "browser.contentblocking.category" = "custom";
 
@@ -73,14 +73,14 @@
   "privacy.globalprivacycontrol.enabled" = true;
 
   /**
-  OCSP & CERTS / HPKP **
+    OCSP & CERTS / HPKP **
   */
   "security.OCSP.enabled" = 1;
   "security.remote_settings.crlite_filters.enabled" = true;
   "security.pki.crlite_mode" = 2;
 
   /**
-  SSL / TLS **
+    SSL / TLS **
   */
   "security.ssl.treat_unsafe_negotiation_as_broken" = true;
   "browser.xul.error_pages.expert_bad_cert" = true;
@@ -210,10 +210,7 @@
   "network.http.sendRefererHeader" = 2;
   "security.ssl.require_safe_negotiation" = true;
 
-  /*
-  UI
-  */
-  "sidebar.visibility" = "expand-on-hover";
+  /* UI */ "sidebar.visibility" = "expand-on-hover";
   "sidebar.verticalTabs" = true;
   "sidebar.verticalTabs.dragToPinPromo.dismissed" = true;
   "sidebar.expandOnHover" = true;

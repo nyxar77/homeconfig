@@ -2,15 +2,17 @@
   pkgs,
   lib,
   ...
-}: let
+}:
+let
   swappyCaelestia = pkgs.writeShellApplication {
     name = "swappy";
-    runtimeInputs = [pkgs.swappy];
+    runtimeInputs = [ pkgs.swappy ];
     text = ''
       exec env GTK_THEME=Caelestia-Portal swappy "$@"
     '';
   };
-in {
+in
+{
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
 

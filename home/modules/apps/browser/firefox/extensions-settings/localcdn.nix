@@ -24,7 +24,7 @@
 
   storageType = "local";
   xhrTestDomain = "localcdn.org";
-  allowedDomainsGoogleFonts = {};
-  domainsManipulateDOM = {};
-  allowlistedDomains = {};
+  allowedDomainsGoogleFonts = { };
+  domainsManipulateDOM = { };
+  allowlistedDomains = { };
 }

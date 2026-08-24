@@ -17,54 +17,54 @@
       };
 
       /*
-      git_branch = {
-        symbol = " ";
-        style = "#fc937b";
-        format = "[$symbol$branch(:$remote_branch)]($style) ";
-      };
-      git_commit = {
-        tag_symbol = "󰜝 ";
-        style = "#edb46a";
-        format = "[\($hash$tag\)]($style) ";
-      };
-      git_state = {
-        style = "bold #f9ce31";
-        format = "\([󱇯 $state( $progress_current/$progress_total)]($style)\) ";
-      };
-      git_status = {
-        #style = "bold dimmed #fc5e46)";
-        up_to_date = "✓(bold dimmed #82f2a4)";
-        format = "([$all_status$ahead_behind](bold #edb46a) )";
-      };
+        git_branch = {
+          symbol = " ";
+          style = "#fc937b";
+          format = "[$symbol$branch(:$remote_branch)]($style) ";
+        };
+        git_commit = {
+          tag_symbol = "󰜝 ";
+          style = "#edb46a";
+          format = "[\($hash$tag\)]($style) ";
+        };
+        git_state = {
+          style = "bold #f9ce31";
+          format = "\([󱇯 $state( $progress_current/$progress_total)]($style)\) ";
+        };
+        git_status = {
+          #style = "bold dimmed #fc5e46)";
+          up_to_date = "✓(bold dimmed #82f2a4)";
+          format = "([$all_status$ahead_behind](bold #edb46a) )";
+        };
       */
       /*
-         c = {
-        format = "[$symbol($version(-$name) )]($style)";
-        version_format = "v$raw";
-        style = "fg:149 bold bg:0x86BBD8";
-        symbol = " ";
-        disabled = false;
-        detect_extensions = [
-          "c"
-          "h"
-        ];
-        detect_files = [];
-        detect_folders = [];
-        commands = [
-          [
-            "cc"
-            "--version"
-          ]
-          [
-            "gcc"
-            "--version"
-          ]
-          [
-            "clang"
-            "--version"
-          ]
-        ];
-      };
+           c = {
+          format = "[$symbol($version(-$name) )]($style)";
+          version_format = "v$raw";
+          style = "fg:149 bold bg:0x86BBD8";
+          symbol = " ";
+          disabled = false;
+          detect_extensions = [
+            "c"
+            "h"
+          ];
+          detect_files = [];
+          detect_folders = [];
+          commands = [
+            [
+              "cc"
+              "--version"
+            ]
+            [
+              "gcc"
+              "--version"
+            ]
+            [
+              "clang"
+              "--version"
+            ]
+          ];
+        };
       */
       container = {
         format = "[$symbol [$name]]($style)";
@@ -114,13 +114,13 @@
         style = "bold blue";
       };
       /*
-      nix_shell = {
-      symbol = "󰒷";
-      impure_msg = "󰒷 (bold orange)";
-      pure_msg = "󰒷 (bold blue)";
-      unknown_msg = "󰒷 (bold yellow)";
-      format = "[$state(\($name\))]";
-      };
+        nix_shell = {
+        symbol = "󰒷";
+        impure_msg = "󰒷 (bold orange)";
+        pure_msg = "󰒷 (bold blue)";
+        unknown_msg = "󰒷 (bold yellow)";
+        format = "[$state(\($name\))]";
+        };
       */
     };
   };

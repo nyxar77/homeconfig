@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs;
+{ pkgs, ... }: {
+  home.packages =
+    with pkgs;
     [
       cargo
       mongosh
@@ -10,12 +11,12 @@
       devenv
     ]
     ++
-    # nix toolchain
-    [
-      nixfmt
-      treefmt
-      nixf
-    ];
+      # nix toolchain
+      [
+        nixfmt
+        treefmt
+        nixf
+      ];
   programs.git = {
     enable = true;
     settings = {
@@ -49,11 +50,11 @@
       };
     };
     /*
-       hosts = {
-      "github.com" = {
-        user = "nyxar77";
+         hosts = {
+        "github.com" = {
+          user = "nyxar77";
+        };
       };
-    };
     */
   };
   programs.jujutsu = {

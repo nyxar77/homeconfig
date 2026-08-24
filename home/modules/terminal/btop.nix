@@ -1,6 +1,8 @@
 {
   programs.btop = {
     enable = true;
-    settings = {color_theme = "caelestia";};
+    settings = {
+      color_theme = "caelestia";
+    };
   };
 }

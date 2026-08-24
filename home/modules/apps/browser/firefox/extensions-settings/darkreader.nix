@@ -3,8 +3,8 @@
 
   enabled = false;
   enabledByDefault = false;
-  enabledFor = [];
-  disabledFor = [];
+  enabledFor = [ ];
+  disabledFor = [ ];
 
   automation = {
     enabled = false;
@@ -44,10 +44,10 @@
     immediateModify = false;
   };
 
-  presets = [];
-  customThemes = [];
-  displayedNews = [];
-  readNews = [];
+  presets = [ ];
+  customThemes = [ ];
+  displayedNews = [ ];
+  readNews = [ ];
   previewNewDesign = false;
   previewNewestDesign = false;
 }

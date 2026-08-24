@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   services.podman = {
     enable = true;
     autoUpdate.enable = false;

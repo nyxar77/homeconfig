@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   programs = {
     autojump.enable = true;
     zoxide = {

@@ -1,8 +1,15 @@
-{pkgs}: {
+{ pkgs }: {
   force = true;
   default = "ddg";
   privateDefault = "ddg";
-  order = ["ddg" "google" "Nix Packages" "Nix Options" "Nix Wiki" "HM Options"];
+  order = [
+    "ddg"
+    "google"
+    "Nix Packages"
+    "Nix Options"
+    "Nix Wiki"
+    "HM Options"
+  ];
   engines = {
     "Nix Packages" = {
       urls = [
@@ -10,10 +17,10 @@
           template = "https://search.nixos.org/packages";
           params = [
             /*
-               {
-              name = "channel";
-              value = "unstable";
-            }
+                 {
+                name = "channel";
+                value = "unstable";
+              }
             */
             {
               name = "query";
@@ -23,7 +30,7 @@
         }
       ];
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-      definedAliases = ["@np"];
+      definedAliases = [ "@np" ];
     };
 
     "Nix Options" = {
@@ -32,10 +39,10 @@
           template = "https://search.nixos.org/options";
           params = [
             /*
-               {
-              name = "channel";
-              value = "unstable";
-            }
+                 {
+                name = "channel";
+                value = "unstable";
+              }
             */
             {
               name = "query";
@@ -45,7 +52,7 @@
         }
       ];
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake-white.svg";
-      definedAliases = ["@no"];
+      definedAliases = [ "@no" ];
     };
 
     "NixOS Wiki" = {
@@ -61,7 +68,7 @@
         }
       ];
       iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
-      definedAliases = ["@nw"];
+      definedAliases = [ "@nw" ];
     };
 
     "Noogle" = {
@@ -77,7 +84,7 @@
         }
       ];
       icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-      definedAliases = ["@ng"];
+      definedAliases = [ "@ng" ];
     };
     "HM Options" = {
       urls = [
@@ -92,7 +99,7 @@
         }
       ];
       iconMapObj."16" = "https://home-manager-options.extranix.com/images/favicon.png";
-      definedAliases = ["@hm"];
+      definedAliases = [ "@hm" ];
     };
 
     "Google Translate" = {
@@ -116,7 +123,7 @@
         }
       ];
       iconMapObj."16" = "https://translate.google.com/favicon.ico";
-      definedAliases = ["@tr"];
+      definedAliases = [ "@tr" ];
     };
 
     bing.metaData.hidden = true;

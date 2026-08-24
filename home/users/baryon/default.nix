@@ -1,11 +1,11 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   imports = [
     ../../profiles/server.nix
     ./packages.nix
     ./session.nix
   ];
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nyx.role = "server";
 

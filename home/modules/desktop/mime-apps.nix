@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   xdg.mimeApps = {
     enable = true;
 
@@ -16,7 +16,7 @@
     ];
 
     defaultApplications = {
-      "inode/directory" = ["org.gnome.Nautilus.desktop"];
+      "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
     };
   };
 }

@@ -1,4 +1,4 @@
-{lib}: {
+{ lib }: {
   userSettings = rec {
     uiTheme = "dark";
     uiAccentCustom = true;

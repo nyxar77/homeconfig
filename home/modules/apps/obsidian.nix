@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   home.file."Documents/Notes/.obsidian.vimrc".text = ''
     set clipboard=unnamedplus
   '';
@@ -32,17 +32,15 @@
         showInlineTitle = true;
         readableLineLength = false;
         newLinkFormat = "shortest";
-        /*
-        propertiesInDocument = "visible";
-        */
+        # propertiesInDocument = "visible";
       };
 
       /*
-         extraFiles = {
-        ".obsidian.vimrc".text = ''
-          set clipboard=unnamedplus
-        '';
-      };
+           extraFiles = {
+          ".obsidian.vimrc".text = ''
+            set clipboard=unnamedplus
+          '';
+        };
       */
 
       appearance = {
@@ -82,9 +80,9 @@
         }
 
         /*
-           {
-          name = "templates";
-        }
+             {
+            name = "templates";
+          }
         */
         {
           name = "graph";

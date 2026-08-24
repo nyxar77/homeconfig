@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{ pkgs, ... }: {
   gtk = {
     enable = true;
 
@@ -10,22 +10,22 @@
 
     iconTheme = {
       /*
-         name = "WhiteSur-dark";
-      package = pkgs.whitesur-icon-theme;
+           name = "WhiteSur-dark";
+        package = pkgs.whitesur-icon-theme;
       */
       name = "Yaru-blue";
       package = pkgs.yaru-theme;
     };
 
     /*
-       iconTheme = {
-      name = "Papirus-Dark";
+         iconTheme = {
+        name = "Papirus-Dark";
 
-      package = pkgs.catppuccin-papirus-folders.override {
-        flavor = "mocha";
-        accent = "red";
+        package = pkgs.catppuccin-papirus-folders.override {
+          flavor = "mocha";
+          accent = "red";
+        };
       };
-    };
     */
   };
 

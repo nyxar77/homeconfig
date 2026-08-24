@@ -1,4 +1,4 @@
-{config, ...}: {
+{ config, ... }: {
   home.sessionVariables = {
     MANPAGER = "nvim +Man!";
     EDITOR = "nvim";

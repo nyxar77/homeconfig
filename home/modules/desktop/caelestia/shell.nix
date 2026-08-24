@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   programs.caelestia-extras = {
     enable = true;
     cursor.enable = true;
@@ -13,8 +14,14 @@
         genericName = "File Manager";
         exec = "nautilus --new-window %U";
         icon = "org.gnome.Nautilus";
-        categories = ["GNOME" "GTK" "Utility" "Core" "FileManager"];
-        mimeType = ["inode/directory"];
+        categories = [
+          "GNOME"
+          "GTK"
+          "Utility"
+          "Core"
+          "FileManager"
+        ];
+        mimeType = [ "inode/directory" ];
         startupNotify = true;
       };
     };
@@ -32,7 +39,7 @@
     systemd = {
       enable = true;
       target = "graphical-session.target";
-      environment = ["GTK_THEME=Caelestia-Portal"];
+      environment = [ "GTK_THEME=Caelestia-Portal" ];
     };
 
     settings = {
@@ -66,9 +73,9 @@
         };
 
         /*
-           clock = {
-          showDate = true;
-        };
+             clock = {
+            showDate = true;
+          };
         */
         statusIcons = [
           {
@@ -117,9 +124,9 @@
 
       general = {
         apps = {
-          terminal = ["kitty"];
-          audio = ["caelestia-extras pavucontrol"];
-          explorer = ["nautilus"];
+          terminal = [ "kitty" ];
+          audio = [ "caelestia-extras pavucontrol" ];
+          explorer = [ "nautilus" ];
         };
         battery.criticalLevel = 6;
       };

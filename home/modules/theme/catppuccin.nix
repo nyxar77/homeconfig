@@ -5,8 +5,8 @@
     flavor = "mocha";
     accent = "red";
     /*
-    zathura.enable = true;
-    imv.enable = true;
+      zathura.enable = true;
+      imv.enable = true;
     */
   };
 }

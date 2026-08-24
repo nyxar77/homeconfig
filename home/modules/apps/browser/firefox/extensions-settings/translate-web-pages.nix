@@ -20,13 +20,13 @@
     "ar"
   ];
 
-  alwaysTranslateSites = [];
-  neverTranslateSites = ["github.com"];
-  sitesToTranslateWhenHovering = [];
-  langsToTranslateWhenHovering = [];
-  alwaysTranslateLangs = ["en"];
-  neverTranslateLangs = [];
-  customDictionary = {};
+  alwaysTranslateSites = [ ];
+  neverTranslateSites = [ "github.com" ];
+  sitesToTranslateWhenHovering = [ ];
+  langsToTranslateWhenHovering = [ ];
+  alwaysTranslateLangs = [ "en" ];
+  neverTranslateLangs = [ ];
+  customDictionary = { };
 
   showTranslatePageContextMenu = "yes";
   showTranslateSelectedContextMenu = "yes";
@@ -68,11 +68,11 @@
   translateClickingOnce = "no";
   enableDiskCache = "yes";
   useAlternativeService = "yes";
-  customServices = [];
+  customServices = [ ];
 
   showMobilePopupOnDesktop = "no";
   popupMobileKeepOnScren = "no";
   popupMobilePosition = "top";
   addPaddingToPage = "no";
-  proxyServers = {};
+  proxyServers = { };
 }

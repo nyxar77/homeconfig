@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{ inputs, ... }: {
   imports = [
     ../../profiles/base.nix
     ../../profiles/development.nix
@@ -10,7 +10,7 @@
     ./custom-packages
   ];
 
-  nix.nixPath = ["nixpkgs=${inputs.nixpkgs}"];
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
   nixpkgs.config = {
     allowUnfree = true;

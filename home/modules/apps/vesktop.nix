@@ -15,7 +15,10 @@
       minimizeToTray = true;
       tray = true;
 
-      spellCheckLanguages = ["fr-FR" "en-US"];
+      spellCheckLanguages = [
+        "fr-FR"
+        "en-US"
+      ];
     };
 
     vencord.themes = {

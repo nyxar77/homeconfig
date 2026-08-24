@@ -117,7 +117,7 @@
     };
   };
 
-  categoryPillColors = {};
+  categoryPillColors = { };
   colorPalette = {
     red = "#780303";
     white = "#ffffff";
@@ -192,9 +192,15 @@
     chapter = true;
   };
 
-  skipKeybind = {key = "Enter";};
-  startSponsorKeybind = {key = ";";};
-  submitKeybind = {key = "'";};
+  skipKeybind = {
+    key = "Enter";
+  };
+  startSponsorKeybind = {
+    key = ";";
+  };
+  submitKeybind = {
+    key = "'";
+  };
   actuallySubmitKeybind = {
     key = "'";
     ctrl = true;
@@ -203,7 +209,9 @@
     key = ";";
     ctrl = true;
   };
-  closeSkipNoticeKeybind = {key = "Backspace";};
+  closeSkipNoticeKeybind = {
+    key = "Backspace";
+  };
   nextChapterKeybind = {
     key = "ArrowRight";
     ctrl = true;
@@ -217,7 +225,7 @@
     ctrl = true;
   };
 
-  channelSkipProfileIDs = {};
+  channelSkipProfileIDs = { };
   skipProfiles = {
     default-whitelist = {
       name = "Whitelisted channels";
@@ -256,5 +264,5 @@
       minDuration = null;
     };
   };
-  skipRules = [];
+  skipRules = [ ];
 }
