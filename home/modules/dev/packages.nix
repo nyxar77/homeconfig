@@ -13,9 +13,7 @@
     # nix toolchain
     [
       nixfmt
-      deadnix
       treefmt
-      statix
       nixf
     ];
   programs.git = {

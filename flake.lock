@@ -271,11 +271,11 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1786647285,
-        "narHash": "sha256-YjwqDoGwGZytSYOpGlZog/DKCnwwLx8ATRmQkCf7QlI=",
+        "lastModified": 1787588799,
+        "narHash": "sha256-vKO1EF2tpLMdPCwo6QeLHInYgV1LbbCt9BjK200zLwo=",
         "owner": "nyxar77",
         "repo": "neovimconfig",
-        "rev": "ab42bb479f9a71aac87e2dbe776e12cbb18b3575",
+        "rev": "47bbfaf0a090dffa7385b6879223080c38adde40",
         "type": "github"
       },
       "original": {
@@ -292,11 +292,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1786944019,
-        "narHash": "sha256-toJMHOIEQZeioBUIAKdYJZW+FLDYHsmUaYx3BchJQmw=",
+        "lastModified": 1787289424,
+        "narHash": "sha256-RGHHWih8i587xMZcUxCikJrRnBYhWuoVN1NvxccYZz0=",
         "owner": "karaolidis",
         "repo": "nix-obsidian-extensions",
-        "rev": "25ed1175153a0ba56ee38acace3c3bbdae460471",
+        "rev": "7ece6dc5319c432e93af3b29585c70081b4da0a9",
         "type": "github"
       },
       "original": {

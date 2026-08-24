@@ -37,16 +37,16 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     /*
-       wallpapers = {
-      url = "github:42willow/wallpapers";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+         wallpapers = {
+        url = "github:42willow/wallpapers";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     */
     /*
-       ags = {
-      url = "github:aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+         ags = {
+        url = "github:aylur/ags";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
     */
     nur = {
       url = "github:nix-community/NUR";
@@ -73,13 +73,14 @@
     };
   };
 
-  outputs = inputs @ {
-    flake-parts,
-    nixpkgs,
-    home-manager,
-    ...
-  }:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{
+      flake-parts,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [
         "x86_64-linux"
         "aarch64-linux"
@@ -87,45 +88,48 @@
         "aarch64-darwin"
       ];
 
-      flake = let
-        hostSystem = "x86_64-linux";
-        mkPkgs = system:
-          import nixpkgs {
-            inherit system;
-            config = {
-              allowUnfree = true;
+      flake =
+        let
+          hostSystem = "x86_64-linux";
+          mkPkgs =
+            system:
+            import nixpkgs {
+              inherit system;
+              config = {
+                allowUnfree = true;
+              };
+              overlays = [
+                inputs.nur.overlays.default
+                inputs.prismlauncher.overlays.default
+                inputs.nyxar-nvim.overlays.default
+                inputs.obsidian-extensions.overlays.default
+
+                /*
+                     (prev: final: {
+                    cisco-packet-tracer = inputs.unstable.legacyPackages.${system}.ciscoPacketTracer8;
+                  })
+                */
+              ];
             };
-            overlays = [
-              inputs.nur.overlays.default
-              inputs.prismlauncher.overlays.default
-              inputs.nyxar-nvim.overlays.default
-              inputs.obsidian-extensions.overlays.default
 
-              /*
-                 (prev: final: {
-                cisco-packet-tracer = inputs.unstable.legacyPackages.${system}.ciscoPacketTracer8;
-              })
-              */
-            ];
-          };
+          mkHome =
+            {
+              username,
+              system ? hostSystem,
+              pkgs ? mkPkgs system,
+              extraModules ? [ ],
+              extraSpecialArgs ? { },
+            }:
+            let
+              unstablePkgs = import inputs.unstable {
+                inherit system;
+                config.allowUnfree = true;
+              };
+            in
+            home-manager.lib.homeManagerConfiguration {
+              inherit pkgs;
 
-        mkHome = {
-          username,
-          system ? hostSystem,
-          pkgs ? mkPkgs system,
-          extraModules ? [],
-          extraSpecialArgs ? {},
-        }: let
-          unstablePkgs = import inputs.unstable {
-            inherit system;
-            config.allowUnfree = true;
-          };
-        in
-          home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-
-            modules =
-              [
+              modules = [
                 inputs.nix-index-database.homeModules.default
                 inputs.nyxar-nvim.homeManagerModules.default
                 ./home/modules/options.nix
@@ -133,31 +137,31 @@
               ]
               ++ extraModules;
 
-            extraSpecialArgs =
-              {
+              extraSpecialArgs = {
                 inherit inputs unstablePkgs;
               }
               // extraSpecialArgs;
-          };
-      in {
-        homeConfigurations = {
-          nyxar = mkHome {
-            username = "nyxar";
-            extraModules = [
-              inputs.caelestia-shell.homeManagerModules.default
-              inputs.caelestia-extras.homeModules.default
-              inputs.projectorctl.homeManagerModules.default
-              inputs.catppuccin.homeModules.catppuccin
-            ];
-            extraSpecialArgs = {
-              inherit (inputs) spicetify-nix;
+            };
+        in
+        {
+          homeConfigurations = {
+            nyxar = mkHome {
+              username = "nyxar";
+              extraModules = [
+                inputs.caelestia-shell.homeManagerModules.default
+                inputs.caelestia-extras.homeModules.default
+                inputs.projectorctl.homeManagerModules.default
+                inputs.catppuccin.homeModules.catppuccin
+              ];
+              extraSpecialArgs = {
+                inherit (inputs) spicetify-nix;
+              };
+            };
+
+            baryon = mkHome {
+              username = "baryon";
             };
           };
-
-          baryon = mkHome {
-            username = "baryon";
-          };
         };
-      };
     };
 }
