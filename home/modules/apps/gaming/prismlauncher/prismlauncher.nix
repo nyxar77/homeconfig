@@ -1,22 +1,25 @@
 {
+  unstablePkgs,
   pkgs,
   ...
 }:
 {
+  home.packages = [
+
+    unstablePkgs.ninjabrain-bot
+  ];
   programs.prismlauncher = {
     enable = true;
-    package = (
-      pkgs.prismlauncher.override {
-        additionalLibs = [ pkgs.libxtst ];
-        jdks = with pkgs; [
-          graalvmPackages.graalvm-ce
-          jdk25
-          jdk21
-          jdk17
-          jdk8
-        ];
-      }
-    );
+    package = pkgs.prismlauncher.override {
+      additionalLibs = [ pkgs.libxtst ];
+      jdks = with pkgs; [
+        graalvmPackages.graalvm-ce
+        jdk25
+        jdk21
+        jdk17
+        jdk8
+      ];
+    };
     extraPackages = [ ];
     settings = {
       ApplicationTheme = "caelestia-breeze";
@@ -32,7 +35,7 @@
 
     icons = [
       ./icons/mcsr-icon.png
-      ./icons/herobrine_legacy
+      ./icons/herobrine_legacy.png
       ./icons/minecraft-story-mode.png
     ];
   };
