@@ -5,8 +5,7 @@
 }:
 {
   home.packages = [
-
-    unstablePkgs.ninjabrain-bot
+    # unstablePkgs.ninjabrain-bot
   ];
   programs.prismlauncher = {
     enable = true;
