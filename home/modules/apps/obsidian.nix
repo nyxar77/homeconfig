@@ -1,5 +1,9 @@
-{ pkgs, ... }: {
-  home.file."Documents/Notes/.obsidian.vimrc".text = ''
+{ pkgs, ... }:
+let
+  path = "Documents/Notes";
+in
+{
+  home.file."${path}/.obsidian.vimrc".text = ''
     set clipboard=unnamedplus
   '';
   programs.obsidian = {
@@ -7,7 +11,7 @@
 
     vaults = {
       notes = {
-        target = "Documents/Notes";
+        target = path;
       };
     };
     defaultSettings = {
@@ -33,6 +37,15 @@
         readableLineLength = false;
         newLinkFormat = "shortest";
         # propertiesInDocument = "visible";
+
+        /*
+          userIgnoreFilters = [
+            "Images & Attachments/"
+            "Templates/"
+            "sortspec"
+          ];
+        */
+
       };
 
       /*
@@ -111,6 +124,8 @@
         custom-sort
         heatmap-tracker
         templater-obsidian
+        hide-folders
+        metadata-menu
 
         # Add these when you actually need them:
         # obsidian-tasks-plugin
