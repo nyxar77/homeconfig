@@ -21,7 +21,7 @@
   ];
 
   alwaysTranslateSites = [ ];
-  neverTranslateSites = [ "github.com" ];
+  neverTranslateSites = [ ];
   sitesToTranslateWhenHovering = [ ];
   langsToTranslateWhenHovering = [ ];
   alwaysTranslateLangs = [ "en" ];
@@ -47,14 +47,14 @@
   dontShowIfSelectedTextIsUnknown = "no";
 
   hotkeys = {
-    "hotkey-toggle-translation" = "Ctrl+Alt+T";
-    "hotkey-translate-selected-text" = "Ctrl+Alt+S";
-    "hotkey-swap-page-translation-service" = "Ctrl+Alt+Q";
-    "hotkey-show-original" = "Shift+Alt+0";
-    "hotkey-translate-page-1" = "Shift+Alt+1";
-    "hotkey-translate-page-2" = "Shift+Alt+2";
-    "hotkey-translate-page-3" = "Shift+Alt+3";
-    "hotkey-hot-translate-selected-text" = "Ctrl+Alt+X";
+    "hotkey-toggle-translation" = "Alt+T";
+    "hotkey-translate-selected-text" = "Alt+S";
+    "hotkey-swap-page-translation-service" = "Alt+Q";
+    "hotkey-show-original" = "";
+    "hotkey-translate-page-1" = "";
+    "hotkey-translate-page-2" = "";
+    "hotkey-translate-page-3" = "";
+    "hotkey-hot-translate-selected-text" = "";
   };
 
   expandPanelTranslateSelectedText = "yes";
@@ -63,8 +63,8 @@
   dontSortResults = "no";
   translateDynamicallyCreatedContent = "yes";
   autoTranslateWhenClickingALink = "no";
-  translateSelectedWhenPressTwice = "no";
-  translateTextOverMouseWhenPressTwice = "no";
+  translateSelectedWhenPressTwice = "yes";
+  translateTextOverMouseWhenPressTwice = "yes";
   translateClickingOnce = "no";
   enableDiskCache = "yes";
   useAlternativeService = "yes";

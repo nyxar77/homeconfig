@@ -8,9 +8,9 @@
     firefox-color
     ublock-origin
     privacy-badger
-    darkreader
+    # darkreader
     keepassxc-browser
-    chameleon-ext
+    # chameleon-ext
     ff2mpv
     buster-captcha-solver
     canvasblocker
@@ -26,6 +26,7 @@
     auto-tab-discard
     catppuccin-web-file-icons
     redirector
+    tampermonkey
     #hoverTranslate
   ];
   force = true;
