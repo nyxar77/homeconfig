@@ -3,15 +3,6 @@
   lib,
   ...
 }:
-let
-  swappyCaelestia = pkgs.writeShellApplication {
-    name = "swappy";
-    runtimeInputs = [ pkgs.swappy ];
-    text = ''
-      exec env GTK_THEME=Caelestia-Portal swappy "$@"
-    '';
-  };
-in
 {
   # programs.hyprlock.enable = true;
   # services.hypridle.enable = true;
@@ -37,7 +28,6 @@ in
   ];
   programs.swappy = {
     enable = true;
-    package = swappyCaelestia;
     settings = {
       Default = {
         auto_save = false;

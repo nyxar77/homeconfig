@@ -14,6 +14,7 @@
         pkgs.gnused
         pkgs.jq
         pkgs.systemd
+        pkgs.util-linux
         pkgs.wofi
       ];
       text = ''
@@ -22,6 +23,8 @@
         schemes_cache="$cache_dir/schemes.tsv"
         runtime_dir="''${XDG_RUNTIME_DIR:-/tmp}"
         pid_file="$runtime_dir/caelestia-theme-wofi.pid"
+        portal_restart_lock="$runtime_dir/caelestia-theme-wofi.portal-restart.lock"
+        portal_restart_stamp="$runtime_dir/caelestia-theme-wofi.portal-restart-at"
 
         if old_pid="$(cat "$pid_file" 2>/dev/null)" && [ -n "$old_pid" ] && [ "$old_pid" != "$$" ]; then
           old_command="$(tr '\0' ' ' < "/proc/$old_pid/cmdline" 2>/dev/null || true)"
@@ -177,9 +180,24 @@
         }
 
         restart_portals() {
-          systemctl --user try-restart \
-            xdg-desktop-portal-gtk.service \
-            xdg-desktop-portal-hyprland.service || true
+          local now last
+
+          (
+            flock -n 9 || exit 0
+
+            now="$(date +%s)"
+            last="$(cat "$portal_restart_stamp" 2>/dev/null || printf 0)"
+            [[ "$last" =~ ^[0-9]+$ ]] || last=0
+            (( now - last >= 30 )) || exit 0
+
+            printf "%s\n" "$now" > "$portal_restart_stamp"
+            systemctl --user reset-failed \
+              xdg-desktop-portal-gtk.service \
+              xdg-desktop-portal-hyprland.service
+            systemctl --user restart \
+              xdg-desktop-portal-gtk.service \
+              xdg-desktop-portal-hyprland.service
+          ) 9>"$portal_restart_lock" || true
         }
 
         apply_scheme() {

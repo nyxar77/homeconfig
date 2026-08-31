@@ -3,7 +3,22 @@
   pkgs,
   ...
 }:
+let
+  system = pkgs.stdenv.hostPlatform.system;
+  swappyCaelestia = pkgs.writeShellApplication {
+    name = "swappy";
+    runtimeInputs = [ pkgs.swappy ];
+    text = ''
+      exec env GTK_THEME=Caelestia-GTK3 swappy "$@"
+    '';
+  };
+  caelestiaCli = inputs.caelestia-shell.inputs.caelestia-cli.packages.${system}.default.override {
+    swappy = swappyCaelestia;
+  };
+in
 {
+  programs.swappy.package = swappyCaelestia;
+
   programs.caelestia-extras = {
     enable = true;
     cursor.enable = true;
@@ -26,6 +41,7 @@
       };
     };
     hyprtoolkit.enable = true;
+    localsend.enable = true;
     pavucontrol.enable = true;
     qt.enable = true;
     prismlauncher.enable = true;
@@ -39,7 +55,6 @@
     systemd = {
       enable = true;
       target = "graphical-session.target";
-      environment = [ "GTK_THEME=Caelestia-Portal" ];
     };
 
     settings = {
@@ -137,7 +152,7 @@
         hideNotifs = true;
       };
 
-      paths.wallpaperDir = "~/Pictures/Wallpapers";
+      paths.wallpaperDir = "~/Pictures/CaelestiaWallpapers";
       session.commands.logout = [
         "hyprctl"
         "dispatch"
@@ -145,7 +160,9 @@
       ];
     };
 
-    package = inputs.caelestia-shell.packages.${pkgs.system}.with-cli.override {
+    package = inputs.caelestia-shell.packages.${system}.with-cli.override {
+      swappy = swappyCaelestia;
+      caelestia-cli = caelestiaCli;
       extraRuntimeDeps = with pkgs; [
         kdePackages.kirigami
         kdePackages.kirigami-addons
@@ -156,6 +173,7 @@
 
     cli = {
       enable = true;
+      package = caelestiaCli;
       settings.theme = {
         enable = true;
         enableHypr = true;

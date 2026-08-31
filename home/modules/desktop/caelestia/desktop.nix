@@ -1,4 +1,16 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }:
+let
+  wallpaperDir = "${config.home.homeDirectory}/Pictures/Wallpapers";
+  excludedWallpapers = [
+    "galaxies.png"
+    "unreal.png"
+    "purple-pixel-art-wallpapers.jpg"
+  ];
+  selectedWallpapers = builtins.filter (name: !(builtins.elem name excludedWallpapers)) (
+    builtins.attrNames (builtins.readDir ../../../../assets/Wallpapers)
+  );
+in
+{
   programs = {
     zathura = {
       enable = true;
@@ -35,10 +47,17 @@
 
   home = {
     packages = with pkgs; [
-      localsend
       lxqt.pavucontrol-qt
     ];
 
-    file."Pictures/Wallpapers".source = ../../../../assets/Wallpapers;
+    file = {
+      "Pictures/Wallpapers".source = ../../../../assets/Wallpapers;
+    }
+    // builtins.listToAttrs (
+      map (name: {
+        name = "Pictures/CaelestiaWallpapers/${name}";
+        value.source = config.lib.file.mkOutOfStoreSymlink "${wallpaperDir}/${name}";
+      }) selectedWallpapers
+    );
   };
 }
