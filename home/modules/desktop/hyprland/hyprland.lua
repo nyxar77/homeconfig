@@ -308,6 +308,13 @@ hl.window_rule({
 })
 
 hl.window_rule({
+	name = "ninjabrain-bot",
+	match = { class = "^ninjabrainbot-Main$" },
+	float = true,
+	center = true,
+})
+
+hl.window_rule({
 	name = "xdg-portal-gtk-file-picker",
 	match = { class = "^(xdg-desktop-portal-gtk|org.freedesktop.impl.portal.desktop.gtk)$" },
 	float = true,
