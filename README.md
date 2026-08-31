@@ -5,6 +5,7 @@ My Home Manager configuration for Hyprland and Caelestia.
 ## Screenshots
 
 ![Hyprland desktop](assets/screenshots/preview.png)
+![Hyprland desktop](assets/screenshots/preview1.png)
 
 ## Desktop
 
