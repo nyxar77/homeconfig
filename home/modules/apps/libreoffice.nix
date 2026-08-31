@@ -56,6 +56,13 @@ in
       background-color: @theme_bg_color;
     }
 
+    window:backdrop,
+    dialog:backdrop,
+    .background:backdrop {
+      color: @theme_unfocused_fg_color;
+      background-color: @theme_bg_color;
+    }
+
     headerbar,
     .titlebar,
     menubar,
@@ -71,6 +78,21 @@ in
       border-color: @borders;
     }
 
+    headerbar:backdrop,
+    .titlebar:backdrop,
+    menubar:backdrop,
+    toolbar:backdrop,
+    .toolbar:backdrop {
+      color: @theme_unfocused_fg_color;
+      background-color: #{{ surfaceContainerLow.hex }};
+      background-image: linear-gradient(
+        to bottom,
+        #{{ surfaceContainer.hex }},
+        #{{ surfaceContainerLow.hex }}
+      );
+      border-color: @unfocused_borders;
+    }
+
     button,
     combobox button,
     spinbutton,
@@ -83,6 +105,20 @@ in
         #{{ surfaceContainerHigh.hex }}
       );
       border-color: @borders;
+    }
+
+    button:backdrop,
+    combobox button:backdrop,
+    spinbutton:backdrop,
+    entry:backdrop {
+      color: @theme_unfocused_fg_color;
+      background-color: #{{ surfaceContainerHigh.hex }};
+      background-image: linear-gradient(
+        to bottom,
+        #{{ surfaceContainerHighest.hex }},
+        #{{ surfaceContainerHigh.hex }}
+      );
+      border-color: @unfocused_borders;
     }
 
     button:hover,
@@ -116,6 +152,15 @@ in
       background-color: @theme_base_color;
     }
 
+    entry:backdrop,
+    textview text:backdrop,
+    treeview.view:backdrop,
+    iconview.view:backdrop,
+    .view:backdrop {
+      color: @theme_unfocused_text_color;
+      background-color: @theme_unfocused_base_color;
+    }
+
     selection,
     treeview.view:selected,
     iconview.view:selected,
@@ -131,6 +176,13 @@ in
       background-color: #{{ surfaceContainer.hex }};
     }
 
+    menu:backdrop,
+    menuitem:backdrop,
+    popover:backdrop {
+      color: @theme_unfocused_fg_color;
+      background-color: #{{ surfaceContainer.hex }};
+    }
+
     menuitem:hover,
     menuitem:selected,
     popover modelbutton:hover {
@@ -143,6 +195,13 @@ in
       color: @theme_unfocused_fg_color;
       background-color: #{{ surfaceContainerLow.hex }};
       border-color: @borders;
+    }
+
+    notebook > header:backdrop,
+    notebook > header > tabs > tab:backdrop {
+      color: @theme_unfocused_fg_color;
+      background-color: #{{ surfaceContainerLow.hex }};
+      border-color: @unfocused_borders;
     }
 
     notebook > header > tabs > tab:checked {
