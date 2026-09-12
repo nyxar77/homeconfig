@@ -10,7 +10,9 @@
       scrollback_lines = 10000;
       update_check_interval = 0;
       term = "xterm-kitty";
-      background_opacity = "0.75";
+      remember_window_size = "yes";
+      background_blur = 32;
+      background_opacity = "0.65";
       opacity_style = "flat";
       maximized = "yes";
       padding = 10;
@@ -56,8 +58,6 @@
       color19 = "#3f3951";
       color20 = "#8a829e";
       color21 = "#f2e8f0";
-      background_blur = 0;
-      remember_window_size = "yes";
     };
     font = {
       name = "JetBrainsMono Nerd Font";
