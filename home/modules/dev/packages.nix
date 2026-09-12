@@ -6,7 +6,7 @@
       mongosh
       nix-tree
       codebook
-      insomnia
+      # insomnia
       # jetbrains.idea-oss
       devenv
     ]
@@ -39,7 +39,7 @@
 
       prompt = "enabled";
 
-      color_labels = "disabled";
+      color_labels = "enabled";
       accessible_colors = "disabled";
       accessible_prompter = "disabled";
       spinner = "enabled";
@@ -57,17 +57,19 @@
       };
     */
   };
-  programs.jujutsu = {
-    enable = true;
-    settings = {
-      user = {
-        name = "nyxar77";
-        email = "dev@nyxar.space";
-      };
-      ui = {
-        color = "auto";
-        editor = "nvim";
+  /*
+    programs.jujutsu = {
+      enable = true;
+      settings = {
+        user = {
+          name = "nyxar77";
+          email = "dev@nyxar.space";
+        };
+        ui = {
+          color = "auto";
+          editor = "nvim";
+        };
       };
     };
-  };
+  */
 }
