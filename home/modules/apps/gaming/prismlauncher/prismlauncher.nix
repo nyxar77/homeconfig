@@ -10,7 +10,15 @@
   programs.prismlauncher = {
     enable = true;
     package = pkgs.prismlauncher.override {
-      additionalLibs = [ pkgs.libxtst ];
+      additionalLibs = with pkgs; [
+        libxtst
+        libxkbcommon
+        libX11
+        libXtst
+        libxcb
+        libXt
+        libXinerama
+      ];
       jdks = with pkgs; [
         graalvmPackages.graalvm-ce
         jdk25
