@@ -3,6 +3,6 @@
     MANPAGER = "nvim +Man!";
     EDITOR = "nvim";
     VISUAL = "nvim";
-    NH_HOME_FLAKE = "${config.home.homeDirectory}/.config/home-manager#${config.home.username}";
+    USER = config.home.username;
   };
 }

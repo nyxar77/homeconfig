@@ -10,5 +10,6 @@
     ../modules/terminal/htop.nix
     ../modules/terminal/btop.nix
     ../modules/services/ssh.nix
+    ../modules/services/nh.nix
   ];
 }
