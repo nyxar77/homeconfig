@@ -19,234 +19,183 @@ in
 {
   programs.swappy.package = swappyCaelestia;
 
-  programs.caelestia-extras = {
-    enable = true;
-    cursor.enable = true;
-    gtk = {
+  programs = {
+    caelestia-extras = {
       enable = true;
-      directLaunch."org.gnome.Nautilus" = {
-        name = "Files";
-        genericName = "File Manager";
-        exec = "nautilus --new-window %U";
-        icon = "org.gnome.Nautilus";
-        categories = [
-          "GNOME"
-          "GTK"
-          "Utility"
-          "Core"
-          "FileManager"
-        ];
-        mimeType = [ "inode/directory" ];
-        startupNotify = true;
-      };
-    };
-    hyprtoolkit.enable = true;
-    localsend.enable = true;
-    pavucontrol.enable = true;
-    qt.enable = true;
-    prismlauncher.enable = true;
-    qbittorrent.enable = true;
-    portal.enable = true;
-  };
-
-  programs.caelestia = {
-    enable = true;
-
-    systemd = {
-      enable = true;
-      target = "graphical-session.target";
-    };
-
-    settings = {
-      services.smartScheme = true;
-
-      osd = {
-        enabled = true;
-        enableBrightness = true;
-        # enableMicrophone = true;
-      };
-
-      dashboard = {
-        enabled = true;
-        showDashboard = true;
-        showMedia = true;
-        showPerformance = true;
-        showWeather = true;
-      };
-
-      bar = {
-        scrollActions = {
-          workspaces = true;
-          volume = true;
-          brightness = true;
-        };
-
-        popouts = {
-          activeWindow = true;
-          tray = true;
-          statusIcons = true;
-        };
-
-        /*
-             clock = {
-            showDate = true;
-          };
-        */
-        statusIcons = [
-          {
-            id = "network";
-            enabled = true;
-          }
-          {
-            id = "bluetooth";
-            enabled = true;
-          }
-          {
-            id = "audio";
-            enabled = false;
-          }
-          {
-            id = "microphone";
-            enabled = false;
-          }
-          {
-            id = "kbLayout";
-            enabled = true;
-          }
-          {
-            id = "battery";
-            enabled = true;
-          }
-          {
-            id = "lockStatus";
-            enabled = true;
-          }
-        ];
-
-        persistent = false;
-        showOnHover = true;
-      };
-      border = {
-        thickness = 5;
-        rounding = 15;
-      };
-      launcher = {
-        useFuzzy = {
-          apps = true;
-          actions = true;
-        };
-      };
-
-      general = {
-        apps = {
-          terminal = [ "kitty" ];
-          audio = [ "caelestia-extras pavucontrol" ];
-          explorer = [ "nautilus" ];
-        };
-        battery.criticalLevel = 6;
-      };
-
-      lock = {
-        enabled = true;
-        useWallpaper = true;
-        hideNotifs = true;
-      };
-
-      paths.wallpaperDir = "~/Pictures/CaelestiaWallpapers";
-      session.commands.logout = [
-        "hyprctl"
-        "dispatch"
-        "exit"
-      ];
-    };
-
-    package = inputs.caelestia-shell.packages.${system}.with-cli.override {
-      swappy = swappyCaelestia;
-      caelestia-cli = caelestiaCli;
-      extraRuntimeDeps = with pkgs; [
-        kdePackages.kirigami
-        kdePackages.kirigami-addons
-        kdePackages.breeze
-        kdePackages.qqc2-desktop-style
-      ];
-    };
-
-    cli = {
-      enable = true;
-      package = caelestiaCli;
-      settings.theme = {
+      autoEnable = true;
+      mpv.enable = true;
+      gtk = {
         enable = true;
-        enableHypr = true;
-        enableMpv = true;
-        enableCava = true;
-        enableFuzzel = true;
-        # The bundled GTK target writes an incomplete global stylesheet.
-        # User templates below provide the dynamic colours instead.
-        enableGtk = false;
-        enableQt = true;
-        enableBtop = true;
-        enableDiscord = true;
-        # Brave policies live under /etc, outside Home Manager ownership.
-        enableChromium = true;
-        enableSpicetify = false;
-        enableTerm = false;
-        enablePandora = false;
-        enableNvtop = false;
-        enableHtop = false;
-        enableWarp = false;
-        enableZed = false;
-        postHook = ''
-          theme_dir="''${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/theme"
-          config_home="''${XDG_CONFIG_HOME:-$HOME/.config}"
+        directLaunch."org.gnome.Nautilus" = {
+          name = "Files";
+          genericName = "File Manager";
+          exec = "nautilus --new-window %U";
+          icon = "org.gnome.Nautilus";
+          categories = [
+            "GNOME"
+            "GTK"
+            "Utility"
+            "Core"
+            "FileManager"
+          ];
+          mimeType = [ "inode/directory" ];
+          startupNotify = true;
+        };
+      };
+    };
 
-          modernz_conf="$theme_dir/modernz.conf"
-          if [ -f "$modernz_conf" ]; then
-            mkdir -p "$config_home/mpv/script-opts"
-            cp "$modernz_conf" "$config_home/mpv/script-opts/modernz.conf"
-          fi
+    caelestia = {
+      enable = true;
 
-          ${pkgs.hyprland}/bin/hyprctl reload >/dev/null 2>&1 || true
-        '';
+      systemd = {
+        enable = true;
+        target = "graphical-session.target";
+      };
+
+      settings = {
+        services.smartScheme = true;
+
+        osd = {
+          enabled = true;
+          enableBrightness = true;
+          # enableMicrophone = true;
+        };
+
+        dashboard = {
+          enabled = true;
+          showDashboard = true;
+          showMedia = true;
+          showPerformance = true;
+          showWeather = true;
+        };
+
+        bar = {
+          scrollActions = {
+            workspaces = true;
+            volume = true;
+            brightness = true;
+          };
+
+          popouts = {
+            activeWindow = true;
+            tray = true;
+            statusIcons = true;
+          };
+
+          /*
+               clock = {
+              showDate = true;
+            };
+          */
+          statusIcons = [
+            {
+              id = "network";
+              enabled = true;
+            }
+            {
+              id = "bluetooth";
+              enabled = true;
+            }
+            {
+              id = "audio";
+              enabled = false;
+            }
+            {
+              id = "microphone";
+              enabled = false;
+            }
+            {
+              id = "kbLayout";
+              enabled = true;
+            }
+            {
+              id = "battery";
+              enabled = true;
+            }
+            {
+              id = "lockStatus";
+              enabled = true;
+            }
+          ];
+
+          persistent = false;
+          showOnHover = true;
+        };
+        border = {
+          thickness = 5;
+          rounding = 15;
+        };
+        launcher = {
+          useFuzzy = {
+            apps = true;
+            actions = true;
+          };
+        };
+
+        general = {
+          apps = {
+            terminal = [ "kitty" ];
+            audio = [ "caelestia-extras pavucontrol" ];
+            explorer = [ "nautilus" ];
+          };
+          battery.criticalLevel = 6;
+        };
+
+        lock = {
+          enabled = true;
+          useWallpaper = true;
+          hideNotifs = true;
+        };
+
+        paths.wallpaperDir = "~/Pictures/CaelestiaWallpapers";
+        session.commands.logout = [
+          "hyprctl"
+          "dispatch"
+          "exit"
+        ];
+      };
+
+      package = inputs.caelestia-shell.packages.${system}.with-cli.override {
+        swappy = swappyCaelestia;
+        caelestia-cli = caelestiaCli;
+        extraRuntimeDeps = with pkgs; [
+          kdePackages.kirigami
+          kdePackages.kirigami-addons
+          kdePackages.breeze
+          kdePackages.qqc2-desktop-style
+        ];
+      };
+
+      cli = {
+        enable = true;
+        package = caelestiaCli;
+        settings.theme = {
+          enable = true;
+          enableHypr = true;
+          enableMpv = true;
+          enableCava = true;
+          enableFuzzel = true;
+          # The bundled GTK target writes an incomplete global stylesheet.
+          # User templates below provide the dynamic colours instead.
+          enableGtk = false;
+          enableQt = true;
+          enableBtop = true;
+          enableDiscord = true;
+          # Brave policies live under /etc, outside Home Manager ownership.
+          enableChromium = true;
+          enableSpicetify = false;
+          enableTerm = false;
+          enablePandora = false;
+          enableNvtop = false;
+          enableHtop = false;
+          enableWarp = false;
+          enableZed = false;
+          postHook = ''
+            ${pkgs.hyprland}/bin/hyprctl reload >/dev/null 2>&1 || true
+          '';
+        };
       };
     };
   };
 
-  xdg.configFile."caelestia/templates/modernz.conf".text = ''
-    # Generated by Caelestia from the active scheme.
-    # Keep this file generated; do not edit the copied runtime file directly.
-    # Keep the fade subtle so the OSC does not cover a large part of the video.
-    osc_fade_strength=25
-    fade_blur_strength=100
-    fade_transparency_strength=0
-    window_fade_strength=70
-    window_fade_blur_strength=100
-    window_fade_transparency_strength=0
-    tooltip_hints=yes
-    force_seek_tooltip=yes
-    osc_color=#{{ primary.hex }}
-    window_title_color=#{{ onSurface.hex }}
-    window_controls_color=#{{ onSurface.hex }}
-    windowcontrols_close_hover=#{{ error.hex }}
-    windowcontrols_max_hover=#{{ tertiary.hex }}
-    windowcontrols_min_hover=#{{ primary.hex }}
-    title_color=#{{ onSurface.hex }}
-    cache_info_color=#{{ onSurfaceVariant.hex }}
-    seekbar_cache_color=#{{ outline.hex }}
-    seekbarfg_color=#{{ primary.hex }}
-    seekbarbg_color=#{{ surfaceContainerHighest.hex }}
-    seek_handle_color=#{{ primaryContainer.hex }}
-    seek_handle_border_color=#{{ primary.hex }}
-    time_color=#{{ onSurfaceVariant.hex }}
-    chapter_title_color=#{{ onSurface.hex }}
-    side_buttons_color=#{{ onSurface.hex }}
-    middle_buttons_color=#{{ onSurface.hex }}
-    playpause_color=#{{ onPrimaryContainer.hex }}
-    held_element_color=#{{ onSurfaceVariant.hex }}
-    hover_effect_color=#{{ primary.hex }}
-    thumbnail_box_color=#{{ surfaceContainerLowest.hex }}
-    thumbnail_box_outline=#{{ outlineVariant.hex }}
-    nibble_color=#{{ primary.hex }}
-    nibble_current_color=#{{ onPrimary.hex }}
-    ab_loop_color=#{{ secondary.hex }}
-  '';
 }
