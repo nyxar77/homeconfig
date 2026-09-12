@@ -36,18 +36,6 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    /*
-         wallpapers = {
-        url = "github:42willow/wallpapers";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-    */
-    /*
-         ags = {
-        url = "github:aylur/ags";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
-    */
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,6 +60,18 @@
       url = "github:karaolidis/nix-obsidian-extensions";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    /*
+         wallpapers = {
+        url = "github:42willow/wallpapers";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    */
+    /*
+         ags = {
+        url = "github:aylur/ags";
+        inputs.nixpkgs.follows = "nixpkgs";
+      };
+    */
   };
 
   outputs =

@@ -32,11 +32,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1788177100,
-        "narHash": "sha256-Hz3PdV1DUcG/3Lzpkn1dwoc4FTAMbtgSdali4oV/1c8=",
+        "lastModified": 1789239523,
+        "narHash": "sha256-SpBwTV7jGOo+hGlSivikwfuYCm6OZkmsO0wsWduckH0=",
         "owner": "nyxar77",
         "repo": "caelestia-extras",
-        "rev": "aad2185d992f76a3a0974116cfb82d539988bfa8",
+        "rev": "89c0092ee4603e9cc04be280d6886c454b252944",
         "type": "github"
       },
       "original": {
@@ -173,6 +173,28 @@
         "type": "github"
       }
     },
+    "home-manager_3": {
+      "inputs": {
+        "nixpkgs": [
+          "nyxar-nvim",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1789182507,
+        "narHash": "sha256-9nt4W0HNNP84B+b37yRs9Zxat1ZR5guJxEZDEjAgex4=",
+        "owner": "nix-community",
+        "repo": "home-manager",
+        "rev": "b1d1b60084970f9d1e2b72662639dab6d039be71",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "ref": "release-26.05",
+        "repo": "home-manager",
+        "type": "github"
+      }
+    },
     "libnbtplusplus": {
       "flake": false,
       "locked": {
@@ -268,17 +290,18 @@
     "nyxar-nvim": {
       "inputs": {
         "fenix": "fenix",
+        "home-manager": "home-manager_3",
         "nixpkgs": [
           "nixpkgs"
         ],
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1788176842,
-        "narHash": "sha256-9v211dZOBGq815lrVegKGuj6vu7DYAuQdBHVLOtyc8U=",
+        "lastModified": 1789233656,
+        "narHash": "sha256-hqgs+A4/MweHJNOaiwVGJrfzYY32QOCLh25JI1lxJTo=",
         "owner": "nyxar77",
         "repo": "neovimconfig",
-        "rev": "fb9ad4af9fbfcddfc1fc7c2d235c7378709e4a4f",
+        "rev": "8a78e0323f414bb774213f3a8dd6b0c72a4a43ca",
         "type": "github"
       },
       "original": {
