@@ -1,6 +1,8 @@
 { pkgs, unstablePkgs, ... }: {
   imports = [
+    ./anki.nix
     ./ninjabrain-bot.nix
+    ./nautilus.nix
     ./readest.nix
   ];
 
