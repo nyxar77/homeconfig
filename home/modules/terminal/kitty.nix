@@ -3,7 +3,7 @@
     enable = true;
     shellIntegration.enableZshIntegration = true;
     enableGitIntegration = true;
-    settings = {
+    settings = rec {
       enable_audio_bell = false;
       confirm_os_window_close = 1;
       dynamic_background_opacity = true;
@@ -11,8 +11,6 @@
       update_check_interval = 0;
       term = "xterm-kitty";
       remember_window_size = "yes";
-      background_blur = 32;
-      background_opacity = "0.65";
       opacity_style = "flat";
       maximized = "yes";
       padding = 10;
@@ -21,7 +19,9 @@
       strip_trailing_spaces = "smart";
       cursor_shape = "beam";
       cursor_blink_interval = 0;
-      background = "#282433";
+      background_blur = 32;
+      background_opacity = "0.65";
+      background = color18;
       foreground = "#e4dee9";
       selection_background = "#3f3951";
       selection_foreground = "#e4dee9";

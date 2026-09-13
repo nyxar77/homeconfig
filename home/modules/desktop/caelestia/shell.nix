@@ -23,7 +23,8 @@ in
     caelestia-extras = {
       enable = true;
       autoEnable = true;
-      mpv.enable = true;
+      bloom.enable = false;
+      syncOnActivation = false;
       gtk = {
         enable = true;
         directLaunch."org.gnome.Nautilus" = {

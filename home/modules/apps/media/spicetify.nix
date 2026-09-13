@@ -15,23 +15,27 @@
     {
       enable = true;
       theme = spicePkgs.themes.hazy;
-      # theme = spicePkgs.themes.defaultDynamic;
-      /*
-        theme = {
-          name = "";
-          src = pkgs.fetchFromGithub {};
-          injectCss = true;
-          injectThemeJs = true;
-          replaceColors = true;
-          homeConfig = true;
-          overwriteAssets = false;
-        };
-      */
-      # colorScheme = "";
+      # theme = spicePkgs.themes.bloom;
       enabledExtensions = with spicePkgs.extensions; [
         adblockify
         hidePodcasts
         shuffle
+        keyboardShortcut
+        copyToClipboard
+        history
+        betterGenres
+      ];
+      enabledCustomApps = with spicePkgs.apps; [
+        newReleases
+        ncsVisualizer
+        historyInSidebar
+      ];
+      enabledSnippets = with spicePkgs.snippets; [
+        circularAlbumArt
+        newHoverPanel
+        dynamicLeftSidebar
+        spinningCdCoverArt
+        pointer
       ];
     };
 }
