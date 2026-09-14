@@ -196,7 +196,7 @@ hl.bind(mainMod .. " + X", hl.dsp.global("caelestia:session"))
 hl.bind(mainMod .. " + L", hl.dsp.global("caelestia:lock"))
 hl.bind(mainMod .. " + SPACE", hl.dsp.global("caelestia:launcher"))
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.global("caelestia:showall"))
-hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("caelestia wallpaper -r ~/Pictures/CaelestiaWallpapers -N"))
+hl.bind(mainMod .. " + SHIFT + W", hl.dsp.exec_cmd("caelestia-next-wallpaper"))
 
 hl.bind(mainMod .. " + SHIFT + N", hl.dsp.global("caelestia:clearNotifs"))
 hl.bind(

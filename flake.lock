@@ -32,11 +32,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1789239523,
-        "narHash": "sha256-SpBwTV7jGOo+hGlSivikwfuYCm6OZkmsO0wsWduckH0=",
+        "lastModified": 1789416884,
+        "narHash": "sha256-3gxxkBvxmGhoFoK4uJnIpNlmEfEjicuINCFTiCLdi0o=",
         "owner": "nyxar77",
         "repo": "caelestia-extras",
-        "rev": "89c0092ee4603e9cc04be280d6886c454b252944",
+        "rev": "08b1af2dfd98942a4e5b3b83189490c54beced88",
         "type": "github"
       },
       "original": {

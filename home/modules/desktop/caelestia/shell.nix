@@ -15,15 +15,45 @@ let
   caelestiaCli = inputs.caelestia-shell.inputs.caelestia-cli.packages.${system}.default.override {
     swappy = swappyCaelestia;
   };
+  nextWallpaper = pkgs.writeShellApplication {
+    name = "caelestia-next-wallpaper";
+    runtimeInputs = [
+      caelestiaCli
+      pkgs.coreutils
+    ];
+    text = ''
+      caelestia wallpaper -r "$HOME/Pictures/CaelestiaWallpapers" -N
+
+      wallpaper="$(<"$HOME/.local/state/caelestia/wallpaper/path.txt")"
+      case "''${wallpaper##*/}" in
+        auraFarmWallpaper.png|AuraFarmWallpaper.png)
+          caelestia scheme set --name catppuccin --flavour mocha --mode dark
+          ;;
+        wallhaven.png|Wallhaven.png|Wallheaven.png)
+          caelestia scheme set --name dynamic --mode dark --variant fruitsalad
+          ;;
+        roadwp.jpg)
+          caelestia scheme set --name dynamic --mode dark --variant expressive
+          ;;
+        roman_empire.jpg)
+          caelestia scheme set --name gruvbox --flavour soft --mode dark
+          ;;
+        *)
+          caelestia scheme set --name dynamic --mode dark --variant fruitsalad
+          ;;
+      esac
+    '';
+  };
 in
 {
+  home.packages = [ nextWallpaper ];
+
   programs.swappy.package = swappyCaelestia;
 
   programs = {
     caelestia-extras = {
       enable = true;
       autoEnable = true;
-      bloom.enable = false;
       syncOnActivation = false;
       gtk = {
         enable = true;
