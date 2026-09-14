@@ -1,8 +1,8 @@
-{ pkgs, unstablePkgs, ... }: {
+{ pkgs, unstablePkgs, ... }:
+{
   imports = [
-    ./anki.nix
+    ./gwenview.nix
     ./ninjabrain-bot.nix
-    ./nautilus.nix
     ./readest.nix
   ];
 
@@ -10,30 +10,61 @@
     (pkgs.callPackage ./pomotroid.nix { })
   ];
 
-  programs.readest = {
-    enable = true;
-  };
+  programs = {
+    readest.enable = true;
+    gwenview = {
+      enable = true;
 
-  programs.ninjabrain-bot = {
-    enable = true;
-    package = unstablePkgs.ninjabrain-bot;
+      settings = {
+        General = {
+          BackgroundColorMode = "DocumentView::Dark";
+          FullScreenBackground = "FullScreenBackground::Black";
+          HistoryEnabled = false;
+          JPEGQuality = 95;
+          SideBarPage = "operations";
+        };
 
-    settings = {
-      alwaysOnTop = true;
-      autoReset = true;
-      checkForUpdates = false;
-      directionHelp = true;
-      language = "en-US";
-      minecraftVersion = "1.9-1.18";
-      showAngleErrors = true;
-      showAngleUpdates = true;
-      showNetherCoordinates = true;
-      sigma = 0.05;
-      windowSize = "small";
-      theme = 10;
-      translucentWindow = false;
-      useObsOverlay = true;
-      view = "detailed";
+        FullScreen.ShowFullScreenThumbnails = false;
+
+        ImageView = {
+          AlphaBackgroundMode = "AbstractImageView::AlphaBackgroundCheckBoard";
+          MouseWheelBehavior = "MouseWheelBehavior::Zoom";
+        };
+
+        ThumbnailView.ThumbnailSize = 192;
+
+        Crop = {
+          CropPreserveAspectRatio = true;
+          CropShowGridlinesEnabled = true;
+        };
+
+        RedEyeReduction.RedEyeReductionDiameter = 99;
+        "slide show".loop = true;
+        MainWindow.MenuBar = "Disabled";
+      };
+    };
+
+    ninjabrain-bot = {
+      enable = true;
+      package = unstablePkgs.ninjabrain-bot;
+
+      settings = {
+        always_on_top = true;
+        auto_reset = true;
+        check_for_updates = false;
+        direction_help_enabled = true;
+        language_v2 = "en-US";
+        mc_version = 0;
+        show_angle_errors = true;
+        show_angle_updates = true;
+        show_nether_coords = true;
+        sigma = 0.05;
+        size = 0;
+        theme = 10;
+        translucent = false;
+        use_obs_overlay = true;
+        view = 1;
+      };
     };
   };
 }
