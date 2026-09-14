@@ -1,6 +1,19 @@
+{ pkgs, ... }:
+let
+  keepassxcXcb = pkgs.symlinkJoin {
+    name = "keepassxc-xcb";
+    paths = [ pkgs.keepassxc ];
+    nativeBuildInputs = [ pkgs.makeWrapper ];
+    postBuild = ''
+      wrapProgram $out/bin/keepassxc \
+        --set QT_QPA_PLATFORM xcb
+    '';
+  };
+in
 {
   programs.keepassxc = {
     enable = true;
+    package = keepassxcXcb;
     settings = {
       Browser.Enabled = true;
       General = {
@@ -23,7 +36,8 @@
         MinimizeToTray = true;
         ShowExpiredEntriesOnDatabaseUnlockOffsetDays = 1;
         ShowTrayIcon = true;
-        TrayIconAppearance = "monochrome-dark";
+        TrayIconAppearance = "colorful";
+
       };
 
       PasswordGenerator = {
