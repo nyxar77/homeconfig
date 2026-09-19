@@ -26,7 +26,7 @@
       "gitlab.com" = {
         Hostname = "gitlab.com";
         User = "git";
-        IdentityFile = "~/.ssh/github";
+        IdentityFile = "~/.ssh/gitlab";
         IdentitiesOnly = true;
         AddKeysToAgent = true;
       };
