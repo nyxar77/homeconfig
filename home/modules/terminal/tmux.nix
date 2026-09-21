@@ -37,13 +37,13 @@ in
           # set -g @resurrect-capture-pane-contents "on"
           set -g @resurrect-strategy-nvim "session"
           set -g @resurrect-strategy-vim "session"
-
+          set -g @resurrect-delete-backup-after "10"
         '';
       }
       {
         plugin = continuum;
         extraConfig = ''
-          # set -g @continuum-restore "on"
+          set -g @continuum-restore "on"
           set -g @continuum-save-interval "15"
 
           set -g status-right-length 90
