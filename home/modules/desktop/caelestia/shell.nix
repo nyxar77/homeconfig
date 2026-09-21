@@ -229,4 +229,10 @@ in
     };
   };
 
+  home.file.".face".source = pkgs.fetchurl {
+    name = "nyxar-profile.jpg";
+    url = "https://raw.githubusercontent.com/nyxar77/homeconfig/master/assets/profiles/hm.jpg";
+    hash = "sha256-P7f6cK9rOWqjDjiXgjeOp8iUFiyC43qUbVMBaOtGkM0=";
+  };
+
 }
