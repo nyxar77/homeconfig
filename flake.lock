@@ -279,11 +279,11 @@
         "unstable": "unstable"
       },
       "locked": {
-        "lastModified": 1789461944,
-        "narHash": "sha256-/6iZ1SA8mRMe6/TBk/6EJRu8pT3NEBpZ2qy3U6/pfcA=",
+        "lastModified": 1790101212,
+        "narHash": "sha256-vMoaN3SYiKygFhAEw/eRePGwdyR4c8goU5bBNVEwsYQ=",
         "owner": "nyxar77",
         "repo": "neovimconfig",
-        "rev": "176725a7e4c5ce3e5743d22859b318b92d5e6e3f",
+        "rev": "4bd9e4bc9727b1ced9752cad55165addd1216b58",
         "type": "github"
       },
       "original": {
