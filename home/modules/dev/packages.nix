@@ -2,8 +2,8 @@
   home.packages =
     with pkgs;
     [
+      # busybox
       cargo
-      mongosh
       nix-tree
       codebook
       # insomnia
@@ -24,7 +24,7 @@
       user = {
         signingKey = "~/.ssh/github.pub";
         name = "nyxar77";
-        email = "dev@nyxar.space";
+        email = "dev@nyxar77.xyz";
       };
 
       commit.gpgSign = true;
@@ -63,7 +63,7 @@
       settings = {
         user = {
           name = "nyxar77";
-          email = "dev@nyxar.space";
+          email = "dev@nyxar77.xyz";
         };
         ui = {
           color = "auto";

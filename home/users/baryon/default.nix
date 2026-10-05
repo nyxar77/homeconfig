@@ -1,6 +1,7 @@
 { inputs, ... }: {
   imports = [
     ../../profiles/server.nix
+    ../../profiles/development.nix
     ./packages.nix
     ./session.nix
   ];
