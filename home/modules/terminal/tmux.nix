@@ -22,6 +22,7 @@ in
     keyMode = "vi";
 
     plugins = with pkgs.tmuxPlugins; [
+      /* Keep the Catppuccin window-name settings for easy restoration.
       {
         plugin = catppuccin;
         extraConfig = ''
@@ -31,6 +32,7 @@ in
           set -g @catppuccin_window_current_text " #{=18:#{?automatic-rename,#{?#{==:#{pane_current_command},zsh},#{b:pane_current_path},#{pane_current_command}},#{window_name}}}"
         '';
       }
+      */
       {
         plugin = resurrect;
         extraConfig = ''
@@ -46,11 +48,23 @@ in
           set -g @continuum-restore "on"
           set -g @continuum-save-interval "15"
 
-          set -g status-right-length 90
-          set -g status-left-length 90
-          set -g status-left ""
-          set -g status-right "#{E:@catppuccin_status_application}"
-          set -ag status-right "#{E:@catppuccin_status_session}"
+          # Catppuccin status segments, kept for easy restoration:
+          # set -g status-right-length 90
+          # set -g status-left-length 90
+          # set -g status-left ""
+          # set -g status-right "#{E:@catppuccin_status_application}"
+          # set -ag status-right "#{E:@catppuccin_status_session}"
+        '';
+      }
+      {
+        plugin = minimal-tmux-status;
+        extraConfig = ''
+          set -g @minimal-tmux-bg "#e965a5"
+          set -g @minimal-tmux-fg "#eee9fc"
+          set -g @minimal-tmux-use-arrow true
+          set -g @minimal-tmux-left-arrow ""
+          set -g @minimal-tmux-right-arrow ""
+          set -g @minimal-tmux-window-status-format ' #I:#{=18:#{?automatic-rename,#{?#{==:#{pane_current_command},zsh},#{?#{==:#{pane_current_path},#{HOME}},~,#{b:pane_current_path}},#{pane_current_command}},#{window_name}}} '
         '';
       }
     ];
@@ -62,6 +76,8 @@ in
       set -g renumber-windows on
       set -s set-clipboard on
       set -g set-titles on
+      set -g status-style 'bg=#2c2737,fg=#e4dee9'
+      set -g window-status-style 'bg=#3f3951,fg=#e965a5'
 
       bind r command-prompt "rename-window %%"
       bind p paste-buffer -p
