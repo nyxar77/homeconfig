@@ -1,22 +1,25 @@
-{ pkgs, ... }: {
+{ pkgs, unstablePkgs, ... }: {
   home.packages =
-    with pkgs;
-    [
-      # busybox
-      cargo
-      nix-tree
-      codebook
-      # insomnia
-      # jetbrains.idea-oss
-      devenv
-    ]
-    ++
-      # nix toolchain
+    (
+      with pkgs;
       [
-        nixfmt
-        treefmt
-        nixf
-      ];
+        # busybox
+        cargo
+        nix-tree
+        codebook
+        # insomnia
+        # jetbrains.idea-oss
+        devenv
+      ]
+      ++
+        # nix toolchain
+        [
+          nixfmt
+          treefmt
+          nixf
+        ]
+    )
+    ++ [ unstablePkgs.android-studio ];
   programs.git = {
     enable = true;
     settings = {
